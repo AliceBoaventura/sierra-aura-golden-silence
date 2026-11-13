@@ -1,0 +1,21 @@
+'use strict';
+const assert=require('assert'),fs=require('fs'),vm=require('vm');
+const all=fs.readFileSync(__dirname+'/../lifecycle.js','utf8');
+const a=all.indexOf('function releasePointer('),b=all.indexOf('function resetInput(',a);
+assert(a>=0&&b>a);
+const state={mode:'playing'},pointers=new Map(),touchKeys=new Set(),tapQueue=new Set();
+const ctx={state,pointers,touchKeys,tapQueue};vm.createContext(ctx);
+vm.runInContext(all.slice(a,b),ctx);
+let checks=0;const yes=(value,msg)=>{assert(value,msg);checks++};
+function make(name){const active=new Set();const node={name,releasePointerCapture:()=>{},setPointerCapture:()=>{},classList:{add:x=>active.add(x),remove:x=>active.delete(x)}};return {node,active};}
+const {node,active}=make('left');ctx.bindTouch(node,'left');
+const down=id=>node.onpointerdown({pointerId:id,preventDefault:()=>{}}),up=id=>node.onpointerup({pointerId:id,type:'pointerup'});
+down(10);yes(touchKeys.has('left'),'left press ignored');yes(active.has('active'),'visual control not active');
+down(11);yes(pointers.size===2,'second touch not preserved');
+up(10);yes(touchKeys.has('left'),'one finger released both pressed contacts');yes(active.has('active'),'visual feedback cleared too early');
+up(11);yes(!touchKeys.has('left'),'last finger release left the key stuck');yes(!active.has('active'),'active feedback stuck');
+const tap=make('use');ctx.bindTouch(tap.node,'use',true);
+tap.node.onpointerdown({pointerId:20,preventDefault:()=>{}});yes(tapQueue.has('use'),'tap did not queue');
+tap.node.onpointercancel({pointerId:20,type:'pointercancel'});yes(!tapQueue.has('use'),'cancelled touch left a phantom use');
+state.mode='paused';down(40);yes(!pointers.has(40)&&!touchKeys.has('left'),'paused game consumed touch');
+console.log(`${checks}/${checks} multitouch/lifecycle checks (Node VM; no physical Android)`);

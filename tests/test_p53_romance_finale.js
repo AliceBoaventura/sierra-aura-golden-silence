@@ -1,0 +1,14 @@
+'use strict';
+const assert=require('node:assert/strict');const fs=require('node:fs');const vm=require('node:vm');const path=require('node:path');const root=path.resolve(__dirname,'..');
+const context={window:{StoryContinuity:{record(){},history(){return {loveLine:'freedom'}}}},globalThis:{},console};vm.createContext(context);vm.runInContext(fs.readFileSync(path.join(root,'terrace-story.js'),'utf8'),context);
+const Terrace=context.window.Terrace;assert.ok(Terrace);
+const titles=Terrace.beats.map(x=>x.title);assert.ok(!titles.includes('O copo rachado'),'Optional exposition scene should stay removed');assert.ok(titles.includes('A mão que não se adianta'));assert.equal(titles.length,10,'Editorial terrace must remain concise');assert.ok(titles.indexOf('A mão que não se adianta')<titles.indexOf('O corpo e a nuvem'));
+for(const title of ['A mão que não se adianta','A noite que ainda tem um corpo']){const beat=Terrace.beats.find(x=>x.title===title);assert.equal(beat.choices.length,3);for(const c of beat.choices){assert.ok(c[0].length>4&&c[1].length>4)}}
+for(let i=0;i<3;i++){const s=Terrace.create();s.beat=titles.indexOf('A mão que não se adianta');assert.equal(Terrace.choose(s,i),true);assert.equal(s.stage,'response');assert.equal(s.answers[0],i);assert.equal(Terrace.advance(s),true);assert.equal(s.stage,'question')}
+// The prior kiss must be voluntary: without it every later response is a respectful leave.
+for(const [i,outcome] of [[0,'leave'],[1,'rest'],[2,'leave']]){const s=Terrace.create();s.beat=titles.indexOf('A noite que ainda tem um corpo');assert(Terrace.choose(s,i));assert.equal(s.nightChoice,outcome);Terrace.advance(s);assert.equal(s.stage,outcome==='leave'?'ending':'night');assert.equal(s.sex,false)}
+for(const [i,expected] of [[0,'sex'],[1,'rest'],[2,'leave']]){const s=Terrace.create();s.intimacy=true;s.beat=titles.indexOf('A noite que ainda tem um corpo');assert(Terrace.choose(s,i));assert.equal(s.nightChoice,expected);Terrace.advance(s);assert.equal(s.stage,expected==='leave'?'ending':'night');assert.equal(s.sex,i===0)}
+const finale=fs.readFileSync(path.join(root,'p53-finale.js'),'utf8');assert.match(finale,/next\.addEventListener\('click'/);assert.match(finale,/skip\.addEventListener\('click'/);assert.match(finale,/StoryContinuity\?\.history/);
+const interlude=fs.readFileSync(path.join(root,'interlude.js'),'utf8');assert.doesNotMatch(interlude,/window\.P53Finale\?\.open\(\)/,'A demo homologada termina no Depósito 47; o epílogo antigo permanece inativo');
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');for(const f of ['p53-finale.css','p53-performance.js','p53-finale.js'])assert.ok(html.includes(f)&&fs.existsSync(path.join(root,f)));
+console.log('PASS romance: three choices and continuity preserved; canonical demo ending does not reopen the legacy epilogue');

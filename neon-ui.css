@@ -1,0 +1,183 @@
+/* Sierra & Aura: Golden Silence | Neon emocional | 2026-10-30
+   Visual-only layer. No canvas/physics/puzzles/story/save changes.
+   Color semantics: purple/pink narrative, cyan technical, green scanner, red danger.
+*/
+:root {
+  --nr-base: #071018;
+  --nr-deep: #0b1220;
+  --nr-violet: #8a2eff;
+  --nr-magenta: #ff2fb3;
+  --nr-hot: #ff4ea8;
+  --nr-cyan: #35d0ff;
+  --nr-text: #f3eaff;
+  --nr-muted: #c8b7e6;
+  --nr-scan: #60f0a5;
+  --nr-danger: #ff516d;
+}
+/* Original animated opening is preserved. Add subtle color grading, not a new scene. */
+#overlay.title-screen:has(#cadillacWeather):not(.hidden) {
+  background-image:
+    radial-gradient(ellipse at 66% 45%, rgba(255,47,179,.15), transparent 56%),
+    linear-gradient(145deg, rgba(21,5,44,.24), rgba(12,5,40,.14) 47%, rgba(70,10,94,.28)),
+    url('./abertura-original.gif') !important;
+  background-blend-mode: screen, screen, normal !important;
+  background-size: 100% 100%, 100% 100%, contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-color: #050412 !important;
+}
+#overlay.title-screen:has(#cadillacWeather):not(.hidden) .rc29-intro-light {
+  background: linear-gradient(111deg, transparent 25%, #ff2fb314 46%, #8a2eff0c 58%, transparent 78%) !important;
+}
+#overlay.title-screen:has(#cadillacWeather) .panel>.title-logo {
+  color: #f7f0f7 !important;
+  text-shadow: 0 3px 15px #02020b, 0 0 20px #ff2fb340, 0 0 35px #8a2eff25 !important;
+}
+#overlay.title-screen:has(#cadillacWeather) .panel>.title-subtitle {
+  color: #ecc4e1 !important;
+  text-shadow: 0 2px 12px #09041a, 0 0 15px #b244bc40 !important;
+}
+#overlay.title-screen:has(#cadillacWeather) .rc29-intro-status { color: #d8b7edc7 !important; }
+#overlay.title-screen:has(#cadillacWeather) .panel>#start,
+#overlay.title-screen:has(#cadillacWeather) .panel>#continueSaved:not(.hidden) {
+  background: linear-gradient(115deg, #110b24ef, #26103ae6) !important;
+  color: var(--nr-text) !important;
+  border: 1px solid #ba60ffbb !important;
+  box-shadow: 0 10px 28px #05020bc9, inset 0 1px 0 #edb4ff24, 0 0 25px #cf32b223 !important;
+}
+#overlay.title-screen:has(#cadillacWeather) .panel>#start:hover,
+#overlay.title-screen:has(#cadillacWeather) .panel>#continueSaved:not(.hidden):hover {
+  border-color: var(--nr-magenta) !important;
+  background: linear-gradient(115deg, #26103af5, #401342ed) !important;
+}
+/* The actual loading card: preserve progress and retry logic; replace terminal-green visual styling. */
+#overlay.title-screen:has(#cadillacWeather) .panel>#bootStatus {
+  color: var(--nr-text) !important;
+  border: 1px solid #b453f1b5 !important;
+  border-radius: 9px !important;
+  background: linear-gradient(135deg, #071018eb, #160e2ae9 70%, #0b1220ef) !important;
+  box-shadow: 0 15px 45px #000c, inset 0 1px 0 #ffcafa17, 0 0 28px #8a2eff27 !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+#overlay.title-screen:has(#cadillacWeather) .boot-glyph {
+  color: #f09ee9 !important;
+  border-color: #8a2eff95 !important;
+  background: linear-gradient(135deg, #671a774a, #13112894) !important;
+  text-shadow: 0 0 13px #ff2fb378 !important;
+}
+#overlay.title-screen:has(#cadillacWeather) .boot-copy strong { color: var(--nr-text) !important; }
+#overlay.title-screen:has(#cadillacWeather) .boot-copy #bootCaption,
+#overlay.title-screen:has(#cadillacWeather) .boot-foot small { color: var(--nr-muted) !important; }
+#overlay.title-screen:has(#cadillacWeather) #bootPercent { color: var(--nr-cyan) !important; text-shadow: 0 0 12px #35d0ff4f; }
+#overlay.title-screen:has(#cadillacWeather) .panel>#bootStatus .boot-track {
+  background: #10152bd9 !important;
+  box-shadow: inset 0 1px 4px #0009 !important;
+}
+#overlay.title-screen:has(#cadillacWeather) #bootProgress {
+  background: linear-gradient(90deg, #ba28ff 0%, #ff2fb3 48%, #ff62bb 68%, #8a2eff 100%) !important;
+  box-shadow: 0 0 13px #ff2fb379 !important;
+}
+#overlay.title-screen:has(#cadillacWeather) .boot-led {background: #35d0ff !important;box-shadow: 0 0 10px #35d0ff8b !important;}
+#overlay.title-screen:has(#cadillacWeather) #bootRetry:not([hidden]){border-color:#aa63ef!important;color:#f3eaff!important}
+/* Main HUD is a compact narrative panel, not a military scanner dashboard. */
+#game>.hud {
+  color: var(--nr-text);
+  background: linear-gradient(180deg, #080a18e8, #100c25b5 82%, transparent) !important;
+  border-color: #8a2eff45 !important;
+  box-shadow: 0 5px 25px #02020b55 !important;
+}
+#game>.hud .identity,
+#game>.hud .mission {
+  border-color: #9b50eb53 !important;
+  background: linear-gradient(145deg, #0b1220db, #1a0c2cbd) !important;
+  box-shadow: 0 4px 22px #05040b48 !important;
+}
+#game>.hud .identity>.eyebrow,
+#game>.hud .mission>.eyebrow { color: #c9a7f5 !important; }
+#game>.hud .mission strong { color: var(--nr-text) !important; }
+#game>.hud .mission #clues { color: #78d8fa !important; }
+#game>.hud .meter:not(:has(#energy)) b { color: #f1cadf !important; }
+#game>.hud .menu button {
+  color: #eee2fa !important;
+  border-color: #9453d781 !important;
+  background: linear-gradient(135deg, #161026e8, #0d172ae8) !important;
+  box-shadow: inset 0 1px 0 #ffffff09 !important;
+}
+#game>.hud .menu button:hover,
+#game>.hud .menu button:focus-visible {
+  color: #fff9ff !important;
+  border-color: #ff2fb3cb !important;
+  background: #2b133eef !important;
+}
+#game>.hud .menu #rc37LogToggle {
+  color: #f5c5ec !important;
+  border-color: #ff2fb377 !important;
+  background: #27102bbf !important;
+}
+/* ONE scanner progress gauge. P46 floating readout is removed in neo-hud.js and hidden here as fallback. */
+#game #p46ScannerReadout { display: none !important; }
+#game>.hud .identity .meter:has(#energy) .track {
+  height: 5px !important;
+  max-width: 110px;
+  background: #0b1b22 !important;
+  border: 1px solid #3f7f6c63 !important;
+  border-radius: 9px !important;
+  overflow: hidden;
+  box-shadow: inset 0 1px 4px #0007 !important;
+}
+#game>.hud #energy {
+  display: block;
+  height: 100%;
+  border-radius: 9px !important;
+  background: linear-gradient(90deg, #21af83, #60f0a5) !important;
+  box-shadow: 0 0 9px #60f0a55c !important;
+  transition: width .16s linear !important;
+}
+#game>.hud .identity .scanner-state { color: #c3c5e4 !important; }
+#game>.hud .identity .scanner-state[data-mode="ready"],
+#game>.hud .identity .scanner-state[data-mode="active"] { color: var(--nr-scan) !important; }
+#game>.hud .identity .scanner-state[data-mode="charging"] { color: #b1e9cc !important; }
+#game[data-scanner-kind="unavailable"]>.hud .identity .meter:has(#energy),
+#game[data-scanner-kind="echo"]>.hud .identity .meter:has(#energy),
+#game[data-scanner-kind="interface"]>.hud .identity .meter:has(#energy) { display: none !important; }
+/* Active scan must NOT be mistaken for a red danger alert. */
+#game:not(.hud-danger)>.hud .identity .meter:has(#energy){ border-color:transparent !important; }
+#game.hud-danger>.hud { border-color: #ff516d65 !important; }
+#game.hud-danger>.hud .identity { border-color: #ff516d7a !important; }
+/* Narrative/tech feedback: blue/cyan for neutral alerts, magenta for dialogue. */
+#game>.radio { border-color:#bd62ff85!important;background:linear-gradient(140deg,#0b1220f2,#190d2cf0)!important;color:var(--nr-text)!important; }
+#game>.hint { border-color:#35d0ff6c!important;background:#071018de!important;color:#c4eafa!important; }
+#game>.alert { border-color:#ff516d99!important;color:#ffe3ec!important; }
+#game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue,#conversationBox).dialogue-coherent:not(.hidden) {
+  border-color:#a658eb9e!important;
+  background:linear-gradient(145deg,#0b1220f7,#1d0e2cf2)!important;
+  color:var(--nr-text)!important;
+  box-shadow:0 16px 38px #03020c99,0 0 22px #aa34cc12!important;
+}
+#game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue,#conversationBox) button:not(:disabled):focus-visible {
+  outline:2px solid var(--nr-cyan)!important;
+  outline-offset:2px;
+}
+#game #questPanel, #game #rc37Dossier { border-color: #9d5bef9c !important; background: linear-gradient(145deg,#0c1122f9,#1a0d2afa) !important; color:var(--nr-text) !important; }
+#game button:focus-visible { outline-color: #35d0ff !important; }
+/* Maintain small-screen HUD and original cinematic hiding rules. */
+@media (max-width: 650px){
+  #overlay.title-screen:has(#cadillacWeather):not(.hidden){background-size:100% 100%,100% 100%,auto 100%!important}
+  #game>.hud { box-shadow:0 3px 16px #02020b44 !important; }
+  #game>.hud .menu button { padding-left: 7px; padding-right: 7px; }
+  #game>.hud .identity .meter:has(#energy) .track{max-width:72px}
+}
+@media (prefers-reduced-motion: reduce){
+  #game>.hud #energy {transition:none!important}
+  #overlay.title-screen:has(#cadillacWeather) #bootProgress{transition:none!important}
+}
+
+/* QA 2026-10-30: portrait RC44 hides scanner meter (the second .meter)
+   with display:none!important. Restore ONE battery meter only while scanning
+   or charging; ECHO and Alexandra interface remain without battery gauge. */
+@media (max-width:700px) and (orientation:portrait) {
+  #game[data-scanner-kind="battery"].hud-scanner-visible > .hud .identity .meter:has(#energy) {
+    display:flex !important;
+  }
+}

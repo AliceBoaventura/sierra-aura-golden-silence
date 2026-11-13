@@ -1,0 +1,16 @@
+/* RC73 V4 · in-game environmental identity and character-led conversation framing */
+#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue,#conversationBox,#terraceDialogue{isolation:isolate;}
+#clubDialogue::after,#ghostDialogue::after,#intervalDialogue::after,#interludeDialogue::after,#conversationBox::after,#terraceDialogue::after{
+ content:"";display:block;pointer-events:none;position:absolute;right:0;top:0;width:min(38%,200px);height:min(240px,75%);
+ opacity:.22;z-index:0;background-repeat:no-repeat;background-size:cover;background-position:50% 28%;
+ mask-image:linear-gradient(90deg,transparent 0%,black 35%);filter:contrast(1.10) saturate(.80);
+}
+#clubDialogue[data-v4-cast="alex"]::after,#ghostDialogue[data-v4-cast="alex"]::after,#intervalDialogue[data-v4-cast="alex"]::after{background-image:url("assets/visual-v4/portrait-alex.png")}
+#clubDialogue[data-v4-cast="sierra"]::after,#ghostDialogue[data-v4-cast="sierra"]::after,#intervalDialogue[data-v4-cast="sierra"]::after,#interludeDialogue[data-v4-cast="sierra"]::after{background-image:url("assets/visual-v4/portrait-sierra.png")}
+#clubDialogue[data-v4-cast="aura"]::after,#ghostDialogue[data-v4-cast="aura"]::after,#intervalDialogue[data-v4-cast="aura"]::after,#interludeDialogue[data-v4-cast="aura"]::after,#terraceDialogue::after{background-image:url("assets/visual-v4/portrait-aura.png")}
+#clubDialogue[data-v4-cast="jinx"]::after,#ghostDialogue[data-v4-cast="jinx"]::after,#intervalDialogue[data-v4-cast="jinx"]::after,#interludeDialogue[data-v4-cast="jinx"]::after{background-image:url("assets/visual-v4/portrait-jinx.png")}
+#clubDialogue .club-line,#ghostDialogue .club-line,#intervalDialogue .club-line,#interludeDialogue .club-line{position:relative;z-index:1;}
+@media(max-width:620px){#clubDialogue::after,#ghostDialogue::after,#intervalDialogue::after,#interludeDialogue::after,#terraceDialogue::after{opacity:.11;width:30%;max-height:130px}}
+@media(prefers-reduced-motion:reduce){#clubDialogue::after,#ghostDialogue::after,#intervalDialogue::after,#interludeDialogue::after{filter:none}}
+
+#clubDialogue > *,#ghostDialogue > *,#intervalDialogue > *,#interludeDialogue > *,#terraceDialogue > *{position:relative;z-index:1}

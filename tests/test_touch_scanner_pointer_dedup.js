@@ -1,0 +1,17 @@
+'use strict';
+const assert=require('node:assert/strict');
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const source=fs.readFileSync(path.join(__dirname,'../game.js'),'utf8');
+const match=source.match(/\$\('touchScan'\)\.onclick=e=>\{[^}]+\};/);
+assert(match,'Touch scanner click handler missing');
+let toggles=0;const button={};
+vm.runInNewContext(match[0],{$:()=>button,activateTouchScan:()=>{toggles++}});
+button.onclick({pointerType:'touch',detail:0});
+assert.equal(toggles,0,'Touch click after pointerdown must not undo the scan activation');
+button.onclick({pointerType:'pen',detail:0});
+assert.equal(toggles,0,'Pen click after pointerdown must not undo activation');
+button.onclick({pointerType:'mouse',detail:1});
+assert.equal(toggles,1,'Mouse click must activate scanner');
+button.onclick({pointerType:'',detail:0});
+assert.equal(toggles,2,'Keyboard/assistive click must activate scanner');
+console.log('PASS touch scanner: no duplicate touch/pen toggle; mouse and keyboard retained');

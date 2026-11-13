@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+'use strict';
+const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path'),assert=require('node:assert/strict');
+const root=path.resolve(__dirname,'..'),read=f=>fs.readFileSync(path.join(root,f),'utf8');
+const context={console,window:null,globalThis:null,document:{querySelector:()=>null,getElementById:()=>null,querySelectorAll:()=>[]}};
+context.window=context;context.globalThis=context;vm.createContext(context);
+function run(name){vm.runInContext(read(name),context,{filename:name});}
+const original=['terrace-story.js','club-story.js','ghost-story.js','interlude-story.js'];for(const n of original)run(n);
+// Earlier editorial contracts and the chase take precedence over this final small polish.
+for(const n of ['rc73-editorial-v104.js','rc73-club-escape-v105.js'])run(n);
+const snapshot=vm.runInContext('({club:ClubStory.brief[0].choices.map(c=>c[2]),ghost:GhostStory.invite[0].choices.map(c=>c[2]),interlude:InterludeStory.depotFinal.length,terrace:Terrace.beats.map(b=>b.choices.length)})',context);
+run('demo-director-v107.js');run('demo-editorial-v107.js');
+const cases=context.DemoDirector;
+assert.equal(cases.version,'RC73-V107-PUBLIC-DEMO');
+assert.equal(Object.keys(cases.chapters).length,9);
+assert.equal(context.DemoEditorialV107Audit.applied.length,7);
+assert.equal(context.DemoEditorialV107Audit.missing.length,0);
+assert.equal(vm.runInContext('ClubStory.brief[0].choices.map(c=>c[2]).join(",")',context),snapshot.club.join(','));
+assert.equal(vm.runInContext('GhostStory.invite[0].choices.map(c=>c[2]).join(",")',context),snapshot.ghost.join(','));
+assert.equal(vm.runInContext('InterludeStory.depotFinal.length',context),snapshot.interlude);
+assert.equal(JSON.stringify(Array.from(vm.runInContext('Terrace.beats.map(b=>b.choices.length)',context))),JSON.stringify(Array.from(snapshot.terrace)));
+const probe={chapter:1,stage:'trace',flags:{terminal:true,credential:false,camera:false}};
+const untouched=JSON.stringify(probe);let f=cases.caseFile(probe);
+assert.match(f.observation,/sessão local/);assert.match(f.help,/leitor de acesso/);assert.equal(JSON.stringify(probe),untouched,'case file must not change game state');
+assert.ok(!cases.caseFile({chapter:1,stage:'trace',flags:{}}).observation.includes('sessão local'));
+assert.match(cases.caseFile({chapter:5,stage:'raid',flags:{}}).help,/Jinx/);
+assert.match(cases.caseFile({chapter:4,beat:0}).observation,/lente desligada/);
+assert.match(cases.caseFile({chapter:4,beat:4}).observation,/suspensão/);
+assert.ok(!cases.caseFile({chapter:8,stage:'cafe'}).observation.includes('autorização'));
+assert.match(cases.caseFile({chapter:8,stage:'depot'}).observation,/autorização/);
+assert.equal(cases.caseFile({chapter:0}),null);
+const prologue=read('prologue.js');assert.equal((prologue.split('const prologueScenes=[')[1].split('];')[0].match(/\{tag:/g)||[]).length,5);
+assert.ok(prologue.includes("state.slide===prologueScenes.length-1"));
+const picker=read('chapter-select.js');assert.ok(picker.includes('Fases')||picker.includes('FASES'));assert.ok(picker.includes('CONTINUAR'));
+const curtain=read('chapter-curtain.js');assert.ok(curtain.includes('cc-thesis'));assert.ok(curtain.includes('ChapterCurtain={to'));
+const diary=read('rc37-campaign.js');assert.ok(diary.includes('caseFile?.('));assert.ok(diary.includes('VER DICA DE INVESTIGAÇÃO'));
+const html=read('index.html');assert.ok(html.includes('demo-director-v107.js'));assert.ok(html.includes('demo-editorial-v107.js'));assert.ok(html.includes('demo-public-v107.css'));
+assert.ok(html.indexOf('demo-director-v107.js')>html.indexOf('rc37-campaign.js'));
+assert.ok(html.indexOf('demo-editorial-v107.js')>html.indexOf('rc73-club-escape-v105.js'));
+console.log('V10.7: 9 teses, 5 cenas de prólogo, 7 cortes editoriais, IDs e escolhas preservados; diário contextual sem mutação nem spoilers de fase.');

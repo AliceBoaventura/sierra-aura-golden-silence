@@ -1,0 +1,7 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const context={StoryContinuity:{history:()=>({auraPromise:'boundary'}),record:()=>{}}};context.window=context;vm.createContext(context);vm.runInContext(fs.readFileSync(__dirname+'/../terrace-story.js','utf8'),context);
+const T=context.Terrace;
+function run(kiss,night){const s=T.create();let guard=0;while(s.stage!=='ending'&&guard++<60){if(s.stage==='question'){const title=T.beatFor(s).title;let choice=1;if(title==='Antes que você vire ausência')choice=kiss?0:2;if(title==='A noite que ainda tem um corpo')choice=night;assert(T.choose(s,choice));}else assert(T.advance(s));}assert(guard<60,'loop de cena');return s;}
+for(const [kiss,night] of [[false,0],[false,1],[false,2],[true,0],[true,1],[true,2]]){const s=run(kiss,night);const expected=kiss?['sex','rest','leave'][night]:['leave','rest','leave'][night];assert.equal(s.sex,expected==='sex');assert.equal(s.nightChoice,expected);assert.equal(s.awake,expected!=='leave');assert.equal(s.stage,'ending');const end=T.ending(s);assert(end.text.length>30&&end.text.length<500);if(expected==='leave')assert(end.text.includes('voltou para casa'));if(expected==='rest')assert(end.text.includes('lado da cama')&&!end.text.includes('A intimidade foi'));}
+assert(T.beatFor(T.create()).aside.includes('Horas depois da extração')); // No personal exchange in the active relay corridor.
+console.log('5/5 cenários: beijo independente, sexo opcional, sono sem sexo, despedida, sonho condicionado e promessa Enlace');

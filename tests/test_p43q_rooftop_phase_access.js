@@ -1,0 +1,10 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const root=path.resolve(__dirname,'..');
+const terrace=fs.readFileSync(path.join(root,'terrace.js'),'utf8');
+const css=fs.readFileSync(path.join(root,'style.css'),'utf8');
+assert(terrace.includes('id="terracePhases"'),'rooftop has a phase button independent of the hidden HUD');
+assert(terrace.includes("$('terracePhases').onclick=()=>{if(window.SierraChapterSelect)window.SierraChapterSelect.open();else suspendGame();}"),'button opens existing non-destructive chapter selector');
+assert(css.includes('.rooftop-mode>.hud'),'native HUD remains hidden in the rooftop as designed');
+assert(terrace.includes('OLHAR O CÉU')&&terrace.includes('VOLTAR À CONVERSA'),'sky and conversation controls preserved');
+console.log('PASS P43Q: rooftop touch users can open existing phase menu without finishing the dialogue');

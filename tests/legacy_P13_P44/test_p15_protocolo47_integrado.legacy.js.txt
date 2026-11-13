@@ -1,0 +1,17 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const root=path.resolve(__dirname,'..'),read=f=>fs.readFileSync(path.join(root,f),'utf8');
+const prelude=read('prelude-engine.js'),director=read('dialogue-director.js'),story=read('interlude-story.js'),engine=read('interlude-engine.js'),view=read('interlude.js');
+assert(!prelude.includes('Há uma tubulação baixa')&&!prelude.includes('duckCue'));
+assert(!director.includes('AUTO: ON')&&!director.includes('AUTO: OFF'));
+assert(story.includes('InterludeStory.depotFinal')&&story.includes('00:47:00'));
+assert(view.includes('drawDepotEpilogueSubtitle')&&view.includes('3 DIAS DEPOIS'));
+assert(engine.includes("if(s.stage==='depot'&&s.mode==='interludeCinematic')"));
+assert(!engine.includes("if(o.id==='depotBoard')"),'Não pode exigir interação no depósito');
+const c={console};c.window=c;c.globalThis=c;vm.createContext(c);for(const f of ['runtime.js','interlude-story.js','interlude-engine.js'])vm.runInContext(read(f),c,{filename:f});
+assert(c.InterludeStory.final.some(x=>x.text==='Só não some. nunca.'));
+const s=c.Interlude.create();c.Interlude.change(s,'depotTitle',1500);s.mode='interludeCinematic';
+for(let i=0;i<1900&&s.stage!=='end';i++)c.Interlude.step(s,{},.03);
+assert.equal(s.stage,'end');assert.equal(s.flags.depotFinal,true);assert.equal(s.flags.depotUnlocked,true);
+for(let i=0;i<50;i++)c.Interlude.step(s,{},.03);assert.equal(s.mode,'won');
+console.log('PASS P18: tubulação e AUTO removidos; encerramento automático sem interações; FIM DA DEMO');

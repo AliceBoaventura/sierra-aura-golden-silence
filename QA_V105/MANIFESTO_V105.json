@@ -1,0 +1,79 @@
+{
+  "build": "RC73-V105",
+  "baseline": "V104",
+  "modified": [
+    "club-story.js",
+    "coffee-sprites.js",
+    "club-engine.js",
+    "index.html",
+    "club.js",
+    "uprising.js",
+    "ghost.js",
+    "interval.js",
+    "interlude.js",
+    "tests/test_p49_homologacao_fuga_integral.js",
+    "tests/test_interlude_sprite_scale.js",
+    "tests/test_p48_club_live_pursuit.js",
+    "tests/test_p2_render_collision_alignment.js",
+    "tests/test_p14_cafe_trace_regression_20261023.js",
+    "tests/test_qa_progression_ch5.js"
+  ],
+  "new": [
+    "rc73-club-escape-v105.js",
+    "QA_V105/reference_walkcycles.png",
+    "QA_V105/test_v105_chase_browser.py",
+    "QA_V105/cafe_seated_browser_mobile.png",
+    "QA_V105/club_raid_browser_v105.png",
+    "QA_V105/RELATORIO_V105_FUGA_AURA_CAFE.md",
+    "QA_V105/cafe_standing_browser_desktop.png",
+    "QA_V105/cadillac_departure_browser.png",
+    "QA_V105/aura_ch7_facing_browser_v105.png",
+    "QA_V105/raid_mobile_390x844.png",
+    "QA_V105/club_service_corridor_browser_v105.png",
+    "QA_V105/reference_depot_visual_direction.png",
+    "QA_V105/raid_running_actual_controls.png",
+    "QA_V105/service_reader_scanned.png",
+    "QA_V105/MANIFESTO_V105.json",
+    "QA_V105/cafe_seated_browser_desktop.png",
+    "QA_V105/directed_chase_browser.json",
+    "QA_V105/render_acceptance.json",
+    "tests/test_v105_aura_cafe_escape.js",
+    "assets/visual-v105/cafe-real-table-occlusion.png",
+    "assets/visual-v105/cafe-seat-sierra.png",
+    "assets/visual-v105/service-corridor.png",
+    "assets/visual-v105/cafe-seat-jinx.png"
+  ],
+  "unchangedCritical": {
+    "loading-screen.js": true,
+    "terrace.js": true,
+    "terrace-story.js": true,
+    "ghost-story.js": true,
+    "apartment.js": true,
+    "assets/visual-v5/cafe-0217-v5.png": true
+  },
+  "regression": {
+    "tests": "RESULTADO 91/91",
+    "browserSteps": 7,
+    "browserOK": true,
+    "boot": {
+      "ready": true,
+      "chapter": -1,
+      "art": {
+        "total": 24,
+        "ready": 24,
+        "failed": [],
+        "enhancedTotal": 16,
+        "enhancedReady": 16
+      },
+      "clubPatch": 1,
+      "seat": true,
+      "files": 0
+    }
+  },
+  "browserChase": {
+    "pass": true,
+    "steps": 7,
+    "missing": [],
+    "errors": []
+  }
+}

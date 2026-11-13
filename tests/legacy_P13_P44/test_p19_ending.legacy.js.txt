@@ -1,0 +1,18 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert'),path=require('path');
+const root=path.resolve(__dirname,'..'),c={console};c.window=c;c.globalThis=c;vm.createContext(c);
+for(const f of ['runtime.js','interlude-story.js','interlude-engine.js'])vm.runInContext(fs.readFileSync(path.join(root,f),'utf8'),c);
+const s=c.Interlude.create();c.Interlude.change(s,'depot',1100);s.mode='interludeCinematic';
+for(let n=0;n<2500;n++)c.Interlude.step(s,{use:true,right:true},.03);
+assert.equal(s.stage,'depot');assert.equal(s.x,1100);assert(s.stageTime>74.9);
+const time=s.stageTime;s.mode='paused';for(let n=0;n<100;n++)c.Interlude.step(s,{},.03);assert.equal(s.stageTime,time);
+s.mode='interludeCinematic';for(let n=0;n<220;n++)c.Interlude.step(s,{},.03);assert.equal(s.stage,'end');assert.equal(s.mode,'won');
+const source=fs.readFileSync(path.join(root,'interlude.js'),'utf8');
+vm.runInContext(source.slice(source.indexOf('const depotEpilogueDoor='),source.indexOf('function drawDepotEpilogueSubtitle')),c);
+vm.runInContext('globalThis.timeline=depotEpilogueInside',c);
+assert.equal(c.timeline.at(-1)[1],73);assert(c.timeline.every(r=>r[1]>r[0]));
+for(const [W,H] of [[360,800],[844,390],[1366,768]]){
+ const boxes=[],texts=[];c.W=W;c.H=H;c.ctx={save(){},restore(){},fillRect(...v){boxes.push(v)},strokeRect(){},measureText(t){return {width:t.length*10}},fillText(t,x,y){texts.push({t,x,y})}};
+ for(const stageTime of [35,50,65,76]){boxes.length=0;texts.length=0;c.drawDepotEvidence({stageTime});assert(texts.length);for(const b of boxes){assert(b[0]>=0&&b[1]>=0&&b[0]+b[2]<=W&&b[1]+b[3]<=H);}for(const t of texts)assert(t.x>=0&&t.y<H);}
+}
+assert(!source.includes('A batalha pela libertação de Neo Rockford fica para a história completa.'));
+console.log('PASS: duração, bloqueio de movimento, pausa, conclusão automática, documentos em 3 tamanhos simulados, tela final.');

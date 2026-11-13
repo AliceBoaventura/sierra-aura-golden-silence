@@ -1,0 +1,58 @@
+{
+  "errors": [],
+  "missing": [],
+  "steps": [
+    "cafe_seated_and_standing"
+  ],
+  "boot": {
+    "ready": true,
+    "chapter": -1,
+    "art": {
+      "total": 24,
+      "ready": 24,
+      "failed": [],
+      "enhancedTotal": 16,
+      "enhancedReady": 16
+    },
+    "clubPatch": 1,
+    "seat": true,
+    "files": 0
+  },
+  "cafe": {
+    "chapter": 8,
+    "stage": "cafe",
+    "mode": "playing",
+    "seated": true,
+    "seatReady": true,
+    "sierraFace": 1,
+    "scenew": 2100
+  },
+  "cafeMobile": {
+    "w": 390,
+    "scroll": 390,
+    "stage": "cafe",
+    "bodyVisible": 844
+  },
+  "raid": {
+    "chapter": 5,
+    "stage": "raid",
+    "guards": 2,
+    "radios": 0
+  },
+  "escape": {
+    "chapter": 5,
+    "stage": "escape",
+    "guards": 1,
+    "escapeImage": 2900,
+    "objects": 2
+  },
+  "aura": {
+    "chapter": 7,
+    "stage": "access",
+    "avatar": "sierra",
+    "px": 1305,
+    "sierraX": 1450,
+    "face": -1,
+    "enhanced": 16
+  }
+}

@@ -1,0 +1,1483 @@
+/* == style.css == */
+:root{color-scheme:dark;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#edf7ff;background:#050711}*{box-sizing:border-box}body{margin:0;overflow:hidden}button{font:inherit;color:inherit;cursor:pointer;touch-action:none}button:focus-visible{outline:2px solid #7cf4f1;outline-offset:4px}#game{height:100dvh;min-height:340px;position:relative;overflow:hidden;background:#090f21}canvas{width:100%;height:100%;display:block;image-rendering:pixelated}.hud{position:absolute;inset:0 0 auto;display:flex;align-items:flex-start;gap:24px;padding:24px 30px 42px;background:linear-gradient(#050916f2,transparent);pointer-events:none;text-shadow:0 2px 4px #000}.identity{width:190px}.eyebrow{color:#96a9c0;letter-spacing:2px;font-size:12px}.identity>.eyebrow{font-size:18px;font-weight:800;color:#f1f5ff;letter-spacing:3px}.meter{display:flex;align-items:center;gap:12px;margin-top:10px;font-size:10px;letter-spacing:1px}.meter>span{width:78px}.meter b{color:#ef66ad;font-size:20px;line-height:12px;white-space:nowrap}.track{height:5px;background:#1d2b3f;flex:1;overflow:hidden}.track i{height:100%;display:block;background:#7cf4f1;width:100%;transition:width .12s}.mission{margin:auto;text-align:center}.mission strong{display:block;font-size:14px;margin:8px 0}.mission #clues{font-size:12px;letter-spacing:2px;color:#7cf4f1}.menu{display:flex;gap:6px;pointer-events:auto}.menu button{background:#0b1225c9;border:1px solid #45516b;padding:8px 10px;min-height:36px;font-size:12px}.alert{display:none;position:absolute;top:120px;left:50%;transform:translateX(-50%);width:180px;font-size:11px;color:#ff71a5;letter-spacing:2px;text-align:center}.alert .track{margin-top:8px}.alert .track i{background:#f2538c}.hint{position:absolute;left:50%;bottom:170px;transform:translateX(-50%);padding:10px 18px;background:#091426e8;border:1px solid #77d7e66b;font-size:13px;text-align:center;display:none;max-width:90%;width:max-content}.radio{position:absolute;bottom:65px;left:30px;border-left:2px solid #71e3e8;padding:10px 18px;background:linear-gradient(90deg,#08111bea,#08111b98);max-width:580px;display:none}.radio span{font-size:11px;letter-spacing:2px;color:#7cf4f1}.radio p{font-size:14px;line-height:1.5;margin:6px 0 0}footer{position:absolute;bottom:20px;left:30px;right:30px;display:flex;justify-content:space-between;font-size:10px;letter-spacing:2px;color:#9dafc7;pointer-events:none}footer b{color:#eb55b2}.keys{letter-spacing:0}.touch{display:none;position:absolute;bottom:52px;left:18px;right:18px;justify-content:space-between;pointer-events:none}.touch>div{display:flex;gap:8px}.touch button{pointer-events:auto;user-select:none;-webkit-user-select:none;background:#091629c9;border:1px solid #7494b076;min-width:54px;height:54px;font-size:12px;border-radius:7px}.touch button.active,.touch button:active{background:#317b8888;border-color:#93fff8}.overlay{position:absolute;inset:0;background:linear-gradient(90deg,#060a17f7 5%,#070d20d9 42%,#080b1930);display:flex;align-items:center;padding:5vh 7vw;backdrop-filter:blur(2px)}.panel{max-width:490px}.chapter{font-size:12px;letter-spacing:3px;margin-bottom:42px;color:#ccd5e7}.chapter span{color:#ea51af;margin:0 8px}h1{font-family:Arial,sans-serif;font-size:clamp(48px,7vw,88px);letter-spacing:-4px;line-height:.95;margin:20px 0 24px;font-weight:900}h1 em{font-style:normal;color:#7cf4f1}.intro{font-size:15px;line-height:1.75;color:#b4c2d6;max-width:430px}.brief{display:grid;gap:12px;margin:24px 0;font-size:12px;color:#c1ccdd}.brief b{color:#ee6ab8;margin-right:12px}.primary{padding:17px 25px;border:0;background:#85f1e9;color:#081321;letter-spacing:2px;font-size:13px;font-weight:bold;min-width:220px;box-shadow:0 0 35px #4beadd1a}.primary:disabled{opacity:.5;cursor:wait}.small{font-size:11px;color:#8195b0;margin-top:18px}.hidden{display:none!important}
+@media(pointer:coarse){.touch{display:flex}.keys{display:none}.radio{bottom:123px;max-width:calc(100% - 60px)}.hint{bottom:220px}}@media(max-width:700px){.hud{padding:18px 16px;gap:10px}.identity{width:130px}.identity>.eyebrow{font-size:14px}.meter{font-size:9px;gap:6px}.meter>span{width:61px}.mission{text-align:right;margin-right:0}.mission>.eyebrow{font-size:10px}.mission strong{font-size:12px;max-width:170px}.mission #clues{font-size:10px}.menu{position:absolute;top:105px;right:16px}.menu button{padding:6px;font-size:11px}.overlay{padding:30px}.chapter{font-size:10px;margin-bottom:26px}.radio{left:16px;max-width:calc(100% - 32px)}.radio p{font-size:12px}footer{left:18px;right:18px;font-size:9px}.touch button{min-width:46px;height:50px;font-size:11px}.touch>div{gap:6px}.touch{left:12px;right:12px}.intro{font-size:14px}.brief{font-size:11px;line-height:1.5}}
+@media(max-height:520px){.overlay{padding:20px 6vw}.panel{max-width:650px}.chapter{margin-bottom:10px}h1{font-size:44px;margin:10px 0;line-height:1}h1 br{display:none}.intro{max-width:600px;margin:10px 0;font-size:12px;line-height:1.5}.brief{gap:5px;margin:12px 0;font-size:11px}.primary{padding:12px 20px}.small{margin:10px 0;font-size:10px}.hud{padding:12px 20px}.radio{bottom:112px;padding:6px 12px}.radio p{font-size:12px}.hint{bottom:180px}.menu{position:static}.mission strong{margin:4px 0}.touch{bottom:30px}footer{bottom:8px}.alert{top:85px}}
+.secondary{display:block;background:#121d30dd;border:1px solid #6fa7af;color:#a7f9eb;padding:13px 18px;margin-top:12px;font-size:12px;min-height:44px}.secondary:disabled{opacity:.4;cursor:wait}.overlay.encounter{background:linear-gradient(0deg,#070d20f7,#070d2099 55%,transparent);align-items:flex-end}.overlay.encounter .panel{max-width:680px}.overlay.encounter h1{font-size:36px;letter-spacing:1px}.overlay.encounter .intro{font-size:16px;max-width:650px}.overlay.encounter .chapter,.overlay.encounter .eyebrow,.overlay.encounter .small{display:none}@media(max-height:520px){.secondary{display:inline-block;margin:0 0 0 10px;padding:11px}.overlay.encounter .intro{font-size:14px}}
+/* Chapter 3: optical calibration, kept above touch controls. */
+.overlay{overflow-y:auto}.overlay.hacking{align-items:center;justify-content:center;background:#060b19ed;backdrop-filter:blur(5px)}.puzzle-panel{width:min(640px,100%);padding:25px;border:1px solid #527e97;background:linear-gradient(135deg,#111a32,#0a1825);box-shadow:0 0 60px #54d3d518}.puzzle-panel h2{font:800 clamp(24px,4vw,40px)/1.1 Arial,sans-serif;margin:18px 0;color:#b9fff1}.puzzle-panel p{font-size:16px;line-height:1.5;color:#bbcfe2}.route-label{display:flex;justify-content:space-between;font-size:12px;letter-spacing:2px;color:#dfbc85;margin-top:26px}.optical-route{display:flex;gap:16px;margin:14px 0 20px;position:relative}.circuit-tile{flex:1;min-width:0;min-height:105px;background:#202239;border:1px solid #aa6f9f;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px}.circuit-arrow{font-size:46px;line-height:1;color:#f694cb;transition:transform .15s}.circuit-tile small{font-size:12px;letter-spacing:1px}.circuit-tile.linked{border-color:#70eed0;background:#16433955}.circuit-tile.linked .circuit-arrow{color:#93ffe5}.circuit-tile.selected{outline:2px solid #ffcf91;outline-offset:4px}.puzzle-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.puzzle-actions .secondary{margin:0}.puzzle-panel .small{font-size:12px}.overlay.encounter .panel{padding-bottom:10px}.panel .secondary{max-width:100%}
+@media(max-width:700px){.puzzle-panel{padding:18px}.puzzle-panel p{font-size:14px}.optical-route{gap:10px}.circuit-tile{min-height:90px}.overlay.encounter h1{font-size:27px}.overlay.encounter .intro{font-size:14px}}
+@media(max-height:520px){.overlay.hacking{padding:12px}.puzzle-panel{padding:12px 20px}.puzzle-panel h2{font-size:26px;margin:8px 0}.puzzle-panel p{font-size:13px;margin:8px 0}.route-label{margin-top:10px}.optical-route{margin:8px 0;gap:12px}.circuit-tile{min-height:65px;gap:4px}.circuit-arrow{font-size:30px}.circuit-tile small{font-size:10px}.puzzle-panel .primary,.puzzle-panel .secondary{padding:10px 16px;min-height:38px}.puzzle-panel .small{margin:6px 0}.panel .secondary{font-size:10px;min-width:0;min-height:36px;margin:5px 5px 0 0;display:inline-block}.overlay.encounter .intro{font-size:14px;line-height:1.45}.overlay.encounter h1{font-size:25px;letter-spacing:0}}
+
+.overlay>.panel{max-height:100%;overflow-y:auto;padding-top:6px;padding-bottom:6px}.overlay.hacking>.puzzle-panel{max-height:100%;overflow-y:auto}
+/* A quiet, choice-driven chapter. Scene and text have separate readable areas. */
+.rooftop-mode>.hud,.rooftop-mode>.touch,.rooftop-mode>footer,.rooftop-mode>#alert,.rooftop-mode>#hint,.rooftop-mode>#radio{display:none!important}#terraceUI{position:absolute;inset:0;pointer-events:none}.terrace-header{position:absolute;top:25px;left:28px;right:28px;display:flex;justify-content:space-between;gap:20px;text-shadow:0 2px 8px #000}.terrace-header span,.terrace-kicker{font-size:12px;letter-spacing:2px;color:#e4b48c}.terrace-header h2{font-family:Georgia,serif;font-weight:400;font-size:30px;letter-spacing:.5px;margin:7px 0}.terrace-header p{font-size:12px;color:#adbed0;margin:0}.terrace-tools{display:flex;align-items:flex-start;gap:8px}.terrace-tools button,.sky-return{pointer-events:auto;background:#0a1325bd;border:1px solid #58637b;color:#dfe9f5;padding:12px;font-size:12px;min-height:44px}.terrace-dialogue{pointer-events:auto;position:absolute;right:3%;top:140px;bottom:26px;width:39%;padding:20px 22px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#687083 transparent;background:linear-gradient(120deg,#0b1429ed,#0b1527d9);border-top:1px solid #b18c7799;box-shadow:0 16px 65px #0005}.terrace-kicker{line-height:1.7;letter-spacing:1.5px;margin-bottom:14px}.terrace-aside{font-family:Georgia,serif;font-style:italic;color:#aeb5c8;font-size:15px;line-height:1.6;margin:0 0 20px}.terrace-speaker{font-size:12px;letter-spacing:3px;color:#efa8d0;margin:16px 0 8px}.terrace-speaker.sierra{color:#8ddedb}.terrace-line{font-size:16px;line-height:1.75;color:#e8edf8;margin:0 0 18px}.terrace-chosen{font-family:Georgia,serif;font-size:18px;line-height:1.6;color:#b1e5e1;margin:0 0 26px}.response-label{font-size:12px;color:#96abbc;letter-spacing:2px;margin:24px 0 12px}.terrace-choices{display:grid;gap:10px}.terrace-choices button{display:flex;align-items:flex-start;gap:12px;width:100%;text-align:left;background:#112137;border:1px solid #4a6174;color:#e8edf8;padding:13px 14px;font-size:15px;line-height:1.5;min-height:48px;touch-action:manipulation}.terrace-choices button:hover{background:#18384a;border-color:#87d8d2}.answer-number{color:#e8b994;font-size:13px;padding-top:2px}.terrace-help{font-size:12px;line-height:1.5;color:#8292ac;margin-top:14px}.terrace-next,.terrace-end-actions button{background:#a9ded7;border:1px solid #a9ded7;color:#0b1a27;padding:14px 18px;font-size:13px;line-height:1.5;min-height:46px;touch-action:manipulation}.terrace-end-actions{display:grid;gap:12px}.terrace-end-actions button:not(:first-child){background:transparent;color:#b8d9e4;border-color:#53687d}.terrace-dialogue h3{font:400 30px/1.25 Georgia,serif;margin:16px 0 22px;color:#f1d5c0}.sky-return{display:none;position:absolute;bottom:30px;left:50%;transform:translateX(-50%);white-space:nowrap}.sky-only .terrace-dialogue,.sky-only .terrace-tools{display:none}.sky-only .sky-return{display:block}
+@media(max-aspect-ratio:11/10){.terrace-header{top:16px;left:18px;right:18px}.terrace-header h2{font-size:25px}.terrace-header p{font-size:12px}.terrace-tools{flex-direction:column;gap:6px}.terrace-tools button{font-size:11px;padding:8px;min-height:36px}.terrace-dialogue{top:46%;bottom:0;left:0;right:0;width:100%;padding:20px 22px calc(24px + env(safe-area-inset-bottom));border-top:1px solid #a78b77;background:#080f1df5}.terrace-aside{font-size:14px}.terrace-line{font-size:16px;line-height:1.65}.terrace-choices button{font-size:14px}.terrace-kicker{font-size:12px}.terrace-chosen{font-size:17px}}
+@media(min-aspect-ratio:11/10) and (max-height:560px){.terrace-header{top:14px;left:20px;right:20px}.terrace-header h2{font-size:24px}.terrace-header p{font-size:12px}.terrace-dialogue{top:90px;bottom:12px;right:2%;width:44%;padding:14px 18px}.terrace-line{font-size:14px;line-height:1.55}.terrace-aside{font-size:14px;line-height:1.5}.terrace-choices button{font-size:14px;padding:10px}.terrace-header span{font-size:12px}.terrace-tools button{padding:9px;min-height:40px}}
+.terrace-night .terrace-dialogue{border-color:#827a9b;background:#0b1022ed;animation:night-arrives 1.3s ease-out}.terrace-night .terrace-header{opacity:.5}.terrace-dawn .terrace-dialogue{border-color:#d8b087}.terrace-dawn .terrace-header h2{color:#ffe1bd}@keyframes night-arrives{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.terrace-night .terrace-dialogue{animation:none}}
+.chapter-select{margin-top:14px;color:#a7bbc5;font:12px monospace}.chapter-select summary{cursor:pointer;padding:10px}.extraMove{display:none!important}.prelude .extraMove{display:inline-block!important}.prelude .keys{font-size:10px}@media(max-width:700px){.prelude .touch button{min-width:38px;padding:8px;font-size:10px}.prelude .touch{gap:5px}.prelude .touch>div{gap:4px}.chapter-select{margin-top:6px}}
+.cinematic>.hud,.cinematic>.touch,.cinematic>footer,.cinematic>#radio,.cinematic>#hint,.cinematic>#alert{display:none!important}#prologueUI{position:absolute;inset:0}.prologue-copy{position:absolute;left:7%;bottom:12%;width:min(580px,83%)}#prologueTag{font-size:12px;letter-spacing:3px;color:#e3b98e}#prologueTitle{font:400 clamp(34px,5vw,62px)/1.05 Georgia,serif;color:#eef5f7;margin:20px 0}#prologueLine{font:18px/1.8 Georgia,serif;color:#d7e0e6;text-shadow:0 2px 8px #000}.prologue-actions{display:flex;align-items:center;gap:22px;margin-top:25px}.prologue-actions button,#prologueSkip{min-height:44px;padding:12px 18px;border:1px solid #96afa7;background:#0b1a24c9;font-size:12px;letter-spacing:1px}.prologue-actions button{color:#b3ece3}#prologueCount{color:#a6b6c4;font-size:12px}#prologueSkip{position:absolute;right:5%;top:7%;color:#b7c6d2}.conversation-box{position:absolute;left:50%;bottom:7%;transform:translateX(-50%);width:min(690px,92%);padding:22px 27px;background:#081423f5;border-top:1px solid #d0b28c;box-shadow:0 15px 60px #0009;z-index:5}.conversation-box>span{font-size:13px;color:#e5c098;letter-spacing:2px}.conversation-box p{font:18px/1.65 Georgia,serif;margin:12px 0 20px;color:#f0ede5}.conversation-box button{padding:12px 20px;min-height:44px;border:1px solid #a6d9d1;background:#a6d9d1;color:#10242d;font-size:12px}.conversation-box small{margin-left:18px;color:#829eaf}.prelude .hint{bottom:155px;background:#07121be8;font-size:14px;line-height:1.45}.prelude .radio{bottom:48px}.hud{transition:opacity .3s}.prelude .touch button{min-width:48px!important;height:50px!important}.prelude .touch{gap:8px}.prelude .touch>div{gap:6px}.prelude .radio p{font-size:14px}.prelude .mission strong{max-width:280px}.prelude .mission #clues{font-size:11px}.prelude .identity>.eyebrow{font-size:14px}@media(pointer:coarse){.prelude .radio{bottom:125px}.prelude .hint{bottom:235px}.conversation-box{bottom:8%}}@media(max-width:600px){#prologueLine{font-size:17px;line-height:1.65}.prologue-copy{bottom:10%}#prologueSkip{font-size:10px}.conversation-box{padding:18px}.conversation-box p{font-size:16px}.conversation-box small{display:none}.prelude .touch button{min-width:40px!important;padding:5px!important}.prelude .touch>div{gap:4px}.prelude .hint{font-size:12px}.prelude .mission strong{max-width:170px}}@media(max-height:520px){.prologue-copy{bottom:9%;width:min(700px,85%)}#prologueTitle{font-size:32px;margin:12px 0}#prologueLine{font-size:15px;line-height:1.5}.prologue-actions{margin-top:12px}.conversation-box{bottom:5%;padding:15px 22px}.conversation-box p{font-size:16px;margin:8px 0 12px}.prelude .hint{bottom:180px}.prelude .radio{bottom:95px}}
+
+/* QA and responsive corrections: match canvas pixels to its displayed aspect. */
+#game{min-height:0;touch-action:none}.menu button{min-width:44px;min-height:44px}.touch{bottom:max(24px,env(safe-area-inset-bottom));left:max(16px,env(safe-area-inset-left));right:max(16px,env(safe-area-inset-right))}.touch button{min-width:48px;min-height:48px}
+#qaPanel{position:absolute;z-index:20;right:max(12px,env(safe-area-inset-right));top:165px;max-width:calc(100% - 24px);max-height:calc(100% - 180px);overflow:auto;background:#050a13f5;border:1px solid #79dcca;padding:12px;font:12px/1.5 monospace}#qaPanel[hidden]{display:none}#qaPanel pre{white-space:pre-wrap;margin:8px 0}#qaPanel button{border:1px solid #65847c;background:#102b2c;padding:10px;min-height:44px}
+@media(pointer:coarse){footer{display:none}.radio{bottom:150px}.hint{bottom:245px}.prelude .touch button{min-width:48px;min-height:48px;font-size:12px}.touch>div{align-items:end}}
+@media(pointer:coarse) and (max-width:480px){.touch{gap:12px}.touch>div:first-child{display:grid;grid-template-columns:repeat(2,48px)}.touch>div:first-child .extraMove{grid-column:1/3;grid-row:1;width:48px;justify-self:center}.touch>div:last-child{display:grid;grid-template-columns:repeat(2,56px)}.touch button{width:100%}.radio{bottom:155px}.hint{bottom:270px}.radio p{font-size:14px}.hud{padding-top:max(14px,env(safe-area-inset-top))}.mission strong{font-size:13px}.menu{top:105px}.overlay{padding:20px}.intro{font-size:15px}}
+@media(pointer:coarse) and (max-height:520px){.radio{bottom:90px;max-width:70%;padding:7px 12px}.radio p{font-size:14px;line-height:1.4}.hint{bottom:175px}.hud{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}}
+.club-mode .extraMove{display:inline-block!important}.club-talking>.touch,.club-talking>#hint,.club-talking>#radio{display:none!important}.club-dialogue,.club-puzzle{position:absolute;z-index:7;background:linear-gradient(125deg,#0a1425f7,#151327f5);border-top:1px solid #bc8da3;box-shadow:0 18px 70px #0009;overflow-y:auto;scrollbar-width:thin}.club-dialogue{bottom:3%;right:3%;width:min(620px,57%);max-height:72%;padding:22px 26px}.club-dialogue-top{display:flex;justify-content:space-between;gap:20px;color:#edb3cd;font-size:12px;letter-spacing:1.5px}.club-dialogue-top small{color:#8c9bab;font-size:11px}.club-line{font-size:17px;line-height:1.7;color:#eef1f8;margin:16px 0 20px}.club-aside{font:italic 15px/1.65 Georgia,serif;color:#b0b8c8;margin:15px 0}.club-choices{display:grid;gap:8px}.club-choices button{display:flex;gap:13px;align-items:flex-start;text-align:left;padding:12px 14px;border:1px solid #506474;background:#142439;color:#e9f0f4;font-size:15px;line-height:1.5;min-height:48px;touch-action:manipulation}.club-choices button:hover{border-color:#d49db8;background:#26304b}.club-choices button span{color:#e9b490}.club-next,.wave-actions button{min-height:44px;padding:12px 18px;background:#a6ded5;color:#0b1e2a;border:1px solid #a6ded5;font-size:12px;touch-action:manipulation}.club-help{font-size:12px;color:#869bad;margin-bottom:0}.club-puzzle{width:min(700px,92%);max-height:88%;left:50%;top:50%;transform:translate(-50%,-50%);padding:24px}.club-puzzle h2{font:400 27px Georgia,serif;color:#f0c2d5;margin:18px 0}.club-puzzle p{font-size:15px;line-height:1.6;color:#c7d7e2}.club-puzzle canvas{height:auto;width:100%;aspect-ratio:64/17;margin:16px 0;border:1px solid #345161}.club-puzzle label{display:block;margin:12px 0;font-size:14px;color:#b8ddd7}.club-puzzle output{float:right}.club-puzzle input{display:block;width:100%;height:32px;accent-color:#a5e2d4;touch-action:auto}.wave-actions{display:flex;gap:12px;flex-wrap:wrap}.wave-actions button:last-child{background:transparent;color:#a4c8ce;border-color:#658294}.club-mode .hint{font-size:14px;line-height:1.4}.club-mode .radio p{font-size:14px}@media(max-aspect-ratio:11/10){.club-dialogue{bottom:0;left:0;right:0;width:100%;max-height:58%;padding:18px 20px}.club-line{font-size:16px;line-height:1.55}.club-aside{font-size:14px}.club-choices button{font-size:14px}.club-dialogue-top small{display:none}.club-puzzle{padding:18px}.club-puzzle h2{font-size:23px}}@media(max-height:550px) and (min-aspect-ratio:11/10){.club-dialogue{bottom:2%;max-height:82%;padding:15px 20px;width:55%}.club-line{font-size:15px;margin:10px 0;line-height:1.5}.club-aside{font-size:14px;line-height:1.4}.club-choices button{padding:9px 12px;font-size:14px}.club-puzzle{max-height:95%;padding:15px 22px}.club-puzzle canvas{max-height:120px}.club-puzzle p{font-size:14px;margin:8px 0}}
+/* Chapter 6 keeps the original navigation and uses the same dialogue grammar. */
+.ghost-mode .extraMove{display:none!important}.ghost-mode .touch [data-hold="crouch"],.ghost-mode #touchJump{display:none!important}.ghost-talking>.touch,.ghost-talking>#hint,.ghost-talking>#radio{display:none!important}.ghost-dialogue{border-color:#bfae96}.ghost-mode #ghostJournal{position:absolute;right:20px;top:100px;z-index:6;padding:10px 14px;border:1px solid #647a86;background:#101b2bea;color:#d7d7cf;font-size:12px;min-height:44px}.ghost-channels{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}.ghost-channels button{min-height:44px;padding:10px;border:1px solid #435563;background:#101a26;color:#8196a6}.ghost-channels button[aria-pressed="true"]{background:#294b4d;border-color:#9bcfc0;color:#e1f7ee}.ghost-mode .club-puzzle{z-index:10}.ghost-mode #ghostNotes h3{color:#d4c3a4;font-size:16px}.ghost-mode #ghostNotes article{border-bottom:1px solid #344452;padding:10px 0}.ghost-mode #ghostNotesClose{border:1px solid #687e86;background:transparent;color:#c6dfdb;min-height:44px;padding:8px 12px}#ghostJournal:not(.hidden){display:block}body:has(.ghost-mode) .club-dialogue-top small{white-space:nowrap}@media(max-aspect-ratio:11/10){.ghost-mode #ghostJournal{top:125px;right:12px}.ghost-channels{grid-template-columns:repeat(2,1fr)}.ghost-mode .club-puzzle{max-height:84%}.ghost-dialogue{max-height:57%}}@media(prefers-reduced-motion:reduce){.ghost-mode *{scroll-behavior:auto}}
+.ghost-paused #ghostDialogue,.ghost-paused #ghostPuzzle,.ghost-paused #ghostNotes,.ghost-paused #ghostJournal{visibility:hidden}.ghost-mode #overlay{z-index:12}.ghost-mode .touch{z-index:5}
+
+/* Separate pause layer keeps the existing chapter DOM and composition intact. */
+#pauseLayer{z-index:40;overflow:auto;padding-top:max(20px,env(safe-area-inset-top));padding-bottom:max(20px,env(safe-area-inset-bottom))}
+@media(pointer:coarse) and (orientation:landscape){.hud{padding-top:max(12px,env(safe-area-inset-top))}}
+
+/* Chapter 7 inherits the existing dialogue and mobile control system. */
+.interval-mode .extraMove,.interval-mode #touchJump{display:none!important}.interval-talking>.touch,.interval-talking>#hint,.interval-talking>#radio{display:none!important}
+.interval-mode #overlay{z-index:12}.interval-mode #intervalJournal{position:absolute;right:max(16px,env(safe-area-inset-right));top:100px;z-index:6;padding:10px 14px;border:1px solid #677e7b;background:#101b20ea;color:#cbd9cc;min-height:44px;font:12px monospace}
+.interval-mode .club-dialogue{border-color:#82978b}.interval-mode .club-dialogue-top{color:#c3c7a5}.interval-routing{display:grid;gap:12px;margin:20px 0}.interval-routing>div{display:grid;grid-template-columns:1fr 30px 90px;gap:10px;align-items:center}.interval-routing span{font-size:24px;color:#c7d6c4}.interval-routing small{font-size:11px}.interval-routing button{min-height:48px;font-size:25px;background:#1c3536;border:1px solid #839f91}.interval-mode #intervalNotes h3{font-size:15px;color:#c6c4a7}.interval-mode #intervalNotesClose{min-height:44px;padding:8px 12px;background:#1c3536;border:1px solid #839f91}
+@media(max-aspect-ratio:11/10){.interval-mode #intervalJournal{top:125px}.interval-mode .club-dialogue{max-height:57%}}
+
+/* Interlude: Café às 02:17. Same HUD, warmer dialogue edge, quieter input surface. */
+.interlude-mode .club-dialogue{border-color:#b98d6a;background:linear-gradient(125deg,#0a1425f7,#251912f4);}
+.interlude-mode .club-dialogue-top{color:#efc38e}.interlude-mode .club-next{background:#d8bb8a;border-color:#d8bb8a;color:#1b130d}
+.interlude-talking>.touch,.interlude-talking>#hint,.interlude-talking>#radio{display:none!important}
+.interlude-mode #clues{color:#dcb883}.interlude-mode .mission strong{color:#f1eee8}
+.interlude-mode .hint{border-color:#d9b37f77;background:#15100bea;color:#f3e2c7}
+.interlude-mode .radio{border-left-color:#d7ad78;background:linear-gradient(90deg,#15100bea,#0d1017a8)}
+.interlude-mode .radio span{color:#e6c18e}
+@media(max-aspect-ratio:11/10){.interlude-mode .club-dialogue{max-height:60%}}
+
+
+/* Interlude final: no recap. Sierra walks away from the terminal; Aura answers behind her. */
+#interludeCurtain{
+ position:absolute;inset:0;z-index:11;pointer-events:none;
+ background:#03050a;opacity:0;transition:opacity .85s ease;
+}
+#interludeCurtain.visible{opacity:1}
+.interlude-end-time{font-size:12px;letter-spacing:2px;color:#8fa1b6}
+
+/* Clean shell: when a story/title panel is open, gameplay chrome must not leak through it. */
+#game.overlay-open>.hud,#game.overlay-open>#alert,#game.overlay-open>#hint,#game.overlay-open>#radio,#game.overlay-open>footer,#game.overlay-open>.touch,#game.overlay-open>#ghostJournal,#game.overlay-open>#intervalJournal{visibility:hidden!important;pointer-events:none!important}
+#game.overlay-open>#overlay{z-index:50}
+#game.overlay-open canvas{filter:saturate(.72) brightness(.48);transition:filter .25s ease}
+#game:not(.overlay-open) canvas{filter:none;transition:filter .25s ease}
+
+
+/* V19 emotional staging: the last line gets space instead of more spectacle. */
+.interlude-final-focus .hud{opacity:.22!important;transition:opacity .55s ease}
+.interlude-final-focus .touch,.interlude-final-focus #hint,.interlude-final-focus #radio{opacity:0!important;pointer-events:none!important;transition:opacity .4s ease}
+.interlude-final-focus canvas{filter:saturate(.78) brightness(.86);transition:filter .55s ease}
+.interlude-final-dialogue{border-top-color:#d6b188!important;background:linear-gradient(125deg,#090f1af7,#17100cf2)!important}
+.interlude-final-dialogue .club-line{font-size:20px;line-height:1.8;letter-spacing:.2px;color:#f5eee4}
+.interlude-final-dialogue .club-next:disabled{opacity:.35;cursor:default}
+@media(max-aspect-ratio:11/10){.interlude-final-dialogue .club-line{font-size:18px}}
+
+/* RC21: a conversation has framing, faces and player-selected responses.
+   The underlying chapters retain their original styles. */
+.interlude-mode #interludeDialogue{
+ left:50%;right:auto;bottom:2.8%;transform:translateX(-50%);
+ width:min(760px,88%);max-height:49%;min-height:160px;
+ padding:20px 28px 18px 155px;border:1px solid #b98d6a88;border-top:2px solid #d6ac75;
+ background:linear-gradient(115deg,#10151bf5,#181716f8 58%,#211810f6);
+ box-shadow:0 20px 75px #000b,0 0 0 1px #08090b;
+}
+.interlude-mode #interludeDialogue .club-line{font-size:18px;line-height:1.48;margin:13px 0 16px;color:#f3ece2}
+.interlude-mode #interludeDialogue .club-aside{font:italic 14px/1.5 Georgia,serif;color:#d1bda9;margin:10px 0}
+.interlude-mode #interludeDialogue .club-help{font-size:11px;color:#8e9ba0}
+.interlude-mode #interludeDialogue .club-choices{gap:7px}
+.interlude-mode #interludeDialogue .club-choices button{background:#202a30db;border-color:#526168;color:#f3e7d8;font-size:14px;min-height:42px;padding:9px 13px}
+.interlude-mode #interludeDialogue .club-choices button:hover,.interlude-mode #interludeDialogue .club-choices button:focus-visible{background:#374248;border-color:#e4b982;outline:1px solid #d1a874}
+.interlude-portrait{position:absolute;bottom:0;left:8px;width:135px;height:178px;background-size:contain;background-position:center bottom;background-repeat:no-repeat;filter:drop-shadow(4px 4px 9px #0009);pointer-events:none}
+.interlude-portrait.sierra{background-image:url('./portrait-sierra.png')}
+.interlude-portrait.jinx{background-image:url('./portrait-jinx.png')}
+.interlude-mode #interludeDialogue.interlude-grief-dialogue{padding-left:28px;max-width:650px;min-height:120px}
+.interlude-mode #interludeDialogue.interlude-final-dialogue{width:min(640px,84%);background:linear-gradient(115deg,#090e15f8,#1a1613f7);border-top-color:#e7c28c}
+.interlude-mode #interludeDialogue.interlude-final-dialogue .club-line{font-size:21px;line-height:1.55}
+.interlude-mode #interludeDialogue .club-next{padding:9px 18px;min-height:38px}
+.interlude-mode .extraMove,.interlude-mode #touchJump,.interlude-mode #touchDash,.interlude-mode #touchScan{display:none!important}
+@media(max-aspect-ratio:11/10){
+ .interlude-mode #interludeDialogue{width:100%;max-height:61%;bottom:0;padding:13px 17px 13px 95px;min-height:145px}
+ .interlude-portrait{width:86px;height:125px;left:3px}
+ .interlude-mode #interludeDialogue .club-line{font-size:15px;line-height:1.45}
+ .interlude-mode #interludeDialogue .club-aside{font-size:12px}
+ .interlude-mode #interludeDialogue .club-choices button{font-size:13px;min-height:44px}
+ .interlude-mode #interludeDialogue.interlude-grief-dialogue{padding-left:17px}
+}
+@media(max-height:560px) and (min-aspect-ratio:11/10){
+ .interlude-mode #interludeDialogue{max-height:70%;padding-top:11px;padding-bottom:10px}
+ .interlude-portrait{height:130px;width:110px}
+ .interlude-mode #interludeDialogue{padding-left:125px}
+ .interlude-mode #interludeDialogue .club-line{font-size:15px}
+}
+
+/* RC22: interlude-specific legibility; previous chapters are untouched. */
+.interlude-mode > footer .keys{display:none}
+.interlude-mode > footer:after{content:'A / D · MOVER     E · INTERAGIR     1–3 · ESCOLHAS';font-size:10px;letter-spacing:1px;color:#c4b7a5}
+.interlude-mode #interludeDialogue .club-line{overflow-wrap:anywhere}
+.interlude-mode #interludeDialogue .club-choices button{touch-action:manipulation}
+@media(max-width:600px){
+ .interlude-mode .hud{padding:10px 12px 25px;gap:4px 8px;flex-wrap:wrap;align-items:flex-start}
+ .interlude-mode .identity{width:auto;flex:1 1 32%}
+ .interlude-mode .identity>.eyebrow{font-size:13px;letter-spacing:1.3px}
+ .interlude-mode .identity .meter{display:none}
+ .interlude-mode .menu{margin-left:auto;gap:4px}
+ .interlude-mode .menu button{padding:6px 8px;min-height:34px;font-size:10px}
+ .interlude-mode .mission{order:3;flex:1 1 100%;margin:0;text-align:center}
+ .interlude-mode .mission .eyebrow{font-size:10px;letter-spacing:1px}
+ .interlude-mode .mission strong{font-size:12px;margin:4px 0}
+ .interlude-mode .mission #clues{font-size:10px;letter-spacing:1px}
+ .interlude-mode > footer{bottom:9px;left:12px;right:12px;font-size:9px}
+ .interlude-mode > footer:after{display:none}
+ .interlude-mode #interludeDialogue{max-height:65%;overflow-y:auto;overscroll-behavior:contain}
+ .interlude-mode #interludeDialogue .club-choices button{min-height:47px}
+}
+@media(max-height:520px){.interlude-mode #interludeDialogue{max-height:74%;overflow-y:auto}}
+
+/* RC23: visual time passage. The player never faces a second black text card. */
+.interlude-cinematic .hud,.interlude-cinematic footer,.interlude-cinematic .touch,.interlude-cinematic #hint,.interlude-cinematic #radio{display:none!important}
+#interludeSkip{position:absolute;right:max(22px,env(safe-area-inset-right));bottom:max(22px,env(safe-area-inset-bottom));z-index:19;padding:11px 15px;min-height:44px;border:1px solid #b6a58c99;background:#0a1721c7;color:#e8d7c2;font:11px ui-monospace,monospace;letter-spacing:1.2px;touch-action:manipulation}
+#interludeSkip:hover,#interludeSkip:focus-visible{background:#253b44;outline:2px solid #e3c398;outline-offset:3px}
+/* The Chapter 7 outro is a tableau of the facility and survivors, not a black page. */
+.chapter-seven-outro.overlay-open canvas{filter:saturate(.92) brightness(.86)!important}
+.chapter-seven-outro #overlay{background:linear-gradient(90deg,#050b14fa 0%,#07111deb 32%,#07111db5 49%,#07111d11 80%);backdrop-filter:none;align-items:center}
+.chapter-seven-outro #overlay .panel{max-width:min(515px,58vw);background:#080f18aa;border-left:2px solid #a9866b;padding:20px 26px;max-height:92dvh;overflow:auto}
+.chapter-seven-outro #overlay h1{font-size:clamp(36px,5vw,65px);margin:10px 0 18px}
+.chapter-seven-outro #overlay .chapter{margin-bottom:14px}
+.chapter-seven-outro #overlay .intro{font-size:13px;line-height:1.58}
+.chapter-seven-outro #overlay .primary{padding:13px 17px;min-width:unset}
+@media(max-width:700px){
+ .chapter-seven-outro #overlay{align-items:flex-end;padding:12px;background:linear-gradient(0deg,#060b14fa 0%,#060b14e8 55%,#060b1455 85%,transparent)}
+ .chapter-seven-outro #overlay .panel{max-width:100%;width:100%;max-height:67dvh;padding:14px 16px}
+ .chapter-seven-outro #overlay .intro{font-size:12px;line-height:1.48}
+ .chapter-seven-outro #overlay h1{font-size:34px;margin:8px 0 12px}
+ .chapter-seven-outro #overlay .small{display:none}
+}
+
+/* RC24: let Jinx's last words breathe on narrow screens. */
+@media(max-width:600px){
+ .interlude-mode #interludeDialogue.interlude-final-dialogue{padding:16px 19px 17px;width:100%;max-height:62%}
+ .interlude-mode #interludeDialogue.interlude-final-dialogue .interlude-portrait{display:none}
+ .interlude-mode #interludeDialogue.interlude-final-dialogue .club-line{font-size:17px;line-height:1.55;letter-spacing:.08px}
+ .interlude-mode #interludeDialogue.interlude-final-dialogue .club-aside{font-size:12px}
+}
+
+/* Optional district missions: quiet when collapsed and touch accessible. */
+.prelude #questToggle,.club-mode #questToggle{position:absolute;right:18px;top:100px;z-index:6;border:1px solid #687c84;background:#0a1725ed;color:#c8e6dc;font:11px monospace;letter-spacing:1px;padding:12px;min-height:44px}
+#questPanel{position:absolute;z-index:15;right:18px;top:152px;width:min(370px,calc(100vw - 36px));max-height:min(65vh,510px);overflow:auto;padding:16px 18px;background:#081321f5;border:1px solid #9fbeb4;box-shadow:0 12px 32px #000b;color:#e9ede7;font:12px/1.55 monospace}
+#questPanel .quest-title{font-size:12px;letter-spacing:1.4px;color:#b9eee1;display:flex;align-items:center;justify-content:space-between}
+#questClose{background:none;color:#dceee8;border:1px solid #728c89;min-width:44px;min-height:40px;font-size:20px}
+.quest-entry{border-bottom:1px solid #344755;padding:10px 0}.quest-entry:last-child{border-bottom:0}.quest-entry strong{display:block;font-size:12px;color:#e1d5bc}.quest-entry span{font-size:10px;color:#80b1a9}.quest-entry p{margin:3px 0 0;color:#c6d0d1}
+#neriChoices{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}#neriChoices button{flex:1 1 170px;text-align:left;line-height:1.25;white-space:normal}
+#game.overlay-open>#questToggle,#game.overlay-open>#questPanel{visibility:hidden!important;pointer-events:none!important}
+@media(max-width:650px){.prelude #questToggle,.club-mode #questToggle{top:112px;right:10px;font-size:10px;padding:7px}.conversation-box{max-height:78vh;overflow:auto}.conversation-box p{margin-bottom:9px}#neriChoices{flex-direction:column}#neriChoices button{width:100%}#questPanel{top:158px;right:10px}}
+
+.prelude:has(#conversationBox:not(.hidden)) #questToggle,.prelude:has(#conversationBox:not(.hidden)) #questPanel,.club-talking #questToggle,.club-talking #questPanel{visibility:hidden!important;pointer-events:none!important}
+
+/* A readable journal: one selected task, pending work first, history folded away. */
+#questPanel .quest-section{margin:18px 0 8px;color:#a7c4c7;font-size:10px;letter-spacing:1.2px}
+#questPanel .quest-entry{padding:14px 0;margin-bottom:6px;line-height:1.65}
+#questPanel .quest-current{border-left:2px solid #9acfc6;padding-left:12px}
+#questPanel .quest-track{margin-top:8px;min-height:40px;padding:7px 10px;border:1px solid #48615f;background:#10242b;color:#bde2da;font:10px monospace;touch-action:manipulation}
+#questPanel details{margin-top:16px;border-top:1px solid #344755;padding-top:12px}
+#questPanel summary{cursor:pointer;min-height:36px;color:#9cb2bd;letter-spacing:1px;touch-action:manipulation}
+#game:has(#questPanel:not(.hidden))>.touch{visibility:hidden;pointer-events:none}
+#game:has(#pauseLayer:not(.hidden))>#questPanel,#game:has(#pauseLayer:not(.hidden))>#questToggle{visibility:hidden;pointer-events:none}
+
+.first-contact-choices{display:grid;gap:9px;margin:15px auto;max-width:600px}.first-contact-choices button{min-height:46px;text-align:left;padding:10px 15px;color:#e4eee9;border:1px solid #648384;background:#112432;border-radius:6px;font:13px/1.4 system-ui;cursor:pointer}.first-contact-choices button:hover{border-color:#b3d8c9;background:#1c3944}.encounter .intro{white-space:normal;line-height:1.65}@media(max-width:650px){.first-contact-choices button{font-size:12px;min-height:40px}}
+
+.ghost-echo-bins{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin:16px 0}.ghost-echo-bin{display:grid;gap:5px;place-items:center;min-height:84px;padding:6px!important;border:1px solid #527480!important;background:linear-gradient(180deg,#1a3041,#071727)!important;color:#dce8ed!important}.ghost-echo-bin b{font:18px monospace}.ghost-echo-bin small{font:10px/1.25 monospace;color:#8ce5d5}.ghost-echo-bin.wrong{border-color:#bf8a8a!important}.ghost-echo-bin:focus{outline:2px solid #a3dece}@media(max-width:550px){.ghost-echo-bins{grid-template-columns:repeat(5,minmax(0,1fr));gap:2px}.ghost-echo-bin{min-height:61px;padding:3px!important}.ghost-echo-bin b{font-size:11px}.ghost-echo-bin small{font-size:7px}}
+
+.isolation-options{display:grid;gap:12px;margin:12px 0}.isolation-options label{display:grid;gap:5px;font:12px monospace;color:#c9e4dc}.isolation-options select{width:100%;padding:10px;min-height:41px;border:1px solid #638a88;border-radius:4px;color:#e8f5eb;background:#172f3b;font:13px system-ui}.isolation-options option{background:#172f3b}
+
+
+
+/* == cadillac-intro.css == */
+/* RC28: abertura com GIF fornecido pela autora, sem substituir sua arte. */
+#overlay:not(.hidden):has(#cadillacWeather){background:#000 url('./abertura-original.gif') center center / contain no-repeat!important; padding:0!important;align-items:center!important;justify-content:center!important;isolation:isolate}
+#overlay:has(#cadillacWeather) #cadillacWeather,#overlay:has(#cadillacWeather) .cadillac-shade{display:none!important}
+#overlay:has(#cadillacWeather) .panel{position:absolute;inset:0;max-width:none!important;width:100%;height:100%;display:flex;align-items:center;justify-content:flex-end;flex-direction:column;pointer-events:none;padding:0 12px clamp(16px,7vh,64px);box-sizing:border-box;background:none!important;box-shadow:none!important;border:0!important}
+#overlay:has(#cadillacWeather) .panel>*{display:none!important}
+#overlay:has(#cadillacWeather) .panel>#start{display:block!important;pointer-events:auto;position:relative;background:#020712b8!important;color:#f4f5f7!important;border:1px solid #b8c9dc55!important;border-radius:2px;box-shadow:0 2px 16px #000a!important;padding:13px 19px!important;letter-spacing:.14em;font:600 clamp(11px,1.5vw,17px) monospace!important;min-width:0;max-width:94vw;white-space:normal;text-align:center;animation:rc28Pulse 3s ease-in-out infinite}
+#overlay:has(#cadillacWeather) .panel>#start:disabled{animation:none;opacity:.65}
+@keyframes rc28Pulse{0%,100%{opacity:.75}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){#overlay:has(#cadillacWeather) .panel>#start{animation:none}}
+
+
+/* == rc29-polish.css == */
+/* RC29 - polimento de todos os cenários. Nenhum asset original é substituído. */
+#game{isolation:isolate}
+#game>#world{transition:filter .7s ease;}
+#game.rc29-prologo>#world{filter:saturate(.87) contrast(1.06) brightness(.92)}
+#game.rc29-distrito>#world{filter:saturate(1.04) contrast(1.055)}
+#game.rc29-apartamento>#world{filter:saturate(.93) contrast(1.035) sepia(.045)}
+#game.rc29-enlace>#world{filter:saturate(1.07) contrast(1.055)}
+#game.rc29-terraco>#world{filter:saturate(.88) contrast(1.08) brightness(.94)}
+#game.rc29-zona-cega>#world{filter:saturate(.9) contrast(1.12) brightness(.96)}
+#game.rc29-ghost-track>#world{filter:saturate(.78) contrast(1.1) brightness(.93)}
+#game.rc29-intervalo>#world{filter:saturate(.82) contrast(1.12) brightness(.91)}
+#game.rc29-cafe>#world{filter:saturate(.89) contrast(1.035) sepia(.065)}
+#game:not(.overlay-open):not(.rc29-paused)::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;background:radial-gradient(ellipse at 50% 43%,transparent 38%,#03061123 100%);mix-blend-mode:multiply}
+#game .hud,#game .hint,#game .radio{backdrop-filter:blur(5px)}
+#game button:focus-visible,#game summary:focus-visible{outline:2px solid #b6eae5;outline-offset:3px}
+#game button{touch-action:manipulation}
+/* GIF original, sem crop. Reflexo e legenda não interferem na imagem. */
+#overlay:has(#cadillacWeather):not(.hidden) .rc29-intro-status{position:absolute;top:clamp(14px,4vh,40px);left:clamp(12px,4vw,58px);z-index:3;font:500 clamp(9px,1vw,12px)/1.4 monospace;letter-spacing:.21em;color:#a7c5d1a8;pointer-events:none;text-shadow:0 2px 8px #000}
+#overlay:has(#cadillacWeather):not(.hidden) .rc29-intro-light{position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(112deg,transparent 30%,#8bbed20a 47%,transparent 65%);animation:rc29CityGlow 13s ease-in-out infinite alternate}
+#overlay:has(#cadillacWeather):not(.hidden) .panel{z-index:2}
+#overlay:has(#cadillacWeather):not(.hidden) .panel>#start{background:#0509109c!important;border-color:#a9c6c84d!important;box-shadow:0 6px 28px #0008!important;transition:border-color .3s ease,background .3s ease}
+#overlay:has(#cadillacWeather):not(.hidden) .panel>#start:hover{background:#0c1622d6!important;border-color:#d0edf4a6!important}
+@keyframes rc29CityGlow{from{opacity:.16;transform:translateX(-3%)}to{opacity:.65;transform:translateX(3%)}}
+@media(prefers-reduced-motion:reduce){#game>#world{transition:none}#overlay .rc29-intro-light{animation:none!important}}
+@media(max-width:600px){#overlay .rc29-intro-status{font-size:9px!important;letter-spacing:.08em!important}}
+
+
+/* == rc31-scenes.css == */
+/* RC31: polimento específico de apresentação, sem sobrescrever artes ou histórias */
+#game{--scene-glow:#90b9cc;--scene-shadow:#040914;--scene-dialog:#111928e8}
+#game.rc29-prologo{--scene-glow:#91a5bd;--scene-shadow:#05060d;--scene-dialog:#101322ed}
+#game.rc29-distrito{--scene-glow:#65d9dd;--scene-shadow:#050d1b;--scene-dialog:#0d2030ee}
+#game.rc29-apartamento{--scene-glow:#d9ac80;--scene-shadow:#1b1012;--scene-dialog:#241b20ed}
+#game.rc29-enlace{--scene-glow:#df8ac3;--scene-shadow:#120b22;--scene-dialog:#21172fee}
+#game.rc29-terraco{--scene-glow:#a4a9ee;--scene-shadow:#0c1024;--scene-dialog:#161a2fed}
+#game.rc29-zona-cega{--scene-glow:#dd7898;--scene-shadow:#180a13;--scene-dialog:#24101ded}
+#game.rc29-ghost-track{--scene-glow:#bc9cc5;--scene-shadow:#110f1a;--scene-dialog:#1e1727f0}
+#game.rc29-intervalo{--scene-glow:#9ac1b3;--scene-shadow:#0b1315;--scene-dialog:#132224f0}
+#game.rc29-cafe{--scene-glow:#f2b582;--scene-shadow:#1a1010;--scene-dialog:#2b2021ef}
+#game .radio,#game .club-dialogue,#game .club-puzzle,#game .ghost-dialogue,#game .interval-dialogue,#game .interlude-dialogue{border-color:color-mix(in srgb,var(--scene-glow) 36%,transparent)!important;background-color:var(--scene-dialog)!important;box-shadow:0 16px 44px #0009,0 0 24px color-mix(in srgb,var(--scene-glow) 8%,transparent);text-wrap:pretty}
+#game .radio #speaker,#game .club-dialogue .who,#game .chapter{letter-spacing:.09em;text-shadow:0 0 14px color-mix(in srgb,var(--scene-glow) 30%,transparent)}
+#game .club-puzzle button,#game .club-dialogue button,#game .interlude-dialogue button{transition:background-color .17s ease,border-color .17s ease,transform .17s ease}
+#game .club-puzzle button:hover,#game .club-dialogue button:hover,#game .interlude-dialogue button:hover{border-color:var(--scene-glow)!important;transform:translateY(-1px)}
+#game .club-puzzle button:focus-visible,#game .club-dialogue button:focus-visible{outline:2px solid var(--scene-glow);outline-offset:3px}
+#game .hint{border-left:2px solid var(--scene-glow);text-shadow:0 1px 8px #000b}
+#game.rc29-ghost-track .radio,#game.rc29-intervalo .radio{letter-spacing:.015em}
+@media(prefers-reduced-motion:reduce){#game .club-puzzle button,#game .club-dialogue button,#game .interlude-dialogue button{transition:none!important;transform:none!important}}
+
+
+/* == rc32-atmosphere.css == */
+/* RC32: atmospheric layers respect the original sprite work and input */
+#game{position:relative}#rc32-atmosphere{position:absolute;pointer-events:none;z-index:2;opacity:.85}
+#game .club-dialogue,#game .ghost-dialogue,#game .interlude-dialogue,#game .club-puzzle{max-height:min(76vh,690px);overflow-y:auto;overscroll-behavior:contain}
+#game .club-dialogue button,#game .ghost-dialogue button,#game .interval-dialogue button,#game .interlude-dialogue button{min-height:42px;line-height:1.45}
+#game .club-dialogue p,#game .ghost-dialogue p,#game .interval-dialogue p,#game .interlude-dialogue p{line-height:1.62;letter-spacing:.005em}
+#game .club-puzzle button:focus-visible,#game .club-dialogue button:focus-visible,#game button:focus-visible{outline:2px solid var(--scene-glow,#91b9cc);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){#rc32-atmosphere{display:none}}
+
+
+/* == direction.css == */
+/* Definitive finale: reserve the upper image for the body, independent of text. */
+.interval-mode[data-interval-ending="true"] .identity,
+.interval-mode[data-interval-ending="true"] .mission,
+.interval-mode[data-interval-ending="true"] #intervalJournal,
+.interval-mode[data-interval-ending="true"] footer,
+.interval-mode[data-interval-ending="true"] .touch{display:none!important}
+.interval-mode[data-interval-ending="true"] #intervalDialogue{bottom:3%;right:3%;left:auto;width:38%;max-height:44%;padding:18px 22px}
+.interval-mode[data-interval-ending="true"] .club-line{font-size:18px;line-height:1.5}
+.interlude-mode .club-dialogue-top{flex-wrap:wrap;gap:5px 14px}
+.interlude-mode .club-dialogue-top small{letter-spacing:.7px}
+.interlude-mode #interludeDialogue{min-height:0}
+.interlude-mode #interludeDialogue.interlude-rest{width:auto;max-width:94%;min-height:0;padding:10px 14px;display:flex;gap:10px;background:#10171be0}
+.interlude-rest button,.memorial-actions button{min-height:44px;padding:9px 13px;border:1px solid #776b5c;background:#172029;color:#e6d8c4;font-size:11px;touch-action:manipulation}
+.interlude-mode #touchScan{display:block!important}
+.interlude-mode[data-interlude-seated="true"] .touch,
+.interlude-mode[data-interlude-seated="true"] #hint{display:none!important}
+.interlude-mode[data-interlude-seated="true"] .identity,
+.interlude-mode[data-interlude-seated="true"] .mission>.eyebrow,
+.interlude-mode[data-interlude-seated="true"] #objective,
+.interlude-mode[data-interlude-seated="true"] > footer{display:none!important}
+.interlude-mode[data-interlude-seated="true"] .mission{order:0;flex:1 1 auto;text-align:left}
+#interludeCurtain.memorial-actions{position:absolute;inset:auto 12px max(28px,env(safe-area-inset-bottom));height:auto;background:transparent;opacity:1;text-align:center;z-index:8;color:#a9a8a6;font:11px/1.8 monospace;letter-spacing:1px}
+.memorial-actions p{margin:8px 0 12px}
+@media(max-aspect-ratio:11/10){
+ .interval-mode[data-interval-ending="true"] #intervalDialogue{bottom:0;left:0;right:0;width:100%;max-height:34%;padding:14px 20px}
+ .interval-mode[data-interval-ending="true"] .menu{top:12px;right:12px}
+ .interval-mode[data-interval-ending="true"] .club-line{font-size:16px;line-height:1.45;margin:10px 0 14px}
+ .interlude-mode #interludeDialogue{left:0;right:0;transform:none;width:100%;max-height:43%;padding:13px 15px 14px 88px}
+ .interlude-mode #interludeDialogue .club-line{font-size:16px;line-height:1.45}
+ .interlude-mode #interludeDialogue .club-help{margin:8px 0 0}
+ .interlude-mode #interludeDialogue .club-choices button{font-size:13px;line-height:1.4;padding:9px 10px;min-height:46px}
+ .interlude-mode #interludeDialogue.interlude-final-dialogue{width:100%;max-height:43%}
+ .interlude-mode #interludeDialogue.interlude-final-dialogue .club-line{font-size:16px;line-height:1.5}
+ .interlude-mode #interludeDialogue.interlude-rest{left:50%;right:auto;transform:translateX(-50%);width:max-content;max-width:96%;gap:6px;padding:9px}
+ .interlude-mode .interlude-rest button{font-size:10px;padding:8px}
+ .interlude-mode .menu{position:static}
+}
+@media(max-height:520px) and (min-aspect-ratio:11/10){
+ .interlude-mode #interludeDialogue{left:auto;right:2%;transform:none;width:49%;max-height:69%;padding:11px 14px 12px 103px}
+ .interlude-mode #interludeDialogue.interlude-final-dialogue{width:50%}
+ .interlude-mode #interludeDialogue .club-line{font-size:15px}
+ .interlude-mode #interludeDialogue.interlude-rest{left:50%;right:auto;transform:translateX(-50%);width:auto}
+}
+
+/* Chapter boundary: the black ending and the interlude title are separate. */
+.chapter-seven-ended #overlay{background:#000;backdrop-filter:none;align-items:flex-end;padding-bottom:7vh}
+.chapter-seven-ended #overlay .panel{text-align:center;border:0;background:none;margin:auto auto 0;padding:0}
+.chapter-seven-ended #overlay .chapter,.chapter-seven-ended #overlay .eyebrow,.chapter-seven-ended #overlay h1,.chapter-seven-ended #overlay .intro,.chapter-seven-ended #overlay .small{display:none}
+.interlude-opening #overlay{background:#000;backdrop-filter:none}
+.interlude-opening #overlay .intro,.interlude-opening #overlay .small{display:none}
+#game.chapter-seven-ended .hud,#game.chapter-seven-ended footer,#game.chapter-seven-ended .touch,#game.chapter-seven-ended #radio,#game.chapter-seven-ended #hint,#game.chapter-seven-ended #intervalJournal{display:none!important}
+#chapterSevenEnd{position:absolute;bottom:5%;left:0;right:0;text-align:center;color:#8f9396;font:11px/1.8 monospace;letter-spacing:2px;z-index:20}
+#chapterSevenEnd button{background:transparent;color:#a2a6a8;border:1px solid #394047;padding:10px 20px;min-height:44px;margin-top:8px}
+#game.interval-mode[data-interval-ending="true"] #intervalDialogue{max-height:44%;line-height:1.5}
+#game.interlude-mode #interludeDialogue{max-height:45%;overflow-y:auto}
+#game.interlude-mode #interludeDialogue .club-line{line-height:1.5}
+@media(max-aspect-ratio:11/10){
+ #game.interval-mode[data-interval-ending="true"] #intervalDialogue{max-height:34%}
+ #game.interlude-mode #interludeDialogue{max-height:43%}
+ #game.interlude-mode #interludeDialogue .club-choices{grid-template-columns:1fr}
+ #game.interlude-mode #interludeDialogue .club-line{line-height:1.4;font-size:15px}
+ #game.interlude-mode #interludeDialogue .club-choices button{font-size:12px;line-height:1.3;min-height:44px}
+}
+
+.chapter-menu-list{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:18px}.chapter-menu-list button{min-height:44px;font-size:11px;padding:9px}.chapter-menu-list button:last-child{grid-column:1/-1}#overlay:has(.chapter-menu-list) .panel{max-height:94dvh;overflow:auto}#overlay:has(.chapter-menu-list) h1{font-size:clamp(27px,5vw,54px);margin:10px 0}#overlay:has(.chapter-menu-list) .small{display:none}
+
+
+/* == chapter-select.css == */
+/* Phase selector is a new UI layer: no chapter art or mechanics are replaced. */
+#chapterPicker.chapter-picker{position:absolute;inset:0;z-index:95;overflow:auto;overscroll-behavior:contain;color:#e9ecf2;background:#050916;scrollbar-color:#638c9c #070d18}
+#chapterPicker .chapter-picker__ambient{position:fixed;inset:0;background:linear-gradient(90deg,#060a16ed,#060c1bd7 48%,#0b1020dc),url('./city.png') center 46% / cover;filter:saturate(.72);pointer-events:none}
+#chapterPicker .chapter-picker__body{position:relative;min-height:100%;max-width:1240px;margin:auto;padding:clamp(20px,3.4vw,50px) clamp(16px,3.8vw,55px) 25px;box-sizing:border-box;display:flex;flex-direction:column;gap:26px}
+#chapterPicker .chapter-picker__header{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+#chapterPicker .chapter-picker__brand{font:700 15px/1.5 monospace;letter-spacing:.19em;color:#f1f3f9}
+#chapterPicker .chapter-picker__brand span{color:#fa78ad}
+#chapterPicker .chapter-picker__eyebrow{margin-top:11px;color:#78c9d8;font:11px/1.6 monospace;letter-spacing:.14em}
+#chapterPicker h2{font:400 clamp(28px,4vw,51px)/1.1 Georgia,serif;letter-spacing:-.02em;margin:14px 0 8px}
+#chapterPicker h2 em{font-style:italic;color:#ec91be}
+#chapterPicker .chapter-picker__header p{font:14px/1.6 system-ui,sans-serif;color:#b1bdce;margin:0}
+#chapterPicker button{font-family:monospace;cursor:pointer;touch-action:manipulation}
+#chapterPicker button:focus-visible{outline:2px solid #bbfff1;outline-offset:3px}
+#chapterPicker .chapter-picker__back{color:#b9d6e0;border:1px solid #5e748f;padding:13px 17px;background:#0b1324e8;white-space:nowrap;min-height:46px}
+#chapterPicker .chapter-picker__back:hover{background:#23344c;color:#fff}
+#chapterPicker .chapter-picker__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+#chapterPicker .chapter-picker__card{min-width:0;display:flex;flex-direction:column;text-align:left;background:#0c1527;border:1px solid #485875;border-radius:3px;overflow:hidden;padding:0;color:#f1f1f4;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
+#chapterPicker .chapter-picker__card:not(:disabled):hover,#chapterPicker .chapter-picker__card:not(:disabled):focus-visible{transform:translateY(-2px);border-color:#9edfe1;box-shadow:0 0 0 1px #9edfe155,0 9px 30px #0009}
+#chapterPicker .chapter-picker__card:disabled{opacity:.52;cursor:wait}
+#chapterPicker .chapter-picker__art{display:block;width:100%;height:clamp(94px,12vw,158px);background-size:cover;background-position:center;position:relative}
+#chapterPicker .chapter-picker__art:after{content:'';position:absolute;inset:auto 0 0;height:2px;background:linear-gradient(90deg,#6ef4dd,#dc70a2,transparent)}
+#chapterPicker .chapter-picker__number{position:absolute;top:10px;left:12px;background:#050b19dd;border:1px solid #7e9dba73;padding:4px 8px;color:#c9edee;font:700 12px/1.5 monospace;letter-spacing:.14em}
+#chapterPicker .chapter-picker__info{display:flex;flex-direction:column;gap:4px;padding:13px 15px 14px;min-height:87px;box-sizing:border-box}
+#chapterPicker .chapter-picker__info strong{font:700 13px/1.3 monospace;letter-spacing:.055em;color:#f0f3f4}
+#chapterPicker .chapter-picker__info small{font:12px/1.45 system-ui,sans-serif;color:#9eacba}
+#chapterPicker .chapter-picker__state{font:700 10px/1.4 monospace;letter-spacing:.11em;color:#84dcca;margin-top:auto;padding-top:7px}
+#chapterPicker .chapter-picker__card:disabled .chapter-picker__state{color:#d4af97}
+#chapterPicker .chapter-picker__footer{position:static;inset:auto;bottom:auto;left:auto;right:auto;width:auto;min-height:0;transform:none;pointer-events:auto;flex-shrink:0;box-sizing:border-box;letter-spacing:normal;margin-top:auto;display:flex;justify-content:space-between;gap:16px;border-top:1px solid #3b526a;padding-top:14px;color:#9daec0;font:11px/1.65 monospace}
+#chapterPicker .chapter-picker__footer b{color:#f3baae}
+#game.phase-select-open>.hud,#game.phase-select-open>#alert,#game.phase-select-open>#hint,#game.phase-select-open>#radio,#game.phase-select-open>footer,#game.phase-select-open>.touch,#game.phase-select-open>#questPanel,#game.phase-select-open>#questToggle{visibility:hidden!important;pointer-events:none!important}
+#game.phase-select-open #pauseLayer{visibility:hidden!important;pointer-events:none!important}
+#chapterMenuOpen{letter-spacing:.07em}
+#pausePhaseSelect{margin-top:12px;display:block;width:100%;min-height:45px}
+@media(max-width:850px){#chapterPicker .chapter-picker__grid{grid-template-columns:repeat(2,minmax(0,1fr))}#chapterPicker .chapter-picker__footer{flex-direction:column;gap:4px}}
+@media(max-width:530px){#chapterPicker .chapter-picker__body{padding:20px 13px 18px;gap:19px}#chapterPicker .chapter-picker__header{gap:10px}#chapterPicker .chapter-picker__back{font-size:10px;padding:10px;min-height:42px}#chapterPicker .chapter-picker__brand{font-size:11px;letter-spacing:.1em}#chapterPicker .chapter-picker__eyebrow{font-size:9px;letter-spacing:.07em}#chapterPicker h2{font-size:33px;margin-top:10px}#chapterPicker .chapter-picker__header p{font-size:12px}#chapterPicker .chapter-picker__grid{grid-template-columns:1fr;gap:10px}#chapterPicker .chapter-picker__card{flex-direction:row;min-height:112px}#chapterPicker .chapter-picker__art{width:39%;height:auto;min-height:112px;flex:none}#chapterPicker .chapter-picker__info{width:61%;min-height:112px;padding:13px 10px}#chapterPicker .chapter-picker__info strong{font-size:12px}#chapterPicker .chapter-picker__state{font-size:9px}#chapterPicker .chapter-picker__footer{font-size:10px}}
+@media(prefers-reduced-motion:reduce){#chapterPicker .chapter-picker__card{transition:none}}
+
+/* The standard HUD is intentionally hidden in the terrace, prologue and ending.
+   Keep one small chapter-menu affordance without covering the narrative controls. */
+#chapterQuickSelect{display:none;position:absolute;z-index:85;bottom:12px;left:14px;min-height:38px;padding:8px 13px;border:1px solid #79cdd2a6;background:#081426e8;color:#b5f7f0;font:700 11px/1.3 monospace;letter-spacing:.12em;cursor:pointer;touch-action:manipulation}
+#chapterQuickSelect:focus-visible{outline:2px solid #b5fff1;outline-offset:3px}
+#game.cinematic>#chapterQuickSelect,#game.chapter-seven-ended>#chapterQuickSelect,#game.interlude-cinematic>#chapterQuickSelect{display:block}
+#game.overlay-open>#chapterQuickSelect,#game.phase-select-open>#chapterQuickSelect{display:none!important}
+@media(max-width:530px){#chapterQuickSelect{bottom:max(10px,env(safe-area-inset-bottom));left:10px;font-size:10px;min-height:44px}}
+
+
+/* == continuity.css == */
+/* Story callbacks are spoken within the current dialogue, not modal interruptions. */
+.continuity-recall{font-family:inherit;font-size:clamp(12px,1.16vw,16px);line-height:1.55;margin:10px 0 14px;padding:10px 13px;color:#d7e8e8;border-left:2px solid #85c5c2;background:rgba(16,36,45,.62);white-space:normal}
+
+
+/* == rc34-hud.css == */
+
+/* RC34: presentation-only HUD polish; existing IDs, buttons and handlers remain intact. */
+#game:not(.interlude-mode)>.hud{box-sizing:border-box;display:grid;grid-template-columns:minmax(158px,220px) minmax(180px,1fr) auto;align-items:start;gap:clamp(10px,2vw,26px);padding:calc(14px + env(safe-area-inset-top,0px)) clamp(14px,2.5vw,32px) 12px;pointer-events:none;background:linear-gradient(180deg,rgba(5,11,21,.87),rgba(5,11,21,.58) 74%,transparent);border-bottom:1px solid rgba(148,190,208,.15);backdrop-filter:blur(6px)}
+#game:not(.interlude-mode)>.hud .identity,#game:not(.interlude-mode)>.hud .mission{min-width:0;padding:10px 13px;border:1px solid rgba(132,191,207,.24);border-radius:9px;background:linear-gradient(140deg,rgba(12,27,42,.86),rgba(14,19,35,.78));box-shadow:0 6px 24px rgba(0,0,0,.22)}
+#game:not(.interlude-mode)>.hud .identity>.eyebrow,#game:not(.interlude-mode)>.hud .mission>.eyebrow{font-size:clamp(10px,.8vw,12px);font-weight:700;letter-spacing:.16em;color:#b7e7ed}
+#game:not(.interlude-mode)>.hud .mission{text-align:left;margin:0}
+#game:not(.interlude-mode)>.hud .mission strong{display:block;max-width:none;font-size:clamp(12px,1.2vw,16px);line-height:1.35;overflow-wrap:anywhere;color:#f2f4f8}
+#game:not(.interlude-mode)>.hud .mission #clues{font-size:11px;color:#9bbdc5;letter-spacing:.07em}
+#game:not(.interlude-mode)>.hud .meter{display:flex;align-items:center;justify-content:space-between;gap:8px}
+#game:not(.interlude-mode)>.hud .meter>span{width:auto;min-width:0;flex-shrink:0}
+#game:not(.interlude-mode)>.hud .track{min-width:50px;max-width:130px;flex:1}
+#game:not(.interlude-mode)>.hud .menu{position:static;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:5px;pointer-events:auto}
+#game:not(.interlude-mode)>.hud .menu button{border:1px solid rgba(139,190,207,.35);border-radius:6px;background:rgba(16,31,47,.9);color:#e1edf2;min-height:36px;min-width:36px;padding:7px 10px;transition:background .15s,border-color .15s}
+#game:not(.interlude-mode)>.hud .menu button:hover,#game:not(.interlude-mode)>.hud .menu button:focus-visible{background:#203c4b;border-color:#9bdee4;outline-offset:2px}
+#game .club-dialogue,#game .conversation-box{border:1px solid rgba(169,191,211,.32);border-top:2px solid #b4e2df;border-radius:10px;background:linear-gradient(145deg,rgba(9,19,34,.98),rgba(17,23,42,.97));box-shadow:0 18px 55px rgba(0,0,0,.6)}
+#game .club-choices button,#game .conversation-box button{border-radius:6px}
+#game .club-choices button:focus-visible,#game .club-next:focus-visible,#game .conversation-box button:focus-visible{outline:2px solid #b5f2e7;outline-offset:3px}
+@media(max-width:700px){
+ #game:not(.interlude-mode)>.hud{grid-template-columns:minmax(105px,40%) minmax(0,1fr);gap:6px;padding:calc(7px + env(safe-area-inset-top,0px)) 9px 8px}
+ #game:not(.interlude-mode)>.hud .identity,#game:not(.interlude-mode)>.hud .mission{padding:8px 9px;border-radius:7px}
+ #game:not(.interlude-mode)>.hud .identity{width:auto}
+ #game:not(.interlude-mode)>.hud .identity>.eyebrow,#game:not(.interlude-mode)>.hud .mission>.eyebrow{font-size:9px;letter-spacing:.07em}
+ #game:not(.interlude-mode)>.hud .meter{font-size:9px;gap:4px}
+ #game:not(.interlude-mode)>.hud .meter>span{font-size:8px}
+ #game:not(.interlude-mode)>.hud .mission strong{font-size:11px;max-width:none;margin:4px 0}
+ #game:not(.interlude-mode)>.hud .mission #clues{font-size:9px}
+ #game:not(.interlude-mode)>.hud .menu{grid-column:1/-1;justify-content:flex-end;gap:5px}
+ #game:not(.interlude-mode)>.hud .menu button{min-height:44px;min-width:44px;padding:5px 9px;font-size:10px}
+ #game .club-dialogue:not(.interlude-dialogue){max-height:min(60%,calc(100% - 145px));padding:15px 16px}
+ #game .conversation-box{max-height:calc(100% - 180px);overflow-y:auto;overscroll-behavior:contain}
+ #game .club-choices button{min-height:48px}
+}
+@media(max-height:520px) and (min-aspect-ratio:11/10){
+ #game:not(.interlude-mode)>.hud{grid-template-columns:minmax(135px,195px) minmax(170px,1fr) auto;padding:5px 13px}
+ #game:not(.interlude-mode)>.hud .identity,#game:not(.interlude-mode)>.hud .mission{padding:6px 10px}
+ #game:not(.interlude-mode)>.hud .menu{grid-column:auto}
+ #game:not(.interlude-mode)>.hud .menu button{min-height:32px}
+}
+@media(prefers-reduced-motion:reduce){#game:not(.interlude-mode)>.hud .menu button{transition:none}}
+
+/* Keep the RC33 cinematic composition and portrait gutter after the HUD merge. */
+#game.interval-mode[data-interval-ending="true"]>.hud{display:flex;justify-content:flex-end;background:none;border:0;backdrop-filter:none}
+#game.interlude-mode>.hud .mission{order:0}
+#game.interlude-mode[data-interlude-seated="true"]>.hud{grid-template-columns:1fr auto;background:none;border:0;backdrop-filter:none}
+#game.interlude-mode[data-interlude-seated="true"]>.hud .mission{width:max-content;padding:8px 12px}
+#game.interlude-mode[data-interlude-seated="true"]>.hud .menu{grid-column:auto}
+@media(pointer:coarse){#game:not(.interlude-mode)>.hud .menu button{min-height:44px;min-width:44px;touch-action:manipulation}}
+
+
+/* == rc35-safe-hud.css == */
+
+/* RC35: safe, scene-scoped HUD. No global .hud grid or scene layout rewrites. */
+#game:not(.interlude-mode)>.hud .menu button{border-radius:7px;box-shadow:0 4px 16px #0005}
+#game:not(.interlude-mode)>.hud .menu button:focus-visible,
+#game.interlude-mode>.hud .menu button:focus-visible{outline:2px solid #b5efe7;outline-offset:2px}
+#game.interlude-mode #interludeDialogue{isolation:isolate}
+#game.interlude-mode #interludeDialogue .club-dialogue-top,
+#game.interlude-mode #interludeDialogue .club-aside,
+#game.interlude-mode #interludeDialogue .club-line,
+#game.interlude-mode #interludeDialogue .club-choices,
+#game.interlude-mode #interludeDialogue .club-next,
+#game.interlude-mode #interludeDialogue .club-help{position:relative;z-index:1}
+#game.interlude-mode #interludeDialogue .club-next{min-height:44px}
+@media(min-width:701px){
+ #game.interlude-mode #interludeDialogue:not(.interlude-final-dialogue):not(.interlude-rest){padding-left:165px}
+ #game.interlude-mode #interludeDialogue .interlude-portrait{left:14px;bottom:10px;width:128px;height:165px}
+}
+@media(max-width:700px){
+ #game.interlude-mode>.hud{display:flex;align-items:center;flex-wrap:nowrap;gap:8px;padding:calc(8px + env(safe-area-inset-top,0px)) 10px 10px;background:linear-gradient(180deg,#070e1eea,#070e1e9e 80%,transparent)}
+ #game.interlude-mode>.hud .identity{flex:0 1 auto;width:auto;min-width:0}
+ #game.interlude-mode>.hud .identity>.eyebrow{font-size:11px;letter-spacing:.08em;white-space:nowrap}
+ #game.interlude-mode>.hud .identity .meter{display:none}
+ #game.interlude-mode>.hud .mission{display:none}
+ #game.interlude-mode>.hud .menu{position:static;display:flex;flex:0 0 auto;gap:4px;margin-left:auto;order:0}
+ #game.interlude-mode>.hud .menu button{min-width:34px;min-height:40px;padding:7px;font-size:10px;border-radius:6px}
+ #game.interlude-mode #interludeDialogue:not(.interlude-rest){box-sizing:border-box;left:0;right:0;width:100%;max-height:min(48dvh,440px);bottom:0;padding:15px 17px calc(15px + env(safe-area-inset-bottom,0px));min-height:0;overflow-y:auto;overscroll-behavior:contain}
+ #game.interlude-mode #interludeDialogue .interlude-portrait{display:none!important}
+ #game.interlude-mode #interludeDialogue .club-line{font-size:clamp(14px,3.7vw,17px);line-height:1.5;overflow-wrap:anywhere}
+ #game.interlude-mode #interludeDialogue .club-choices button{min-height:48px}
+ #game.interlude-mode #interludeDialogue .club-next{position:relative;z-index:2;min-height:48px;min-width:132px}
+ #game.interlude-mode #interludeDialogue.interlude-grief-dialogue{padding-left:17px}
+ #game.interlude-mode #interludeDialogue.interlude-final-dialogue{max-height:52dvh;padding:17px}
+}
+@media(max-width:380px){
+ #game.interlude-mode>.hud .identity>.eyebrow{font-size:10px}
+ #game.interlude-mode>.hud .menu button{font-size:9px;min-width:32px;padding:6px}
+}
+@media(max-height:520px) and (min-aspect-ratio:11/10){
+ #game.interlude-mode #interludeDialogue{max-height:65dvh}
+}
+
+/* Retain the narrative clock; keep cafe rest controls centered. */
+@media(max-width:700px){
+ #game.interlude-mode>.hud{flex-wrap:wrap;gap:4px 8px}
+ #game.interlude-mode>.hud .identity{order:0}
+ #game.interlude-mode>.hud .menu{order:1}
+ #game.interlude-mode>.hud .mission{display:block;order:2;flex:1 1 100%;text-align:left;margin:0}
+ #game.interlude-mode>.hud .mission>.eyebrow,#game.interlude-mode>.hud #objective{display:none}
+ #game.interlude-mode>.hud .mission #clues{font-size:10px;line-height:1.4}
+ #game.interlude-mode[data-interlude-seated="true"]>.hud .mission{padding:0;border:0;background:none;box-shadow:none}
+ #game.interlude-mode>.hud .menu button{min-height:44px;min-width:40px;touch-action:manipulation}
+ #game.interlude-mode #interludeDialogue.interlude-rest{left:50%;right:auto;bottom:3%;transform:translateX(-50%);width:max-content;max-width:96%;padding:9px;gap:6px}
+}
+#game.interlude-mode #interludeDialogue .rc36-pacing{position:relative;z-index:1}
+
+
+/* == rc37-campaign.css == */
+/* RC37, final additive pass. No global sprite replacement. */
+#game .hud .menu #rc37LogToggle{border:1px solid rgba(226,194,155,.36);color:#e6ceb4;letter-spacing:.085em;background:rgba(30,22,35,.68);font-weight:700}
+#game .hud .menu #rc37LogToggle:hover,#game .hud .menu #rc37LogToggle:focus-visible{border-color:#ffe2b8;color:#fff0d4;background:#322335}
+#game :is(button,summary):focus-visible{outline:2px solid #ffe0ae!important;outline-offset:3px}
+#game button{touch-action:manipulation}
+#game :is(.club-dialogue,.club-puzzle,.conversation-box,.terrace-dialogue){text-shadow:0 1px 4px #04081288}
+#game :is(.club-dialogue,.club-puzzle,.conversation-box) :is(.club-line,.club-aside){line-height:1.63;overflow-wrap:break-word}
+#game .club-choices button,#game .terrace-choices button{line-height:1.4;min-height:40px}
+#game .rc37-terminal .club-choices{display:grid;grid-template-columns:1fr;gap:10px}
+#game .rc37-terminal .club-choices button{text-align:left;white-space:normal}
+#rc37Dossier{border:1px solid #977b78;border-radius:12px;color:#e8e1db;background:linear-gradient(160deg,#171724,#0b1220 82%);max-width:min(94vw,760px);width:min(94vw,760px);height:min(85dvh,750px);max-height:85dvh;padding:0;box-shadow:0 28px 85px #000c;overflow:hidden;font-family:system-ui,-apple-system,'Segoe UI',sans-serif}
+#rc37Dossier::backdrop{background:rgba(3,5,11,.82);backdrop-filter:blur(4px)}
+#rc37Dossier[open]{display:flex;flex-direction:column}
+#rc37Dossier .rc37-dossier-head{padding:22px 22px 16px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;border-bottom:1px solid #57536688}
+#rc37Dossier .rc37-dossier-head small{font:11px monospace;letter-spacing:.17em;color:#d9bda8}
+#rc37Dossier h2{font-size:clamp(21px,3.5vw,32px);margin:7px 0;line-height:1.2;color:#f6efe8}
+#rc37Dossier h2 em{color:#f5b6cd}
+#rc37Dossier .rc37-dossier-head p{font-size:13px;color:#bdbac1;margin:6px 0 0}
+#rc37Dossier button{cursor:pointer;color:#f2e5db;background:#302a3b;border:1px solid #87748b;border-radius:6px;padding:9px 12px;min-height:36px;line-height:1.25}
+#rc37Dossier button:hover,#rc37Dossier button:focus-visible{background:#4a3654;outline:2px solid #efb4ca;outline-offset:2px}
+#rc37Dossier #rc37LogClose{font-size:24px;flex:0 0 42px;min-width:42px;line-height:1}
+#rc37Dossier .rc37-dossier-content{overflow:auto;flex:1;min-height:0;padding:8px 22px 18px;scrollbar-color:#6e526e #14111e}
+#rc37Dossier h3{font-size:12px;font-weight:800;letter-spacing:.14em;color:#eec6af;position:sticky;top:0;background:#181623ed;padding:14px 2px 10px;z-index:1;margin:10px 0 0;border-bottom:1px solid #5b485266}
+#rc37Dossier .rc37-dossier-entry{padding:12px 2px;border-bottom:1px solid #46414c73}
+#rc37Dossier .rc37-dossier-entry>div{display:flex;align-items:center;justify-content:space-between;gap:12px}
+#rc37Dossier .rc37-dossier-entry strong{color:#f9d7c1;font-size:12px;letter-spacing:.04em}
+#rc37Dossier .rc37-dossier-entry span{color:#9c99a8;font-size:10px;letter-spacing:.07em}
+#rc37Dossier .rc37-dossier-entry p{font-size:14px;color:#ddd9df;margin:7px 0 0;line-height:1.55}
+#rc37Dossier .rc37-dossier-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 20px;border-top:1px solid #57536688;flex-wrap:wrap}
+#rc37Dossier .rc37-dossier-footer small{font-size:11px;color:#a9a6b2}
+#rc37Dossier .rc37-dossier-footer>div{display:flex;flex-wrap:wrap;gap:8px}
+#rc37Dossier .rc37-dossier-empty{padding:32px 0;color:#aaaaba;line-height:1.7}
+@media(max-width:600px){
+ #game .hud .menu #rc37LogToggle{font-size:9px;letter-spacing:0;min-width:32px;padding:5px 4px}
+ #rc37Dossier{height:88dvh;max-height:88dvh}
+ #rc37Dossier .rc37-dossier-head{padding:16px 16px 12px}
+ #rc37Dossier .rc37-dossier-content{padding:8px 16px 15px}
+ #rc37Dossier .rc37-dossier-footer{padding:10px 16px}
+ #rc37Dossier .rc37-dossier-footer small{display:none}
+ #game .club-choices button{font-size:clamp(12px,3.1vw,15px)}
+ #game :is(.club-dialogue,.club-puzzle){max-height:76dvh;overflow-y:auto;overscroll-behavior:contain}
+}
+@media(prefers-reduced-motion:reduce){#rc37Dossier::backdrop{backdrop-filter:none}#game button{transition:none!important}}
+
+
+/* == rc39-polish.css == */
+/* RC39: additive safe-area and readable dialogue refinement. No world/canvas rescaling. */
+#game .club-dialogue .club-line,#game .ghost-dialogue .club-line,
+#game #intervalDialogue .club-line,#game #interludeDialogue .club-line{
+ text-wrap:pretty;line-height:1.57;overflow-wrap:break-word;
+}
+#game .club-choices button,#game .terrace-choices button{
+ position:relative;white-space:normal;min-height:44px;line-height:1.47;
+ border-color:rgba(167,194,211,.4);
+}
+#game .club-choices button:hover,#game .club-choices button:focus-visible,
+#game .terrace-choices button:hover,#game .terrace-choices button:focus-visible{
+ border-color:#bcefeb;box-shadow:0 0 0 1px #bcefeb44;
+}
+#game #prologueUI .prologue-copy{max-width:min(740px,93vw)}
+#game #prologueLine{max-width:68ch;text-wrap:pretty}
+@media(max-width:700px){
+ #game .club-dialogue,#game .ghost-dialogue,#game #intervalDialogue,#game #interludeDialogue{
+  max-width:100vw;box-sizing:border-box;overscroll-behavior:contain;
+ }
+ #game :is(.club-choices button,.terrace-choices button){min-height:48px;}
+ #game :is(.club-dialogue,.ghost-dialogue,#intervalDialogue,#interludeDialogue) .club-line{font-size:clamp(14px,3.75vw,17px)}
+}
+@media(max-height:530px){
+ #game :is(.club-dialogue,.ghost-dialogue,#intervalDialogue,#interludeDialogue){max-height:71dvh;overflow-y:auto}
+}
+
+
+/* == rc40-stability.css == */
+/* RC40: viewport safe areas and sprite color preservation. No canvas stretch or engine replacement. */
+#game .hud{padding-top:max(env(safe-area-inset-top,0px),0px)}
+#game .touch{padding-bottom:max(env(safe-area-inset-bottom,0px),0px)}
+#game :is(.club-choices button,.terrace-choices button):focus-visible,
+#game :is(.menu button,#start,#chapterMenuOpen):focus-visible{outline:2px solid #c9f9f1;outline-offset:2px}
+#game :is(.club-dialogue,.ghost-dialogue,#intervalDialogue,#interludeDialogue) {scrollbar-gutter:stable}
+@media(max-width:480px){#game .hud .menu{flex-wrap:wrap;justify-content:flex-end}
+#game :is(.club-dialogue,.ghost-dialogue,#intervalDialogue,#interludeDialogue) .club-choices{gap:.35rem}}
+
+
+/* == rc41-visual-fixes.css == */
+/* RC41: visual regression fixes documented against mobile screenshots. */
+@media (max-width:600px) and (orientation:portrait){
+ /* Two-row compact HUD: status / controls, then location and objective. */
+ #game:not(.rooftop-mode)>.hud,
+ #game.interlude-mode>.hud{
+   display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 8px;
+   align-items:start;padding:calc(7px + env(safe-area-inset-top,0px)) 8px 7px;
+   background:linear-gradient(180deg,rgba(5,10,22,.96),rgba(5,10,22,.78) 88%,transparent);
+   border-bottom:1px solid rgba(127,180,190,.18);backdrop-filter:none;
+ }
+ #game:not(.rooftop-mode)>.hud .identity,#game.interlude-mode>.hud .identity{
+   grid-column:1;grid-row:1;min-width:0;width:auto;margin:0;
+   padding:3px 6px;background:rgba(11,21,36,.8);
+ }
+ #game:not(.rooftop-mode)>.hud .identity>.eyebrow{font-size:11px;letter-spacing:.06em;white-space:normal}
+ #game:not(.rooftop-mode)>.hud .identity .meter{margin-top:2px;font-size:8px;gap:3px}
+ #game:not(.rooftop-mode)>.hud .identity .meter>span{font-size:8px;width:60px}
+ #game:not(.rooftop-mode)>.hud .identity .meter b{font-size:13px;line-height:11px}
+ #game:not(.rooftop-mode)>.hud .identity .track{max-width:75px}
+ #game:not(.rooftop-mode)>.hud .menu,#game.interlude-mode>.hud .menu{
+   position:static;grid-column:2;grid-row:1;display:flex;flex-wrap:nowrap;
+   margin:0;gap:3px;justify-content:flex-end;align-self:start;
+ }
+ #game:not(.rooftop-mode)>.hud .menu button,#game.interlude-mode>.hud .menu button{
+   min-width:38px;min-height:40px;padding:5px 5px;font-size:10px;
+ }
+ #game:not(.rooftop-mode)>.hud .mission,#game.interlude-mode>.hud .mission{
+   grid-column:1/-1;grid-row:2;order:0;width:auto;max-width:100%;margin:0;
+   padding:4px 7px;background:rgba(9,17,31,.85);text-align:center;
+   display:grid;grid-template-columns:1fr auto;gap:2px 8px;align-items:center;
+ }
+ #game:not(.rooftop-mode)>.hud .mission>.eyebrow{grid-column:1;font-size:9px;letter-spacing:.09em;text-align:left}
+ #game:not(.rooftop-mode)>.hud .mission strong{grid-column:1/-1;font-size:11px;line-height:1.2;margin:0;max-width:none;white-space:normal;overflow-wrap:break-word}
+ #game.interlude-mode>.hud .mission>.eyebrow,#game.interlude-mode>.hud #objective{display:block}
+ #game:not(.rooftop-mode)>.hud .mission #clues{grid-column:2;grid-row:1;font-size:9px;letter-spacing:.04em;white-space:nowrap;text-align:right}
+ #game.ghost-mode #ghostJournal,#game.interval-mode #intervalJournal{top:128px;right:8px;min-height:36px;padding:6px 10px;font-size:10px}
+ #game .hint{max-width:75%;font-size:11px;line-height:1.3;bottom:135px}
+ #game .touch{bottom:max(12px,env(safe-area-inset-bottom,0px));}
+ #game .touch button{min-height:48px;}
+ /* HUD stays accessible but darkens while dialogue panel is active. */
+ #game.ghost-talking>.hud{opacity:.35!important;pointer-events:none}
+ #game.ghost-talking>.hud .menu{pointer-events:none}
+ #game.ghost-talking #ghostJournal{visibility:hidden}
+}
+@media (max-width:370px) and (orientation:portrait){
+ #game:not(.rooftop-mode)>.hud .menu button{min-width:34px;padding:4px 3px;font-size:9px}
+ #game:not(.rooftop-mode)>.hud .identity>.eyebrow{font-size:10px}
+ #game:not(.rooftop-mode)>.hud .mission #clues{font-size:8px}
+}
+
+
+/* == neo-signal-effects.css == */
+/* Inspirado somente no tratamento visual do prototipo de dialogos.
+   Efeito finito, sem sobrescrever texto, botoes, progressao ou estado. */
+#radio #line.neo-signal-interference,
+#talkLine.neo-signal-interference,
+#ghostDialogue .club-line.neo-signal-interference,
+#intervalDialogue .club-line.neo-signal-interference {
+  animation: neo-signal-interference 640ms steps(1,end) 1;
+}
+@keyframes neo-signal-interference {
+  0%,100% { text-shadow:none; opacity:1; filter:none; }
+  11% { text-shadow:-2px 0 #e96ea8, 2px 0 #76d9e6; opacity:.9; }
+  19% { text-shadow:1px 0 #e96ea8, -1px 0 #76d9e6; opacity:1; }
+  27% { text-shadow:none; opacity:.8; }
+  32% { text-shadow:2px 0 #e96ea8, -2px 0 #76d9e6; opacity:1; }
+  50%,75% { text-shadow:none; opacity:1; }
+  59% { text-shadow:-1px 0 #e96ea8, 1px 0 #76d9e6; opacity:.94; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #radio #line.neo-signal-interference,
+  #talkLine.neo-signal-interference,
+  #ghostDialogue .club-line.neo-signal-interference,
+  #intervalDialogue .club-line.neo-signal-interference { animation:none !important; text-shadow:none !important; }
+}
+
+
+/* == art-production.css == */
+/* Canonical portrait styling without interfering with chapter input. */
+.interlude-mode #interludeDialogue .interlude-portrait.aura{background-image:url('./sm-portrait-aura.png');background-size:auto 116%;background-position:center 12%;filter:drop-shadow(0 0 12px #d44ea065)}
+.interlude-mode #interludeDialogue:has(.interlude-portrait.aura){border-top-color:#de7bbf;background:linear-gradient(110deg,#101323ed,#251126fa)}
+@media(max-width:500px){.interlude-mode #interludeDialogue .interlude-portrait.aura{background-size:cover;}}
+@media(prefers-reduced-motion:reduce){.interlude-mode #interludeDialogue .interlude-portrait.aura{filter:none}}
+
+
+/* == dialogue-cohesion.css == */
+/* SIERRA / CORE · dialogue cohesion. One stable shell for speech, choices and response.
+   The surrounding playable scene stays visible; no extra response popup is created. */
+#game{
+ --nr-panel:linear-gradient(127deg,rgba(6,14,27,.975),rgba(18,24,40,.967));
+ --nr-border:#7190a1;--nr-accent:#a6d7d4;--nr-copy:#e8eff5;
+}
+#game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue,#conversationBox).dialogue-coherent{
+ position:absolute!important;box-sizing:border-box!important;
+ left:50%!important;right:auto!important;bottom:max(13px,env(safe-area-inset-bottom,0px))!important;
+ transform:translateX(-50%)!important;width:min(750px,94%)!important;
+ max-width:750px!important;max-height:min(72dvh,calc(100% - 100px))!important;
+ min-height:0!important;overflow-y:auto!important;overscroll-behavior:contain;
+ border:1px solid var(--nr-border)!important;border-top:2px solid var(--nr-accent)!important;
+ border-left:1px solid var(--nr-border)!important;border-radius:9px!important;
+ background:var(--nr-panel)!important;box-shadow:0 20px 70px #000c,0 0 0 1px #07101caa!important;
+ padding:16px 22px 13px 124px!important;isolation:isolate;
+}
+#game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue,#conversationBox).dialogue-coherent[data-actor="narration"]{padding-left:24px!important}
+#game .dialogue-coherent .dialogue-avatar{
+ position:sticky;float:left;top:7px;margin:0 0 -160px -109px;width:97px;height:150px;
+ pointer-events:none;z-index:0;display:block;object-fit:contain;object-position:center bottom;
+ filter:drop-shadow(0 6px 9px #000b);opacity:.95;
+}
+#game .dialogue-coherent .interlude-portrait{display:none!important}
+#game .dialogue-coherent .club-dialogue-top{position:relative;z-index:1;color:#a6d7d4!important;display:flex;gap:16px;justify-content:space-between;align-items:center;font:600 12px/1.4 monospace;letter-spacing:.13em;padding-right:0!important}
+#game .dialogue-coherent .club-dialogue-top small{color:#b7bfce;font-size:10px;letter-spacing:.07em}
+#game .dialogue-coherent .club-line,#game .dialogue-coherent #talkLine{font:400 clamp(15px,2vw,18px)/1.55 system-ui,sans-serif!important;color:var(--nr-copy)!important;margin:10px 0 13px!important;overflow-wrap:anywhere}
+#game .dialogue-coherent .club-aside{font:italic clamp(13px,1.65vw,15px)/1.5 Georgia,serif!important;color:#bdc9d1!important;margin:9px 0!important}
+#game .dialogue-coherent .club-choices,#game .dialogue-coherent .sd-options{display:grid!important;gap:7px!important;margin:6px 0!important}
+#game .dialogue-coherent .club-choices button,#game .dialogue-coherent .club-next,
+#game #sceneDirection .sd-options button,#game #sharedMoment .sm-copy #smChoices > button{
+ box-sizing:border-box;border-radius:6px!important;font:500 clamp(12px,1.75vw,14px)/1.45 system-ui,sans-serif!important;
+ letter-spacing:0!important;touch-action:manipulation;transition:background .12s ease,border-color .12s ease;
+}
+#game .dialogue-coherent .club-choices button,#game #sceneDirection .sd-options button,#game #sharedMoment .sm-copy #smChoices > button{
+ min-height:46px!important;padding:10px 12px!important;background:#14283a!important;
+ border:1px solid #52788a!important;color:#e6eef0!important;text-align:left!important;
+ width:100%;display:flex!important;align-items:baseline!important;gap:11px!important;
+}
+#game .dialogue-coherent .club-choices button>span{color:#e7b9a3!important;min-width:14px;flex:0 0 auto;font-weight:700}
+#game .dialogue-coherent .club-choices button:hover,#game .dialogue-coherent .club-choices button:focus-visible,
+#game #sceneDirection .sd-options button:hover,#game #sharedMoment .sm-copy #smChoices > button:hover{
+ background:#214155!important;border-color:#a4dcd0!important;outline:2px solid transparent;
+}
+#game .dialogue-coherent .club-next,#game .dialogue-coherent #talkNext,#game #sceneDirection .sd-next{
+ background:#a8ded3!important;border:1px solid #c8f1e8!important;color:#091d26!important;
+ padding:10px 15px!important;min-height:44px!important;border-radius:5px!important;
+ font:700 12px/1.4 system-ui,sans-serif!important;min-width:124px;
+}
+#game .dialogue-coherent .club-help{font:11px/1.3 monospace!important;color:#9badb7!important;margin:10px 0 0!important}
+#game .dialogue-coherent .continuity-recall{border:0;border-left:2px solid #7baeb4;border-radius:0;background:transparent;color:#c5d6df;font-size:12px;padding:5px 9px;margin:7px 0}
+#game #conversationBox.dialogue-coherent>span#talkSpeaker{display:block;color:#a6d7d4;letter-spacing:.13em;font:600 12px/1.4 monospace}
+#game #conversationBox.dialogue-coherent button{border-radius:5px}
+#game #sceneDirection .sd-story{border-radius:9px!important;border:1px solid #7190a1!important;border-top:2px solid #a8ded3!important;background:var(--nr-panel)!important;box-shadow:0 20px 70px #000d!important}
+#game #sceneDirection .sd-next{min-width:124px}
+#game #sceneDirection .sd-portrait{max-width:100%;object-fit:contain}
+#game #sharedMoment .sm-scene{border-color:#7190a1;border-radius:9px;background:var(--nr-panel)}
+#game #sharedMoment .sm-copy #smChoices > button:disabled{opacity:.5}
+@media(max-width:600px){
+ #game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue,#conversationBox).dialogue-coherent{
+  left:0!important;right:0!important;transform:none!important;bottom:0!important;
+  width:100%!important;max-width:100%!important;max-height:min(66dvh,calc(100% - 100px))!important;
+  padding:11px 11px calc(12px + env(safe-area-inset-bottom,0px)) 82px!important;
+  border-radius:9px 9px 0 0!important;
+ }
+ #game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue,#conversationBox).dialogue-coherent[data-actor="narration"]{padding-left:15px!important}
+ #game .dialogue-coherent .dialogue-avatar{width:66px;height:103px;top:5px;margin:0 0 -110px -75px;opacity:.9}
+ #game .dialogue-coherent .club-line,#game .dialogue-coherent #talkLine{font-size:14px!important;line-height:1.4!important;margin:8px 0 10px!important}
+ #game .dialogue-coherent .club-aside{font-size:12px!important;line-height:1.38!important}
+ #game .dialogue-coherent .club-choices button,#game #sceneDirection .sd-options button{font-size:12px!important;min-height:43px!important;padding:8px 10px!important}
+ #game .dialogue-coherent .club-dialogue-top{font-size:11px}
+ #game .dialogue-coherent .club-dialogue-top small{display:none!important}
+ #game #sceneDirection .sd-story{width:calc(100% - 18px);padding:14px 15px}
+}
+@media(max-height:580px) and (min-width:601px){
+ #game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue,#conversationBox).dialogue-coherent{max-height:85dvh!important;bottom:2%!important}
+}
+@media(prefers-reduced-motion:reduce){#game .dialogue-coherent *{transition:none!important}}
+
+/* Choice emotion affects the SAME panel, never opens a second dialogue box. */
+#game .dialogue-coherent[data-emotion="trust"]{--nr-accent:#9ed7c8!important}
+#game .dialogue-coherent[data-emotion="jealous"]{--nr-accent:#d29aaf!important}
+#game .dialogue-coherent[data-emotion="desire"]{--nr-accent:#d9b48e!important}
+#game .dialogue-coherent[data-emotion="curious"]{--nr-accent:#95bddb!important}
+#game .dialogue-coherent[data-emotion="trust"] .dialogue-avatar{filter:drop-shadow(0 6px 9px #000b) drop-shadow(0 0 5px #70caba45)}
+#game .dialogue-coherent[data-emotion="jealous"] .dialogue-avatar{filter:drop-shadow(0 6px 9px #000b) drop-shadow(0 0 5px #d36ca845)}
+#game .dialogue-coherent .club-dialogue-top span{overflow-wrap:anywhere}
+
+
+/* == visual-final.css == */
+/* Unified art language: portraits share the same image identity during
+   the authored opening, spoken response, and interaction confirmation. */
+#sceneDirection .sd-portrait-wrap{display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+#sceneDirection .sd-portrait{max-height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 12px 18px #02040bb3)}
+#game :is(.dialogue-coherent,.sd-story,.sm-scene){color-scheme:dark}
+#game .dialogue-coherent .dialogue-avatar{image-rendering:auto;object-fit:contain;object-position:center bottom}
+@media(max-width:480px){
+ #sceneDirection .sd-portrait-wrap{max-width:42%;filter:saturate(.98)}
+ #game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue,#conversationBox).dialogue-coherent{scroll-padding-bottom:18px}
+ #game .dialogue-coherent .club-choices button{min-height:48px!important}
+}
+@media(prefers-reduced-motion:reduce){#sceneDirection .sd-portrait{filter:none}}
+
+/* A time-passage skip belongs to the montage only, never a response panel. */
+#game.interlude-mode:has(#interludeDialogue:not(.hidden)) #interludeSkip,
+#game.interlude-mode.interlude-talking #interludeSkip{display:none!important}
+
+
+/* == rc42-hud-readability.css == */
+/* RC42 · fix verified against Chapter 02 screenshot at 343-393 CSS px.
+   Overlay messages never cover E/USAR prompt; prompts return when text closes.
+   No extra DOM boxes or changed input handlers. */
+#game>.radio{z-index:14;max-height:min(26dvh,230px);overflow-y:auto}
+#game>.hint{z-index:13;max-width:calc(100% - 28px);pointer-events:none}
+#game>.hud{z-index:20}
+#game>.touch{z-index:22}
+#game>.club-dialogue,#game>.conversation-box{z-index:30}
+#game:has(> #radio:not([style*="display: none"])) > #hint{visibility:hidden!important}
+@media(max-width:700px){
+ #game>.radio{left:12px;right:12px;max-width:none;width:auto;padding:10px 12px;bottom:calc(125px + env(safe-area-inset-bottom,0px));background:rgba(6,15,27,.96);border-left:2px solid #81dcd9}
+ #game>.radio p{font-size:clamp(13px,3.7vw,15px);line-height:1.5;letter-spacing:0}
+ #game>.radio span{font-size:11px;letter-spacing:.13em}
+ #game>.hint{left:50%;bottom:calc(184px + env(safe-area-inset-bottom,0px));max-width:calc(100% - 26px);font-size:12px;padding:7px 11px;line-height:1.35;white-space:normal}
+ #game>.touch{bottom:calc(8px + env(safe-area-inset-bottom,0px))}
+ #game>.touch button{min-height:51px;min-width:45px;font-size:12px}
+ #game:not(.rooftop-mode)>.hud .mission strong{font-size:clamp(12px,3vw,14px);line-height:1.25}
+ #game:not(.rooftop-mode)>.hud .identity>.eyebrow{font-size:clamp(10px,2.7vw,12px)}
+}
+@media(max-width:380px){
+ #game:not(.rooftop-mode)>.hud .menu button{min-width:33px;font-size:10px;padding:5px 4px}
+ #game:not(.rooftop-mode)>.hud .mission #clues{font-size:9px}
+}
+
+@media(max-width:600px){
+ /* Fullscreen is unreliable on many embedded mobile browsers; the viewport already fills the screen. */
+ #game>.hud #full{display:none!important}
+ #game:not(.rooftop-mode)>.hud{grid-template-columns:minmax(105px,1fr) auto;gap:4px 5px}
+ #game:not(.rooftop-mode)>.hud .identity{padding:4px 5px;min-width:0}
+ #game:not(.rooftop-mode)>.hud .identity>.eyebrow{white-space:nowrap;font-size:10px;letter-spacing:0}
+ #game:not(.rooftop-mode)>.hud .identity .meter{white-space:nowrap;gap:2px;justify-content:space-between}
+ #game:not(.rooftop-mode)>.hud .identity .meter>span{flex:0 0 auto;width:57px;font-size:8px}
+ #game:not(.rooftop-mode)>.hud .identity .meter b{font-size:12px;white-space:nowrap}
+ #game:not(.rooftop-mode)>.hud .identity .track{min-width:28px;max-width:65px}
+ #game:not(.rooftop-mode)>.hud .menu{gap:2px}
+ #game:not(.rooftop-mode)>.hud .menu button{min-width:31px;padding:5px 4px;font-size:10px}
+}
+
+/* 2026-10-18 · Pausa sensorial consentida, sem popup duplicado. */
+#interludeDialogue .interlude-cut-body{display:block;width:100%;margin:7px 0 0;min-height:37px;padding:8px 12px;background:#18232cd9;border:1px solid #be98b1;color:#f4dce9;font:11px/1.35 monospace;letter-spacing:.045em;cursor:pointer;}
+#interludeDialogue .interlude-cut-body:focus-visible{outline:2px solid #f2a8d5;outline-offset:2px;}
+@media(max-width:500px){#interludeDialogue .interlude-cut-body{font-size:12px;min-height:43px;}}
+
+
+/* == final-production-hud.css == */
+/* FINAL PRODUCTION · clear mobile interaction area, no overlapping independent hints. */
+@media (max-width:600px){
+ #game.prelude>.touch [data-hold="crouch"]{display:inline-flex!important;align-items:center;justify-content:center;background:#1a3444ed;border-color:#82bfc0;min-height:52px;}
+ #game.prelude>.touch [data-hold="crouch"]:after{content:" ABAIXAR";font:10px monospace;white-space:nowrap;}
+ #game.prelude>.touch>div:first-child .extraMove{width:auto;min-width:94px;}
+ #game>.radio{bottom:calc(153px + env(safe-area-inset-bottom, 0px));max-height:26dvh;}
+ #game>.hint{bottom:calc(202px + env(safe-area-inset-bottom, 0px));}
+ #game>.touch{bottom:calc(8px + env(safe-area-inset-bottom, 0px));}
+ #game.prelude>.touch button{min-height:51px;touch-action:none;}
+ #game>.touch [data-hold="crouch"],#game>.touch #touchJump{white-space:nowrap;}
+ #game>.radio:not([style*="display: none"]) ~ .hint{visibility:hidden;}
+}
+@media(max-width:380px){#game.prelude>.touch [data-hold="crouch"]:after{font-size:9px;}}
+
+/* Chapter 7: body across the real reinforced glass, survivors in the same
+   room on one floor plane; keep dialogue below their silhouettes on mobile. */
+@media(max-width:600px){
+ #game.interval-aftermath>#intervalDialogue{bottom:0!important;max-height:30dvh!important;min-height:0!important;padding:10px 15px 12px 91px!important;}
+ #game.interval-aftermath>#intervalDialogue .club-line{font-size:13px!important;line-height:1.38!important;margin:5px 0 7px!important;}
+ #game.interval-aftermath>#intervalDialogue .club-aside{font-size:11px!important;line-height:1.35!important;margin:5px 0!important;}
+ #game.interval-aftermath>#intervalDialogue .club-choices button{min-height:41px!important;padding:7px 9px!important;font-size:12px!important;line-height:1.25!important;}
+ #game.interval-aftermath>#intervalDialogue .dialogue-avatar{max-height:105px!important;}
+ #game.interval-aftermath>.radio,#game.interval-aftermath>.hint{display:none!important;}
+}
+
+@media (min-width:601px){
+ #game.interval-aftermath>#intervalDialogue{left:14px!important;right:auto!important;transform:none!important;width:min(520px,39vw)!important;bottom:12px!important;max-height:31dvh!important;padding:12px 17px 13px 140px!important;}
+ #game.interval-aftermath>#intervalDialogue .club-line{font-size:15px!important;line-height:1.45!important;margin:7px 0 10px!important;}
+ #game.interval-aftermath>#intervalDialogue .club-aside{font-size:12px!important;line-height:1.45!important;margin:7px 0!important;}
+}
+
+
+/* == Single-source fixes == */
+/* RC44 base restoration: a single visual grammar, authored in the original stylesheet.
+   No new scene engine, character cut-in layer or optional mini-game overlays. */
+@media (max-width:700px) and (orientation:portrait) {
+ #game>.hud{padding:9px 12px 9px!important;gap:5px!important;}
+ #game>.hud .menu button{min-width:37px!important;min-height:39px!important;padding:6px!important;}
+ #game>.hud .identity .meter:nth-of-type(2){display:none!important;}
+ #game>.hud .mission{padding:7px 9px!important;}
+ #game>.hud .mission strong{line-height:1.25!important;}
+ #game>.touch{bottom:calc(12px + env(safe-area-inset-bottom,0px))!important;left:12px!important;right:12px!important;}
+ #game>.touch button{min-height:49px!important;}
+ #game .club-dialogue:not(.hidden),#game .conversation-box:not(.hidden){width:calc(100% - 20px)!important;left:10px!important;right:10px!important;bottom:max(12px,env(safe-area-inset-bottom,0px))!important;max-height:min(57dvh,510px)!important;overflow:auto!important;padding:14px 15px!important;box-sizing:border-box!important;transform:none!important;}
+ #game .club-dialogue .club-choices{gap:7px!important;}
+ #game .club-dialogue .club-choices button{font-size:14px!important;padding:9px 12px!important;min-height:44px!important;}
+ #game .club-dialogue .club-line{font-size:clamp(15px,3.6vw,18px)!important;line-height:1.5!important;}
+ #game #terraceUI .terrace-dialogue{top:53%!important;max-height:47%!important;overflow:auto!important;padding:14px 16px calc(14px + env(safe-area-inset-bottom,0px))!important;box-sizing:border-box!important;}
+ #game #terraceUI .terrace-dialogue .terrace-line{font-size:clamp(15px,3.7vw,18px)!important;line-height:1.42!important;}
+ #game #terraceUI .terrace-choices button{padding:10px 12px!important;line-height:1.35!important;min-height:45px!important;}
+ #game #terraceUI .terrace-header h2{font-size:23px!important;}
+ #game #terraceUI .terrace-header{top:14px!important;}
+ #game #terraceUI .terrace-header .terrace-tools{gap:4px!important;}
+ #game #terraceUI .terrace-header .terrace-tools button{font-size:10px!important;padding:6px 8px!important;}
+ #game #interludeDialogue:not(.hidden){padding-left:15px!important;}
+ #game #interludeDialogue .interlude-portrait{display:none!important;}
+}
+/* All active dialogues must have priority over the control bar. */
+#game:has(>.club-dialogue:not(.hidden))>.touch,
+#game:has(>.conversation-box:not(.hidden))>.touch{visibility:hidden!important;pointer-events:none!important;}
+#game:has(>.club-dialogue:not(.hidden))>#hint,
+#game:has(>.conversation-box:not(.hidden))>#hint{visibility:hidden!important;}
+
+/* RC44 consolidada: incorpora apenas o acerto de clique da RC45.
+   O Caderno e os Registros passam a pertencer ao HUD existente, nao ao canvas. */
+#game>.hud .mission{min-width:0}
+#game>.hud .mission .mission-tools{display:flex;gap:6px;flex-wrap:wrap;margin-top:5px;justify-content:center;pointer-events:none}
+#game>.hud .mission .mission-tools button{position:static!important;display:inline-flex!important;align-items:center;justify-content:center;
+ margin:0!important;min-height:40px!important;min-width:105px!important;padding:6px 9px!important;
+ border-radius:5px;border:1px solid #7199a4;background:#102435f0;color:#d7eff0;
+ font:600 11px/1.3 ui-monospace,monospace;letter-spacing:.02em;transform:none!important;
+ touch-action:manipulation;pointer-events:none;}
+#game>.hud .mission .mission-tools button.hidden{display:none!important}
+#game:not(.overlay-open):not(.phase-select-open):not(.ghost-talking):not(.interval-talking):not(.ghost-paused):not(.rc29-paused)>.hud .mission .mission-tools button:not(.hidden){pointer-events:auto!important}
+#game>.hud .mission .mission-tools button:focus-visible{outline:2px solid #e7d3e4;outline-offset:2px}
+@media(max-width:700px){
+ #game>.hud .mission .mission-tools{justify-content:flex-start;margin-top:3px}
+ #game>.hud .mission .mission-tools button{min-height:44px!important;min-width:100px!important;font-size:10px!important}
+}
+/* Um unico jogo visivel: os controles nao ficam por tras da conversa. */
+#game:has(>#clubDialogue:not(.hidden))>.touch,
+#game:has(>#ghostDialogue:not(.hidden))>.touch,
+#game:has(>#intervalDialogue:not(.hidden))>.touch,
+#game:has(>#interludeDialogue:not(.hidden))>.touch,
+#game:has(>#conversationBox:not(.hidden))>.touch{visibility:hidden!important;pointer-events:none!important}
+
+
+/* == RC46 / UI COHERENCE CLEANUP == */
+#questToggle,#questPanel{display:none!important}
+#game>.hud{backdrop-filter:none!important}
+#game>.hud .identity,#game>.hud .mission{background:rgba(7,14,30,.72);border:1px solid rgba(121,150,188,.22);border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,.22)}
+#game>.hud .identity{padding:10px 12px!important}
+#game>.hud .mission{padding:10px 14px!important}
+#game>.hud .mission .mission-tools{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-start;margin-top:3px}
+#game>.hud .mission strong{font-size:13px!important;line-height:1.25!important}
+#game>.hud .mission #clues{letter-spacing:.06em!important}
+#game>.hud .menu button{border-radius:8px!important}
+@media(max-width:700px){footer{display:none!important}#game>.hud{padding:8px 10px!important}#game>.hud .mission strong{font-size:12px!important}#game>.hint{bottom:138px!important}}
+
+/* RC47: layouts consume free space in their OWN panels; no new overlay. */
+#game>.hud .mission .mission-tools button:not(.hidden){font-size:10px!important;min-height:36px!important;min-width:0!important;padding:5px 9px!important}
+#game .club-dialogue:not(.hidden),#game .ghost-dialogue:not(.hidden),#game #intervalDialogue:not(.hidden),#game #interludeDialogue:not(.hidden){scrollbar-gutter:stable;overscroll-behavior:contain}
+@media(max-width:700px) and (orientation:portrait){
+ #game>.hud .mission .mission-tools button:not(.hidden){min-height:38px!important;min-width:0!important;font-size:9px!important}
+ #game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue):not(.hidden){max-height:min(52dvh,480px)!important;padding:12px!important;overflow-y:auto!important}
+ #game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue) .club-aside{font-size:12px!important;line-height:1.4!important;margin:5px 0 10px!important}
+ /* Keep all three answers reachable without scrolling past the mobile viewport. */
+ #game :is(#clubDialogue,#ghostDialogue) .club-choices{position:sticky;bottom:0;z-index:3;background:linear-gradient(#091320f4,#091320);padding:8px 0 2px!important;box-shadow:0 -8px 14px #06101bdd;max-height:36dvh;overflow-y:auto;overscroll-behavior:contain}
+ #game #terraceUI .terrace-dialogue{top:49%!important;bottom:0!important;max-height:51dvh!important;padding:14px 15px calc(22px + env(safe-area-inset-bottom,0px))!important}
+ #game #terraceUI .terrace-aside{font-size:13px!important;line-height:1.4!important;margin-bottom:8px!important}
+ #game #terraceUI .terrace-choices{gap:6px!important}
+ #game #terraceUI .terrace-choices button{font-size:14px!important;min-height:45px!important}
+ #game .touch{z-index:22}
+}
+
+/* Terrace dialogue remains in the scene, with every choice reachable by touch. */
+@media (max-width:700px) and (orientation:portrait){
+ #game #terraceUI .terrace-kicker{margin:0 0 4px!important;line-height:1.3!important;font-size:10px!important}
+ #game #terraceUI .terrace-aside{margin:4px 0 8px!important;font-size:12px!important;line-height:1.35!important}
+ #game #terraceUI .terrace-speaker{margin:6px 0 5px!important;font-size:11px!important}
+ #game #terraceUI .terrace-line{margin:0 0 9px!important;font-size:14px!important;line-height:1.4!important}
+ #game #terraceUI .response-label{margin:9px 0 7px!important;font-size:10px!important}
+ #game #terraceUI .terrace-help{display:none!important}
+ #game #terraceUI .terrace-choices button{padding:8px 10px!important;font-size:13px!important;min-height:42px!important;line-height:1.35!important}
+}
+
+/* RC48 · checkpoint option reuses title panel buttons. */
+#continueSaved{display:block;margin:10px auto 0;max-width:min(95%,420px);width:100%;border-color:#8db6ab;white-space:normal;line-height:1.35}#continueSaved.hidden{display:none!important}#continueSaved:disabled{opacity:.52}
+#overlay:has(#cadillacWeather) .panel>#continueSaved:not(.hidden){display:block!important;pointer-events:auto;position:relative;max-width:min(94vw,420px);width:100%;margin:10px 0 0;padding:12px 14px;border:1px solid #9bc7b9a8;border-radius:3px;background:#071720dd;color:#d4fff2;font:600 clamp(11px,1.3vw,15px)/1.3 monospace;letter-spacing:.05em;text-align:center;box-shadow:0 5px 25px #000a}
+
+/* Canonical progression: prevent legacy prologue-skip CSS from exposing the disabled shortcut. */
+#prologueSkip{display:none!important}
+
+/* ALFA 21/10 · visual clarity. Same canonical dialogue and puzzle DOM, no overlay engine. */
+#game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue,#conversationBox).dialogue-coherent:not(.hidden){
+  width:min(580px,calc(100% - 32px))!important;max-height:min(48dvh,430px)!important;
+  padding:15px 18px!important;border:1px solid #638f9ca6!important;
+  border-left:3px solid var(--nr-accent,#99cbbf)!important;border-radius:9px!important;
+  background:linear-gradient(125deg,#08131beF,#111927f0)!important;
+  box-shadow:0 12px 44px #000b!important;scrollbar-width:thin;
+}
+#game .dialogue-coherent .club-dialogue-top{font-size:11px!important;gap:8px!important}
+#game .dialogue-coherent :is(.club-line,#talkLine){font-size:clamp(14px,1.8vw,17px)!important;line-height:1.44!important;margin:7px 0 10px!important}
+#game .dialogue-coherent .club-aside{font-size:12px!important;line-height:1.4!important;margin:5px 0 9px!important}
+#game .dialogue-coherent .club-choices{gap:5px!important}
+#game .dialogue-coherent .club-choices button{min-height:42px!important;padding:8px 11px!important;line-height:1.35!important;border-radius:6px!important}
+#game :is(#clubPuzzle,#ghostPuzzle,#intervalPuzzle,#intervalNotes,#ghostNotes).club-puzzle:not(.hidden){
+  width:min(660px,calc(100% - 24px))!important;max-height:min(87dvh,780px)!important;
+  padding:19px clamp(14px,3vw,24px)!important;border:1px solid #679ea4!important;border-top:3px solid #a1d9d0!important;
+  border-radius:10px!important;background:linear-gradient(145deg,#081722fa,#151c2afa)!important;box-shadow:0 20px 65px #000c!important;
+}
+#game .club-puzzle h2{font-size:clamp(20px,3vw,26px)!important;margin:9px 0!important}
+#game .club-puzzle p{font-size:clamp(13px,1.8vw,15px)!important;line-height:1.42!important;margin:8px 0!important}
+#game .club-puzzle canvas{margin:9px 0!important;max-height:27dvh;object-fit:contain}
+#game .club-puzzle :is(.wave-actions,.ghost-channels){gap:7px!important;margin:8px 0!important}
+#game .club-puzzle :is(button,input):focus-visible{outline:2px solid #c3f0de!important;outline-offset:2px}
+@media(max-width:700px){
+ #game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue,#conversationBox).dialogue-coherent:not(.hidden){
+  left:8px!important;right:8px!important;bottom:max(8px,env(safe-area-inset-bottom,0px))!important;
+  width:calc(100% - 16px)!important;max-height:55dvh!important;padding:12px 13px!important;transform:none!important;
+ }
+ #game .dialogue-coherent .dialogue-avatar{display:none!important}
+ #game .dialogue-coherent .club-choices button{min-height:44px!important;font-size:13px!important}
+ #game .club-puzzle canvas{max-height:20dvh}
+ #game .club-puzzle :is(.wave-actions button,.ghost-channels button){min-height:44px}
+}
+
+/* ALFA visual QA 22/10: shared safe areas, dialogue-first mobile input. */
+@media (pointer:coarse) and (max-width:700px){
+ #game>.touch{bottom:max(12px,env(safe-area-inset-bottom,0px));left:12px;right:12px;z-index:5;}
+ #game>.touch button{min-width:52px;min-height:52px;font-size:13px;line-height:1.15;}
+ #game>.radio{left:12px;right:12px;max-width:none;bottom:calc(124px + env(safe-area-inset-bottom,0px));padding:9px 12px;}
+ #game>.hint{bottom:calc(192px + env(safe-area-inset-bottom,0px));max-width:calc(100% - 24px);}
+ #game:has(.club-dialogue:not(.hidden))>.touch,
+ #game:has(.terrace-dialogue:not(.hidden))>.touch{visibility:hidden;pointer-events:none;}
+ #game .club-dialogue:not(.hidden){bottom:max(8px,env(safe-area-inset-bottom,0px));max-height:60dvh;overscroll-behavior:contain;}
+ #game .club-choices button{min-height:48px;}
+}
+
+/* Alpha partial: while choices are active, never cover them with movement controls or radio. */
+@media (pointer:coarse) and (max-width:700px){
+ #game:has(:is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue,#conversationBox,#terraceUI):not(.hidden)) > :is(.touch,.radio,.hint){visibility:hidden!important;pointer-events:none!important;}
+ #game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue):not(.hidden){max-height:min(69dvh,620px)!important;overflow-y:auto!important;overscroll-behavior:contain;}
+ #game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue) .club-choices button{min-height:48px!important;}
+}
+
+/* P2 editorial: restrained portrait response when a speaker changes. */
+@keyframes saPortraitArrive{from{opacity:.68;filter:grayscale(.25);transform:translateY(3px)}to{opacity:1;filter:grayscale(0);transform:translateY(0)}}
+@media (prefers-reduced-motion:no-preference) and (min-width:701px){
+ #game .dialogue-coherent:not(.hidden)>.dialogue-avatar{animation:saPortraitArrive .22s ease-out both}
+}
+@media (prefers-reduced-motion:reduce){
+ #game .dialogue-coherent>.dialogue-avatar{animation:none!important;transition:none!important}
+}
+
+/* P3: a quieter scene, with objectives and journals always reachable. */
+#game.hud-compact .hud .identity,#game.hud-compact #missionChapter,
+#game.hud-compact #clues,#game.hud-compact>footer{display:none}
+#game.hud-compact.hud-danger .hud .identity{display:block}
+#game.hud-compact .hud .mission{padding:8px 12px;max-width:min(48vw,460px);background:rgba(5,12,21,.72)}
+#game.hud-compact .hud #objective{font-size:clamp(12px,1.3vw,16px);line-height:1.35}
+#game.hud-compact .hud .mission-tools:empty{display:none}
+#hudDetails[aria-expanded="true"]{border-color:#8ed5ce;color:#d5fff5}
+@media(max-width:600px){
+ #game .hud .menu{gap:4px;flex-wrap:wrap;justify-content:flex-end;max-width:52vw}
+ #game .hud .menu button{min-height:36px;min-width:36px;padding:5px 7px}
+ #game.hud-compact .hud .mission{max-width:45vw;padding:6px 8px}
+}
+/* P3 loading: the official opening GIF remains the background. Progress reflects actual core images. */
+#overlay:has(#cadillacWeather) .panel>#bootStatus{display:grid!important;gap:7px;position:relative;width:min(360px,85vw);pointer-events:none;text-align:center;margin-top:12px;order:2;color:#b8d7e0;font:10px/1.5 monospace;letter-spacing:.16em;text-shadow:0 2px 7px #000}
+#overlay:has(#cadillacWeather) .panel>#bootStatus .boot-track{height:3px;background:#253747bb;border:1px solid #6f879255;overflow:hidden}
+#bootProgress{display:block;width:0;height:100%;background:linear-gradient(90deg,#50bbba,#b4ece4);transition:width .24s ease-out;box-shadow:0 0 14px #5cebdc88}
+#bootCounter{font-size:9px;color:#94a8b8}
+#overlay:has(#cadillacWeather) .panel>#start{order:1}
+#overlay:has(#cadillacWeather):has(#start:disabled):before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(180deg,#8dd4ed00 0 5px,#8dd4ed08 6px 7px);opacity:.3;pointer-events:none;z-index:0}
+.dialogue-auto{display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:5px 11px;margin:8px 4px 0 0;border:1px solid #577984;background:#0c1a2b;color:#c5e8e1;border-radius:3px;font:10px monospace;letter-spacing:.09em;cursor:pointer}
+.dialogue-auto[aria-pressed=true]{border-color:#b6dbcf;background:#1b3b43;color:#e9fff5}
+@media(prefers-reduced-motion:reduce){#bootProgress{transition:none}#overlay:has(#cadillacWeather):has(#start:disabled):before{display:none}}
+
+/* P5: intimate cloud call. Visual emphasis follows explicit consent only. */
+#game.interlude-sensory #interludeDialogue{border-color:rgba(211,116,197,.65);box-shadow:0 0 22px rgba(190,81,155,.17),inset 0 0 14px rgba(161,92,187,.08)}
+#game.interlude-private #interludeDialogue{border-color:rgba(236,143,199,.82);box-shadow:0 0 32px rgba(198,87,168,.25),inset 0 0 22px rgba(161,92,187,.11)}
+#interludeCutBody{margin-top:8px;border:1px solid rgba(242,172,221,.6);background:rgba(28,14,39,.94);color:#ffddf2;min-height:42px;cursor:pointer}
+#interludeCutBody:focus-visible{outline:2px solid #ffddf2;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){#game.interlude-sensory #interludeDialogue,#game.interlude-private #interludeDialogue{animation:none!important;transition:none!important}}
+
+
+/* P6: composição da tela inicial fornecida pela autora, usando o Cadillac animado original. */
+#overlay.title-screen:has(#cadillacWeather):not(.hidden){
+ background:linear-gradient(180deg,#02050a66 0%,#06101b67 45%,#020509c9 100%),url('./abertura-original.gif') center center/cover no-repeat!important;
+ backdrop-filter:none!important;overflow:hidden!important;
+}
+#overlay.title-screen:has(#cadillacWeather) .panel{inset:0!important;padding:0!important;overflow:visible!important;max-height:none!important;justify-content:initial!important;align-items:center!important;}
+#overlay.title-screen:has(#cadillacWeather) .panel>.title-logo{display:block!important;position:absolute;top:6.7%;left:0;width:100%;margin:0!important;padding:0 3vw;text-align:center;color:#f2ede7;font-family:Georgia,'Times New Roman',serif!important;font-weight:700!important;letter-spacing:.035em!important;font-size:clamp(32px,5.1vw,76px)!important;line-height:1.04!important;text-shadow:0 4px 15px #02040a99;white-space:nowrap;}
+#overlay.title-screen:has(#cadillacWeather) .panel>.title-subtitle{display:block!important;position:absolute;top:16.2%;left:0;width:100%;text-align:center;font:700 clamp(9px,1vw,15px)/1.2 monospace;letter-spacing:.25em;color:#c5aa9a;margin:0;}
+#overlay.title-screen:has(#cadillacWeather) .panel>#start{display:flex!important;position:absolute!important;top:auto!important;bottom:7.0%!important;left:50%!important;transform:translateX(-50%)!important;width:min(360px,82vw)!important;min-height:56px!important;align-items:center;justify-content:center;background:linear-gradient(110deg,#092123dc,#061127df)!important;border:1px solid #a7d8d2d6!important;border-radius:2px!important;color:#c7ced5!important;box-shadow:0 0 0 1px #0008,0 10px 30px #0009!important;letter-spacing:.16em!important;font:700 clamp(12px,1.2vw,17px) monospace!important;animation:none!important;}
+#overlay.title-screen:has(#cadillacWeather) .panel>#start:hover{background:#0e2932ed!important;color:#f5ffff!important;border-color:#d3ffff!important;}
+#overlay.title-screen:has(#cadillacWeather) .panel>#bootStatus{position:absolute!important;bottom:1.1%!important;left:50%;transform:translateX(-50%);margin:0!important;opacity:.82;max-width:330px;}
+#overlay.title-screen:has(#cadillacWeather) .panel>#bootStatus:has(#bootCounter){font-size:9px!important;}
+#overlay.title-screen:has(#cadillacWeather) .panel>.chapter-select{display:none!important;}
+#overlay.title-screen:has(#cadillacWeather) .panel>.small{display:none!important;}
+#overlay.title-screen:has(#cadillacWeather) .rc29-intro-status{top:3.1%!important;left:2.8%!important;letter-spacing:.23em!important;color:#8ea6b0b8!important;}
+@media(max-width:650px){
+ #overlay.title-screen:has(#cadillacWeather):not(.hidden){background-size:auto 100%!important;background-position:center!important;}
+ #overlay.title-screen:has(#cadillacWeather) .panel>.title-logo{top:11%;font-size:clamp(28px,8.3vw,51px)!important;letter-spacing:.01em!important;}
+ #overlay.title-screen:has(#cadillacWeather) .panel>.title-subtitle{top:18.8%;font-size:clamp(8px,2.2vw,12px)!important;letter-spacing:.14em;}
+ #overlay.title-screen:has(#cadillacWeather) .panel>#start{bottom:12%!important;}
+ #overlay.title-screen:has(#cadillacWeather) .panel>#bootStatus{bottom:5%!important;}
+}
+@media(max-height:450px){#overlay.title-screen:has(#cadillacWeather) .panel>.title-logo{top:6%;font-size:clamp(28px,8vh,55px)!important}#overlay.title-screen:has(#cadillacWeather) .panel>.title-subtitle{top:20%}#overlay.title-screen:has(#cadillacWeather) .panel>#start{bottom:5%!important;min-height:43px!important}#overlay.title-screen:has(#cadillacWeather) .panel>#bootStatus{display:none!important}}
+/* A saved checkpoint stays reachable without obscuring the reference title. */
+#overlay.title-screen:has(#cadillacWeather) .panel>#continueSaved:not(.hidden){position:absolute!important;left:50%!important;bottom:calc(7% + 69px)!important;transform:translateX(-50%)!important;margin:0!important;width:min(360px,82vw)!important;max-width:none!important;z-index:3;}
+@media(max-width:650px){#overlay.title-screen:has(#cadillacWeather) .panel>#continueSaved:not(.hidden){bottom:calc(12% + 70px)!important;}}
+
+/* P7 · One-room aftermath: glass on right, dialogue on left, characters below glass. */
+@media(min-width:701px){
+ #game.interval-aftermath>#intervalDialogue,
+ #game.interval-aftermath>#intervalDialogue.dialogue-coherent:not(.hidden){
+  left:2.1%!important;right:auto!important;bottom:4%!important;top:auto!important;
+  transform:none!important;width:min(440px,34vw)!important;max-width:440px!important;
+  max-height:57dvh!important;min-height:0!important;padding:17px 20px!important;
+  background:#07131fe8!important;border:1px solid #618f98!important;
+  box-shadow:0 8px 30px #02080ac4!important;
+ }
+ #game.interval-aftermath>#intervalDialogue .dialogue-avatar{display:none!important;}
+ #game.interval-aftermath>#intervalDialogue .club-line{font-size:16px!important;line-height:1.5!important;}
+ #game.interval-aftermath>#intervalDialogue .club-aside{font-size:13px!important;line-height:1.4!important;}
+}
+@media(max-width:700px){
+ #game.interval-aftermath>#intervalDialogue,
+ #game.interval-aftermath>#intervalDialogue.dialogue-coherent:not(.hidden){
+  left:3%!important;right:3%!important;bottom:1%!important;top:auto!important;
+  transform:none!important;width:94%!important;max-width:none!important;
+  max-height:38dvh!important;min-height:0!important;padding:12px 15px!important;
+  background:#07131ff0!important;box-shadow:0 8px 20px #000a!important;
+ }
+ #game.interval-aftermath>#intervalDialogue .dialogue-avatar{display:none!important;}
+ #game.interval-aftermath>#intervalDialogue .club-line{font-size:14px!important;line-height:1.35!important;}
+ #game.interval-aftermath>#intervalDialogue .club-aside{font-size:12px!important;line-height:1.35!important;}
+}
+#game.interval-aftermath>#intervalDialogue .club-choices button{min-height:44px!important;}
+#game.interval-aftermath>.radio,#game.interval-aftermath>.hint{display:none!important;}
+
+/* P9 · Abertura: carregamento cinematográfico discreto, legível e responsivo.
+   Mantém intacta a arte animada original e os controles de início. */
+#overlay.title-screen:has(#cadillacWeather) .panel>#bootStatus{
+ display:grid!important;position:absolute!important;bottom:clamp(20px,5.5vh,48px)!important;
+ left:50%!important;transform:translateX(-50%)!important;z-index:4!important;
+ width:min(456px,calc(100vw - 36px))!important;max-width:none!important;
+ padding:18px 21px 14px!important;margin:0!important;gap:13px!important;
+ border:1px solid rgba(124,188,205,.42)!important;border-radius:8px!important;
+ background:linear-gradient(135deg,rgba(7,17,29,.96),rgba(7,18,29,.83))!important;
+ box-shadow:0 14px 42px #000b,inset 0 1px 0 #a3dae019,0 0 32px #4a9fa30d!important;
+ backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+ text-align:left!important;opacity:1!important;color:#d9e6e8!important;
+ font:11px/1.3 ui-monospace,Consolas,monospace!important;letter-spacing:.07em!important;
+}
+#overlay.title-screen:has(#cadillacWeather) .boot-heading{display:flex;align-items:center;gap:13px;min-width:0}
+#overlay.title-screen:has(#cadillacWeather) .boot-glyph{display:grid;place-items:center;flex:0 0 38px;width:38px;height:38px;
+ border:1px solid #6bccc67c;border-radius:7px;background:linear-gradient(140deg,#16454b66,#12213644);
+ color:#9ce9de;font:25px/1 Georgia,serif;text-shadow:0 0 12px #6ee9df65}
+#overlay.title-screen:has(#cadillacWeather) .boot-copy{display:flex;flex-direction:column;gap:5px;flex:1;min-width:0}
+#overlay.title-screen:has(#cadillacWeather) .boot-copy strong{font-size:12px;letter-spacing:.17em;color:#f2f4f2;font-weight:700}
+#overlay.title-screen:has(#cadillacWeather) .boot-copy #bootCaption{font-size:10px;letter-spacing:.12em;color:#9bb3c0}
+#overlay.title-screen:has(#cadillacWeather) #bootPercent{font-size:21px;line-height:1;font-weight:600;letter-spacing:-.05em;color:#9ce8dd;font-variant-numeric:tabular-nums}
+#overlay.title-screen:has(#cadillacWeather) .panel>#bootStatus .boot-track{height:5px!important;border:0!important;border-radius:99px!important;background:#2740509c!important;overflow:hidden;box-shadow:inset 0 1px 3px #0009}
+#overlay.title-screen:has(#cadillacWeather) #bootProgress{height:100%;border-radius:99px;background:linear-gradient(90deg,#51a9b8,#8de5d8 65%,#e2b5d6)!important;box-shadow:0 0 14px #6ce0d899;transition:width .28s ease-out}
+#overlay.title-screen:has(#cadillacWeather) .boot-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#92aab7}
+#overlay.title-screen:has(#cadillacWeather) .boot-foot small{font-size:9px!important;letter-spacing:.13em;color:#94adba}
+#overlay.title-screen:has(#cadillacWeather) .boot-channel{display:flex;align-items:center;gap:7px;white-space:nowrap}
+#overlay.title-screen:has(#cadillacWeather) .boot-led{display:inline-block;width:6px;height:6px;border-radius:50%;background:#8ee7d7;box-shadow:0 0 8px #8ee7d7a8;animation:p9Led 1.7s ease-in-out infinite}
+#overlay.title-screen:has(#cadillacWeather) .panel>#start:disabled{display:none!important}
+#overlay.title-screen:has(#cadillacWeather) .panel>#start:not(:disabled)~#bootStatus{display:none!important}
+#overlay.title-screen:has(#cadillacWeather) .panel>#start:not(:disabled){bottom:clamp(24px,7.5vh,68px)!important}
+#overlay.title-screen:has(#cadillacWeather) .panel>#bootStatus #bootRetry:not([hidden]){display:block;pointer-events:auto;justify-self:center;
+ background:transparent;border:1px solid #638c9b;color:#c8e4e4;border-radius:3px;padding:8px 12px;font:10px monospace;letter-spacing:.08em;cursor:pointer}
+@keyframes p9Led{0%,100%{opacity:.4}50%{opacity:1}}
+@media(max-width:650px){
+ #overlay.title-screen:has(#cadillacWeather) .panel>#bootStatus{bottom:clamp(12px,4vh,28px)!important;padding:13px 15px 12px!important;gap:10px!important}
+ #overlay.title-screen:has(#cadillacWeather) .boot-glyph{width:32px;height:32px;flex-basis:32px;font-size:20px}
+ #overlay.title-screen:has(#cadillacWeather) .boot-copy strong{font-size:10px;letter-spacing:.08em}
+ #overlay.title-screen:has(#cadillacWeather) .boot-copy #bootCaption{font-size:9px}
+ #overlay.title-screen:has(#cadillacWeather) #bootPercent{font-size:17px}
+ #overlay.title-screen:has(#cadillacWeather) .boot-foot small{font-size:8px!important;letter-spacing:.06em}
+}
+@media(max-height:450px){#overlay.title-screen:has(#cadillacWeather) .panel>#bootStatus{bottom:8px!important;padding:9px 14px!important;gap:7px!important}
+ #overlay.title-screen:has(#cadillacWeather) .boot-glyph{display:none}
+ #overlay.title-screen:has(#cadillacWeather) .boot-heading{gap:8px}
+ #overlay.title-screen:has(#cadillacWeather) .boot-foot{display:none}}
+@media(prefers-reduced-motion:reduce){#overlay.title-screen:has(#cadillacWeather) .boot-led{animation:none!important}#overlay.title-screen:has(#cadillacWeather) #bootProgress{transition:none!important}}
+/* P11: cinematic staging for the three story pivots. No painted props or extra sprites. */
+#game.interval-aftermath, #game.terrace-night, #game.terrace-dawn, #game.interlude-final-focus, #game.interlude-private { isolation:isolate; }
+#game.interval-aftermath::before, #game.terrace-night::before, #game.terrace-dawn::before, #game.interlude-final-focus::before, #game.interlude-private::before {
+ content:""; position:absolute; inset:0; pointer-events:none; z-index:3;
+ box-shadow:inset 0 0 75px 10px rgba(3,5,16,.55), inset 0 10px rgba(3,5,16,.45), inset 0 -10px rgba(3,5,16,.45);
+}
+#game.interval-aftermath::before {box-shadow:inset 0 0 110px rgba(2,6,12,.76),inset 0 11px #03060b99,inset 0 -11px #03060b99}
+#game.terrace-night::before {box-shadow:inset 0 0 90px rgba(29,8,58,.38),inset 0 9px #09071c88,inset 0 -9px #09071c88}
+#game.terrace-dawn::before {box-shadow:inset 0 0 70px rgba(80,35,64,.24),inset 0 9px #190d1a55,inset 0 -9px #190d1a55}
+#game.interlude-final-focus::before {box-shadow:inset 0 0 115px rgba(7,16,31,.7),inset 0 10px #020711aa,inset 0 -10px #020711aa}
+#game.interval-aftermath #intervalDialogue, #game.terrace-night #terraceUI, #game.terrace-dawn #terraceUI, #game.interlude-final-focus #interludeDialogue {z-index:8;}
+@media(max-width:600px){#game.interval-aftermath::before,#game.terrace-night::before,#game.terrace-dawn::before,#game.interlude-final-focus::before{box-shadow:inset 0 0 36px rgba(4,7,17,.35)}}
+/* P12: static, optional illustrated cutscenes and art gallery; no per-frame filters. */
+.neo-art-viewer[hidden]{display:none!important}
+.neo-art-viewer{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;background:rgba(3,5,15,.96);padding:12px;color:#eaf4ff}
+.neo-art-inner{width:min(1100px,100%);height:min(95dvh,850px);display:flex;flex-direction:column;gap:8px}
+.neo-art-top,.neo-art-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;font:600 12px/1.5 monospace;letter-spacing:.09em}
+.neo-art-top strong{color:#f7b6e5}.neo-art-viewer button{cursor:pointer;border:1px solid #7d8aab;background:#101829;color:#eaf4ff;padding:10px 14px;min-height:42px}
+.neo-art-viewer button:focus-visible{outline:2px solid #ff77ce}
+.neo-art-viewer img{width:100%;min-height:0;flex:1;object-fit:contain;image-rendering:auto;background:#080b17}
+.neo-art-bottom{justify-content:center}.neo-art-bottom span{min-width:55px;text-align:center}
+body.neo-art-open #game{pointer-events:none}
+@media(max-width:600px){.neo-art-inner{height:94dvh}.neo-art-top strong{font-size:10px}.neo-art-viewer button{font-size:11px;padding:8px}}
+
+/* P18: the epilogue plays without any interactive UI, including chapter shortcuts. */
+#game.interlude-cinematic>#chapterQuickSelect{display:none!important}
+#game.interlude-cinematic #interludeDialogue{display:none!important}
+
+/* P18: the epilogue has no interactive UI or chapter shortcuts. */
+#game.interlude-cinematic>#chapterQuickSelect{display:none!important}
+#game.interlude-cinematic #interludeDialogue{display:none!important}
+
+/* P20: depot is discovered through the art and four contextual interactions. */
+#game.interlude-depot-explore > .hud .mission,
+#game.interlude-depot-explore > footer {display:none!important}
+/* The P43 depot uses Sierra's standard scanner meter instead of hiding it. */
+#game.interlude-depot-explore > .hud .identity{
+ display:block!important;flex:0 0 auto;max-width:min(240px,55%);
+ padding:8px 12px;border:1px solid #517d806b;border-radius:4px;
+ background:#091923d9;box-shadow:0 8px 24px #0006;
+}
+#game.interlude-depot-explore > .hud .identity .eyebrow{color:#9be6dd}
+#game.interlude-depot-explore > .hud .identity .meter{margin:3px 0}
+#game.interlude-depot-explore #touchScan.active{border-color:#86fff3!important;color:#b7fff6!important;background:#103d45!important}
+#game.interlude-depot-explore > .hud {background:transparent!important;border:0!important;box-shadow:none!important;pointer-events:none}
+#game.interlude-depot-explore > .hud .menu {pointer-events:auto;margin-left:auto}
+#game.interlude-depot-explore > #hint {max-width:fit-content;margin:auto;letter-spacing:.09em;opacity:.82}
+
+/* P22: closing frame. No explanatory cards. */
+#interludeCurtain{background:#000!important;color:#e9e9eb!important;}#interludeCurtain .demo-continua{letter-spacing:.34em;font:500 clamp(14px,2.4vw,26px) monospace;color:#c1c1c9;margin:16px auto 35px;text-align:center}#interludeCurtain .demo-final-title{letter-spacing:.29em;}
+
+#interludeCurtain.memorial-actions{inset:0!important;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#000!important;opacity:1!important;pointer-events:auto!important;z-index:40!important;color:#eee!important;gap:14px}#interludeCurtain.memorial-actions .demo-final-title{font:600 clamp(24px,5vw,60px) monospace;letter-spacing:.32em;margin:0}#interludeCurtain.memorial-actions .demo-continua{margin:0 0 24px}#interludeCurtain.memorial-actions button{border:1px solid #444;background:#050608;color:#aaa;padding:8px 18px;margin:2px;font:12px monospace}#game.interlude-mode:has(#interludeCurtain.memorial-actions) .hud,#game.interlude-mode:has(#interludeCurtain.memorial-actions) footer,#game.interlude-mode:has(#interludeCurtain.memorial-actions) .touch{visibility:hidden!important}
+
+/* P34: abrupt, silent final card. Buttons stay available but subordinate. */
+#interludeCurtain.memorial-actions .demo-final-actions{position:absolute;bottom:max(22px,env(safe-area-inset-bottom));display:flex;gap:12px;opacity:.55}
+#interludeCurtain.memorial-actions .demo-final-title{color:#e7e7e7;letter-spacing:.22em;text-shadow:0 0 15px #8d1518}
+
+/* P38: final cinematic occupies the actual mobile viewport, not the virtual canvas. */
+#game .depot-final-p38{position:absolute;inset:0;z-index:35;background:#020204;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;pointer-events:none;padding:env(safe-area-inset-top,0px) max(18px,env(safe-area-inset-right,0px)) env(safe-area-inset-bottom,0px) max(18px,env(safe-area-inset-left,0px));box-sizing:border-box}
+#game .depot-final-p38-face{display:block;width:min(82%,460px);height:62%;object-fit:contain;object-position:center bottom;flex:0 1 auto;image-rendering:auto}
+#game .depot-final-p38-caption{width:min(100%,560px);max-width:100%;padding:12px 4px 8px;min-height:105px;box-sizing:border-box;align-self:center;overflow:visible}
+#game .depot-final-p38-name{color:#9ae3dd;font:700 clamp(13px,3.6vw,17px)/1.4 monospace;letter-spacing:2px;margin-bottom:10px}
+#game .depot-final-p38-line{color:#f3edf1;font:clamp(17px,4.6vw,24px)/1.5 system-ui,sans-serif;margin:0;overflow-wrap:break-word;white-space:normal;text-align:left}
+#game .depot-final-p38-black .depot-final-p38-face,#game .depot-final-p38-black .depot-final-p38-caption{visibility:hidden}
+@media(max-width:600px){#game .depot-final-p38{justify-content:flex-end;padding-left:24px;padding-right:24px;padding-bottom:max(14vh,env(safe-area-inset-bottom,0px))}#game .depot-final-p38-face{width:100%;height:55%;object-position:center bottom}#game .depot-final-p38-caption{min-height:130px;padding-top:18px}}
+
+/* P39: final must be fixed to the physical viewport, not the game canvas. */
+body > .depot-final-p38{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;z-index:2147483000!important;box-sizing:border-box!important;background:#020204!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;padding: max(20px, env(safe-area-inset-top)) 22px max(24px, env(safe-area-inset-bottom))!important;transform:none!important;pointer-events:none!important;}
+body > .depot-final-p38 .depot-final-p38-face{width:min(78vw,420px)!important;height:min(57dvh,540px)!important;max-height:57dvh!important;object-fit:contain!important;object-position:center center!important;flex:0 1 auto!important;}
+body > .depot-final-p38 .depot-final-p38-caption{width:min(90vw,520px)!important;max-width:90vw!important;min-height:0!important;padding:12px 0 0!important;box-sizing:border-box!important;}
+body > .depot-final-p38 .depot-final-p38-name{font-size:clamp(14px,3.7vw,19px)!important;}
+body > .depot-final-p38 .depot-final-p38-line{font-size:clamp(17px,4.2vw,23px)!important;line-height:1.45!important;overflow-wrap:anywhere!important;}
+body > .depot-final-p38.depot-final-p38-black .depot-final-p38-face,body > .depot-final-p38.depot-final-p38-black .depot-final-p38-caption{visibility:hidden!important;}
+@media(max-width:600px){body > .depot-final-p38{justify-content:center!important;padding:22px 24px!important;}body > .depot-final-p38 .depot-final-p38-face{width:min(82vw,350px)!important;height:55dvh!important;}body > .depot-final-p38 .depot-final-p38-caption{width:100%!important;max-width:calc(100vw - 48px)!important;}}
+
+/* P41: one definitive end card, always above portraits and the HUD. */
+#game.interlude-ended > #interludeCurtain.memorial-actions{
+ position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+ z-index:2147483640!important;opacity:1!important;visibility:visible!important;
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ background:#000!important;color:#f5f5f5!important;pointer-events:auto!important;
+}
+#game.interlude-ended > #interludeCurtain .demo-final-title{
+ display:block!important;visibility:visible!important;opacity:1!important;
+ color:#f5f5f5!important;font:700 clamp(26px,7vw,64px)/1.25 monospace!important;
+ letter-spacing:.12em!important;text-align:center!important;padding:0 16px!important;
+}
+#game.interlude-ended > .depot-final-p38{display:none!important;}
+#game.interlude-ended > .hud,#game.interlude-ended > footer,
+#game.interlude-ended > .touch,#game.interlude-ended > #interludeDialogue,
+#game.interlude-ended > #hint,#game.interlude-ended > #radio{display:none!important;}
+
+/* P42: short diegetic arrival dialogue, readable on phones. */
+.depot-journey-caption{position:absolute;z-index:12;left:50%;bottom:max(24px,env(safe-area-inset-bottom));transform:translateX(-50%);width:min(520px,86%);box-sizing:border-box;padding:14px 20px;background:#071018eb;border-left:2px solid #b8aa83;color:#f0e8da;font:clamp(15px,2.1vw,22px)/1.5 monospace;pointer-events:none}
+.depot-journey-caption strong{font-size:12px;letter-spacing:.18em;color:#cdbd94}.depot-journey-caption p{margin:4px 0 0}
+/* Terminal evidence is legible even before the final deduction is chosen. */
+#game #depotP43Terminal{position:absolute;z-index:14;top:18%;left:50%;transform:translateX(-50%);width:min(82%,430px);padding:14px 16px;border:1px solid #41bdc7;background:#031019ed;color:#b3f4f2;font:12px/1.65 monospace;box-shadow:0 0 30px #0aa4a322;pointer-events:none;box-sizing:border-box}
+#game #depotP43Terminal strong{color:#f6a6b4;display:block;letter-spacing:.16em;margin-bottom:8px}
+@media(max-width:600px){#game #depotP43Terminal{top:12%;width:88%;font-size:10px;padding:9px 11px}}
+
+/* P44: visible and consistent scanner feedback, including narrow touch screens. */
+.identity .scanner-state{display:block;margin:5px 0 0;font:600 9px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.07em;color:#8ba5b8;white-space:normal}
+#scannerStatus[data-mode="active"]{color:#9bfff2;text-shadow:0 0 7px #54f4da66}
+#scannerStatus[data-mode="charging"]{color:#ffc48e}
+#scannerStatus[data-mode="unavailable"]{color:#e8a5b6}
+#game[data-scanner="active"] #energy{background:#96fff1;box-shadow:0 0 7px #64fce4aa}
+#game[data-scanner="charging"] #energy{background:#e9a870}
+#touchScan[aria-pressed="true"]{border-color:#86fff3!important;color:#b7fff6!important;background:#103d45!important}
+@media(max-width:600px){#game .hud .identity .scanner-state{font-size:8px;line-height:1.1;margin-top:2px;letter-spacing:0}}
+
+/* Keep the scanner warning visible even with the compact HUD. */
+#game.hud-compact.hud-scanner-visible .hud .identity{display:block}
+
+/* P44.1: readable, keyboard-visible ending actions without brightening the finale. */
+#interludeCurtain.memorial-actions .demo-final-actions{opacity:1;flex-wrap:wrap;justify-content:center;max-width:calc(100vw - 24px)}
+#interludeCurtain.memorial-actions .demo-final-actions button{color:#f0f3f7;background:#10151c;border:1px solid #8f9eaf;min-height:44px;padding:11px 19px;font-weight:650;letter-spacing:.04em}
+#interludeCurtain.memorial-actions .demo-final-actions button:hover{background:#1b2934;border-color:#a5f3ef;color:#fff}
+#interludeCurtain.memorial-actions .demo-final-actions button:focus-visible{outline:3px solid #86f4ed;outline-offset:3px}
+
+/* Site GPT v53: allow scanner action cue and radio transmission to coexist. */
+#game.radio-visible #hint{bottom:calc(env(safe-area-inset-bottom,0px) + 156px)}
+@media(max-height:500px){#game.radio-visible #hint{bottom:calc(env(safe-area-inset-bottom,0px) + 112px);max-width:60vw;font-size:11px}}
+
+/* P46 · consistent scanner readout: same visual language in every chapter. */
+#game #p46ScannerReadout{position:absolute;z-index:7;left:clamp(14px,2.5vw,32px);top:clamp(105px,13vh,143px);min-width:204px;max-width:min(320px,calc(100vw - 28px));padding:9px 12px 10px;display:grid;grid-template-columns:8px minmax(0,1fr) auto;align-items:center;gap:6px 10px;color:#a9eee6;background:linear-gradient(125deg,#06131cde,#091b2cce);border:1px solid #76c8ca70;border-radius:7px;box-shadow:0 12px 30px #0008,0 0 22px #61d5e20b;pointer-events:none;font:700 10px/1.35 ui-monospace,Consolas,monospace;letter-spacing:.06em;text-shadow:0 1px 2px #000}
+#game #p46ScannerReadout[hidden]{display:none!important}
+#game #p46ScannerReadout .p46-scan-led{width:8px;height:8px;border-radius:50%;background:#78e5d6;box-shadow:0 0 12px #78e5d6aa}
+#game #p46ScannerReadout .p46-scan-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#game #p46ScannerReadout .p46-scan-value{font-size:11px;color:#e7f9f5}
+#game #p46ScannerReadout .p46-scan-track{grid-column:2/4;height:3px;background:#22384a;border-radius:5px;overflow:hidden}
+#game #p46ScannerReadout .p46-scan-track i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#3795b3,#a8f7dc);transition:width .16s linear}
+#game #p46ScannerReadout[data-mode="charging"]{border-color:#d69e6a99;color:#ffd7a4}
+#game #p46ScannerReadout[data-mode="charging"] .p46-scan-led{background:#f4a976;box-shadow:0 0 12px #ffb26a99}
+#game #p46ScannerReadout[data-mode="charging"] .p46-scan-track i{background:#e5a96d}
+#game #p46ScannerReadout[data-profile="echo"]{color:#d9c4ff;border-color:#b899ec80}
+#game #p46ScannerReadout[data-profile="echo"] .p46-scan-led{background:#bca0ed;box-shadow:0 0 14px #bca0edbb}
+#game #p46ScannerReadout[data-profile="interface"]{color:#e8c3d0;border-color:#d6a8bc80}
+#game #p46ScannerReadout[data-mode="active"]{box-shadow:0 12px 30px #0008,0 0 25px #79f2d22a}
+#game.rooftop-mode #p46ScannerReadout,#game.phase-select-open #p46ScannerReadout,#game.overlay-open #p46ScannerReadout,#game.interlude-cinematic #p46ScannerReadout,#game.chapter-seven-ended #p46ScannerReadout{display:none!important}
+#touchScan:disabled{opacity:.35;cursor:not-allowed;box-shadow:none}
+@media(max-width:700px){#game #p46ScannerReadout{top:clamp(94px,13vh,118px);left:10px;min-width:0;width:min(216px,calc(100vw - 20px));padding:7px 9px;font-size:9px;gap:4px 7px}}
+@media(max-height:500px){#game #p46ScannerReadout{top:64px;left:10px;width:175px;padding:5px 7px;font-size:8px}}
+/* Cinematic direction for the existing, evidence-driven Depot 47 ending. */
+#game .depot-final-p38{background:radial-gradient(ellipse at 50% 40%,#121321,#020204 72%);isolation:isolate}
+#game .depot-final-p38:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.3;background:repeating-linear-gradient(180deg,transparent 0,transparent 5px,#ad9bd10a 6px,transparent 7px)}
+#game .depot-final-p38:after{content:"ARQUIVO 47  /  AUTORIZAÇÃO";position:absolute;z-index:2;top:max(18px,env(safe-area-inset-top));left:max(18px,env(safe-area-inset-left));font:700 clamp(9px,1.3vw,12px)/1.3 monospace;letter-spacing:.22em;color:#c8acb1a3}
+#game .depot-final-p38-face{filter:contrast(1.08) saturate(.87) drop-shadow(0 15px 34px #07060f);transform-origin:center bottom}
+#game .depot-final-p38.p46-shot-enter .depot-final-p38-face{animation:p46-portrait-in 4s cubic-bezier(.2,.65,.2,1) both}
+#game .depot-final-p38.p46-shot-enter .depot-final-p38-caption{animation:p46-caption-in .65s ease-out both}
+#game .depot-final-p38-caption{position:relative;z-index:3;border-top:1px solid #b59baf60;background:linear-gradient(180deg,#04060e70,transparent)}
+#game .depot-final-p38-line{letter-spacing:.01em;text-wrap:pretty}
+@keyframes p46-portrait-in{from{opacity:.25;transform:scale(1.055) translateY(8px)}20%{opacity:1}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes p46-caption-in{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){#game .depot-final-p38.p46-shot-enter .depot-final-p38-face,#game .depot-final-p38.p46-shot-enter .depot-final-p38-caption{animation:none}}
+/* P46 QA: keep numeric scanner status below the mission and integrity HUD. */
+#game #p46ScannerReadout{top:155px}
+@media(max-width:700px){#game #p46ScannerReadout{top:158px}}
+@media(max-height:500px){#game #p46ScannerReadout{top:82px}}
+
+/* P48 · portrait anchoring: repair the historical negative-margin cutout.
+   Earlier dialogue-cohesion used a floating 150px avatar with a -109px left
+   margin. Later editorial CSS removed its reserved padding, exposing only a
+   loose leg/arm below the dialogue panel, as seen in Zona Cega's Cadillac.
+   Keep each complete illustration INSIDE the panel, with its own column. */
+#game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue,#conversationBox).dialogue-coherent:not(.hidden):has(> .dialogue-avatar){
+ position:absolute!important;
+ padding:15px 18px 14px 118px!important;
+ min-height:140px!important;
+ overflow-x:hidden!important;
+ overflow-y:auto!important;
+}
+#game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue,#conversationBox).dialogue-coherent > .dialogue-avatar{
+ position:absolute!important;
+ float:none!important;
+ top:11px!important;
+ left:12px!important;
+ width:92px!important;
+ height:120px!important;
+ margin:0!important;
+ z-index:0!important;
+ object-fit:contain!important;
+ object-position:center top!important;
+ clip-path:inset(0)!important;
+ pointer-events:none!important;
+}
+@media(max-width:600px){
+ #game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue,#conversationBox).dialogue-coherent:not(.hidden):has(> .dialogue-avatar){
+  padding:12px 10px 14px 79px!important;
+  min-height:116px!important;
+ }
+ #game :is(#clubDialogue,#ghostDialogue,#intervalDialogue,#interludeDialogue,#conversationBox).dialogue-coherent > .dialogue-avatar{
+  left:7px!important;top:10px!important;
+  width:64px!important;height:94px!important;
+ }
+}
+/* Fleeing under fire: readable combat without a second overlay masking play. */
+#game.club-mode #hint{max-width:min(440px,70vw);text-align:center}
+
+/* P55: Final cinematografico limpo. Somente retratos e quatro frases canonicas. */
+#game .depot-final-p38::after{content:none!important;display:none!important}
+#game .depot-final-p38-kicker,#game .depot-final-p38-evidence,#game .depot-final-p38-name{display:none!important}
+#game .depot-final-p38-caption{border:0!important;border-top:0!important;background:transparent!important;box-shadow:none!important}
+#game .depot-final-p38-line{color:#fff4fb;letter-spacing:.005em;text-shadow:0 2px 12px #000c}
+
+/* P62 UX mobile: no ABAIXAR text; responsive immediate high-contrast physical controls. */
+#game.prelude>.touch [data-hold="crouch"]:after{content:none!important}
+#game .touch button{-webkit-tap-highlight-color:transparent;touch-action:none;user-select:none;transition:transform .09s,border-color .09s,background .09s;display:inline-flex;align-items:center;justify-content:center;line-height:1.05;min-height:58px}
+#game .touch button:active,#game .touch button.active{transform:scale(.94);background:#244872e8;border-color:#c9f9ff;box-shadow:0 0 0 3px #4df5ff33,0 0 22px #68cced30}
+#touchScan{border:2px solid #4cd9e7!important;background:#092e49e8!important;color:#c7ffff!important;font-weight:800!important;letter-spacing:.01em}
+#touchScan[aria-pressed="true"]{background:#176a83ec!important;box-shadow:0 0 16px #65e9ef80!important}
+#touchUse{border:2px solid #ff87c6!important;background:#35152ce8!important;color:#ffe4f5!important;font-weight:800!important;letter-spacing:.01em}
+#game .touch [data-hold="crouch"]{font-size:25px!important;font-family:system-ui,sans-serif!important}
+@media(pointer:coarse) and (max-width:520px){
+ #game>.touch{left:max(7px,env(safe-area-inset-left));right:max(7px,env(safe-area-inset-right));bottom:max(7px,env(safe-area-inset-bottom));justify-content:space-between;gap:7px}
+ #game>.touch>div:first-child{display:grid;grid-template-columns:repeat(2,minmax(50px,55px));gap:7px}
+ #game>.touch>div:first-child [data-hold="crouch"]{grid-column:1/3;grid-row:1;justify-self:center;width:55px;padding:0!important}
+ #game>.touch>div:last-child{display:grid;grid-template-columns:repeat(2,minmax(65px,72px));gap:7px}
+ #game>.touch>div:last-child button{min-width:65px;min-height:58px;font-size:11px!important;white-space:nowrap;padding:5px}
+ #game>.touch>div:first-child button{min-width:50px;min-height:58px;padding:0!important}
+ #touchUse,#touchScan{min-height:62px!important}
+}
+/* Neural cinematic: tissue-like magenta currents instead of another ordinary discussion. */
+.aura-link-chapter-cut #overlay.aura-link-screen{z-index:24;background:radial-gradient(ellipse at 62% 48%,#5c125ebd,#090519ec 66%),linear-gradient(120deg,#2a0c47,#080f2c);backdrop-filter:blur(8px)}
+.aura-link-screen .panel{max-width:min(730px,95vw);position:relative;z-index:2}
+.aura-link-screen h1{font-size:clamp(35px,6vw,66px)!important;color:#ffddf4;text-shadow:0 0 38px #f436ba85}
+.aura-link-screen .intro{max-width:700px;color:#e8d6f4;font:clamp(16px,1.8vw,21px)/1.65 Georgia,serif}
+.aura-link-screen .aura-link-pulse{position:absolute;inset:-13% -20%;z-index:-1;pointer-events:none;background:repeating-conic-gradient(from 20deg,#e94fc005 0deg,#ec70d01a 1deg,#2ceef00a 2deg,transparent 4deg,transparent 19deg);mask-image:radial-gradient(circle at 55% 46%,#000 10%,transparent 70%);animation:neuralLinkPulse 1.4s ease-in-out infinite alternate}
+.aura-link-screen .aura-link-telemetry{letter-spacing:.12em;font:11px monospace;color:#8be7e5;margin:24px 0}
+@keyframes neuralLinkPulse{from{opacity:.45;transform:scale(.97) rotate(-4deg)}to{opacity:1;transform:scale(1.03) rotate(5deg)}}
+@media(prefers-reduced-motion:reduce){.aura-link-screen .aura-link-pulse{animation:none}}
+
+@media(pointer:coarse) and (max-width:520px){#game>.touch #touchScan,#game>.touch #touchUse{font-size:13px!important;font-weight:800!important;letter-spacing:.055em;}}
+
+/* Integrated actor art in the consensual neural-link cinematic. */
+.aura-link-screen{isolation:isolate;overflow:hidden}
+.aura-link-screen .panel{position:relative;z-index:3}
+.aura-link-screen .aura-link-pair{position:absolute;z-index:1;inset:0 0 0 44%;pointer-events:none;display:flex;align-items:center;justify-content:center;overflow:hidden;opacity:.95}
+.aura-link-screen .aura-link-pair img{position:absolute;bottom:3%;height:min(75vh,650px);width:auto;max-width:60%;object-fit:contain;filter:drop-shadow(0 0 35px #d346bf65);animation:auraLinkMaterialize 2.7s ease-in-out infinite alternate}
+.aura-link-screen .aura-link-pair .aura-link-sierra{right:37%;opacity:.77;transform:scaleX(-1);filter:drop-shadow(0 0 30px #ff65b096)}
+.aura-link-screen .aura-link-pair .aura-link-aura{right:-8%;opacity:.82;filter:drop-shadow(0 0 42px #70e7ff90)}
+.aura-link-screen .aura-link-pair .aura-link-wires{position:absolute;z-index:1;inset:15%;background:repeating-linear-gradient(25deg,transparent 0 15px,#ff54df22 16px 18px,transparent 19px 45px),repeating-linear-gradient(152deg,transparent 0 22px,#88eaff1c 23px 25px,transparent 26px 51px);mix-blend-mode:screen;animation:auraLinkMaterialize 1.4s steps(4) infinite alternate}
+.aura-link-screen .aura-link-pair.phase-3 .aura-link-wires{filter:brightness(2);opacity:.92}
+@keyframes auraLinkMaterialize{0%{opacity:.55;filter:brightness(.75) saturate(1.3)}100%{opacity:1;filter:brightness(1.35) saturate(1.7)}}
+@media(max-width:650px){.aura-link-screen{align-items:end;padding:5vh 7vw}.aura-link-screen .aura-link-pair{inset:0 0 40% 0;opacity:.28}.aura-link-screen .aura-link-pair img{max-height:48vh}.aura-link-screen .intro{font-size:15px}.aura-link-screen .panel{max-height:83vh;overflow-y:auto}.aura-link-screen h1{font-size:clamp(32px,7vw,44px)!important}}
+@media(prefers-reduced-motion:reduce){.aura-link-screen .aura-link-pair img,.aura-link-screen .aura-link-pair .aura-link-wires{animation:none}}
+
+/* RC45 · chapter 06: legible audio controls, no diminutive touch targets */
+#ghostPuzzle #ghostIsolate{display:block;width:100%;min-height:48px;border:1px solid #df87da;background:linear-gradient(100deg,#382044,#182f49);color:#ffe2f8;font-weight:700;letter-spacing:.035em;margin:8px 0 12px}#ghostPuzzle #ghostIsolate:focus-visible{outline:3px solid #a9f3eb;outline-offset:3px}#ghostPuzzle .ghost-channels button{min-height:48px;font-size:clamp(12px,2vw,15px)}
+
+/* RC52 · Capítulo 07: diálogo não apaga o corredor nem o luto. */
+#game.interval-aftermath > #intervalDialogue,#game.interval-aftermath > #intervalDialogue.dialogue-coherent:not(.hidden){left:2%!important;right:auto!important;bottom:1.5%!important;top:auto!important;transform:none!important;width:min(445px,34vw)!important;max-width:445px!important;max-height:33dvh!important;min-height:0!important;padding:12px 15px!important;background:#06121eea!important;overflow-y:auto!important;}
+#game.interval-aftermath > #intervalDialogue .club-line{font-size:15px!important;line-height:1.38!important;}
+@media(max-width:700px){#game.interval-aftermath > #intervalDialogue,#game.interval-aftermath > #intervalDialogue.dialogue-coherent:not(.hidden){left:3%!important;right:3%!important;bottom:1%!important;width:94%!important;max-width:none!important;max-height:35dvh!important;padding:10px 12px!important;}#game.interval-aftermath > #intervalDialogue .club-line{font-size:14px!important;}}
+
+
+/* RC53 | CHAPTER 06 ONLY | sofa cinematic conversation. Preserve actors in the illustration.
+   Do not change any other chapters or non-sofa Ghost Track dialogues. */
+@media (min-width:1050px) and (min-height:570px){
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact.dialogue-coherent:not(.hidden){
+  position:absolute!important;left:auto!important;right:clamp(14px,2vw,30px)!important;
+  top:auto!important;bottom:clamp(9px,1.7vh,20px)!important;transform:none!important;
+  width:min(645px,48vw)!important;max-width:calc(100% - 24px)!important;
+  max-height:min(34dvh,260px)!important;min-height:0!important;
+  padding:11px 14px 10px!important;box-sizing:border-box!important;
+  border:1px solid #8d617b8c!important;border-top:2px solid #b06a91!important;
+  background:linear-gradient(115deg,#050a13ed,#0d1320f1)!important;
+  overflow-y:auto!important;scrollbar-gutter:stable!important;
+  box-shadow:0 10px 35px #0009!important;
+ }
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .dialogue-avatar{display:none!important}
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .club-dialogue-top{font-size:10px!important;line-height:1.1!important}
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .club-aside{font:italic 11px/1.25 Georgia,serif!important;margin:3px 0 4px!important}
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .club-line{font:400 14px/1.32 system-ui,sans-serif!important;margin:4px 0 7px!important}
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .club-choices{
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:6px!important;margin:5px 0 0!important;position:static!important;
+  max-height:none!important;overflow:visible!important;background:none!important;box-shadow:none!important;
+ }
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .club-choices button{
+  min-height:51px!important;padding:6px 8px!important;font-size:12px!important;line-height:1.25!important;
+  align-items:flex-start!important;overflow-wrap:anywhere!important;
+ }
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .club-help{display:none!important}
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .club-next{min-height:38px!important;padding:5px 13px!important}
+}
+@media (min-width:701px) and (max-width:1049px){
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact.dialogue-coherent:not(.hidden){
+  left:auto!important;right:12px!important;bottom:10px!important;top:auto!important;transform:none!important;
+  width:min(440px,46vw)!important;max-width:46vw!important;max-height:min(43dvh,290px)!important;
+  padding:9px 12px!important;overflow-y:auto!important;background:#06111deb!important;
+ }
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .dialogue-avatar{display:none!important}
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .club-aside{font-size:11px!important;line-height:1.2!important;margin:3px 0!important}
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .club-line{font-size:13px!important;line-height:1.3!important;margin:5px 0!important}
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .club-choices button{min-height:40px!important;padding:5px 8px!important;font-size:11px!important}
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .club-help{display:none!important}
+}
+@media(max-width:700px){
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact.dialogue-coherent:not(.hidden){
+  left:0!important;right:0!important;bottom:0!important;top:auto!important;transform:none!important;
+  width:100%!important;max-width:100%!important;max-height:min(31dvh,278px)!important;
+  padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))!important;
+  background:#06101af2!important;box-sizing:border-box!important;overflow-y:auto!important;
+ }
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .dialogue-avatar{display:none!important}
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .club-line{font-size:13px!important;line-height:1.25!important;margin:3px 0 6px!important}
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .club-aside{font-size:11px!important;line-height:1.18!important;margin:3px 0!important}
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .club-choices{position:static!important;max-height:none!important;overflow:visible!important;margin:4px 0!important}
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .club-choices button{min-height:44px!important;padding:6px 9px!important;font-size:12px!important;line-height:1.2!important}
+ #game.ghost-mode #ghostDialogue.ghost-sofa-compact .club-help{display:none!important}
+}
+
+
+/* RC73 Café 02:17 — speaker attitude cues on the existing portraits. */
+#interludeDialogue .interlude-portrait[data-emotion="wry"]{
+ transform:translateY(-2px) rotate(1deg);
+ filter:drop-shadow(4px 4px 9px #0009) saturate(.92);
+}
+#interludeDialogue .interlude-portrait[data-emotion="guarded"]{
+ transform:translateY(1px) rotate(-.5deg);
+ filter:drop-shadow(4px 4px 9px #0009) saturate(.78);
+}
+#interludeDialogue .interlude-portrait[data-emotion="soft"]{
+ transform:translateY(-1px);
+ filter:drop-shadow(4px 4px 9px #0009) brightness(1.04);
+}
+
+#interludeDialogue.interlude-rest{
+ flex-wrap:wrap;
+ justify-content:center;
+}
+#interludeDialogue.interlude-rest button{
+ flex:1 1 145px;
+}

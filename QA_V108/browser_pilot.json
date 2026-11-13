@@ -1,0 +1,14 @@
+{
+  "load": {
+    "ready": true,
+    "assets": 8,
+    "gh": 5
+  },
+  "missingFiles": [],
+  "pageErrors": [],
+  "screenshots": [
+    "apartment_vinyl_real_chromium.png",
+    "apartment_hotspots_debug_chromium.png",
+    "ghost_sofa_debug_chromium.png"
+  ]
+}

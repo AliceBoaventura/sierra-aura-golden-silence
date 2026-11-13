@@ -1,0 +1,15 @@
+'use strict';
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const ctx={console,NeoRuntime:{reset(){},delta:d=>d,motion(){},follow(){},scan(){}},StoryContinuity:{capture(s){ctx.captured=s.flags.dead;} }};ctx.globalThis=ctx;vm.createContext(ctx);
+for(const f of ['interval-story.js','interval-engine.js'])vm.runInContext(fs.readFileSync(__dirname+'/../'+f,'utf8'),ctx,{filename:f});
+const I=ctx.Interval, story=ctx.IntervalStory;
+assert(story.alive[0].text.includes('NÃO CONFIRMADO'));
+assert(!story.alive.some(l=>/Alex está viva|Viva\. Ainda/.test(l.text||'')));
+assert(story.instance[0].text.includes('NÃO VERIFICADA'));
+let s=I.create();assert.equal(s.stage,'holding');
+s.mode='intervalDialogue';s.dialogue='alive';s.lineIndex=story.alive.length-1;I.advance(s);
+assert(s.flags.alive);assert(s.journal.some(n=>n.id==='alive'&&n.text.includes('não verificadas')));
+s.mode='intervalExecution';s.executionTime=3.39;s.shotIndex=5;s.flags.dead=false;
+I.step(s,{},.02);assert(s.flags.dead);assert(s.flags.bodyVisible);assert.equal(ctx.captured,true);assert(s.journal.some(n=>n.id==='deathConfirmed'));
+I.step(s,{},7);assert.equal(s.stage,'aftermath');assert(s.flags.dead);
+console.log('PASS 5/5: evidência ambígua, instância sem origem, retorno local, morte definitiva, transição ao luto');

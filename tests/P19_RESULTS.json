@@ -1,0 +1,9 @@
+{
+  "syntax": {
+    "passed": 50,
+    "errors": []
+  },
+  "interlude_progression": "PASS Node VM",
+  "ending_timing_pause_and_layout": "PASS simulated",
+  "browser_mobile": "NOT RUN"
+}

@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-10",
+  "scope": "depot-47-scene",
+  "status": "scene-pass-build-not-homologated",
+  "test_summary": "96/96",
+  "files": {
+    "assets/visual-v102/depot-47-evidence-room.png": {
+      "bytes": 1533767,
+      "sha256": "acc72eb027b4ded3de791b465222017d644cdc677e3d8e10905f3b247afaa171"
+    },
+    "assets/visual-v102/_source_depot-47-clean.png": {
+      "bytes": 2557565,
+      "sha256": "733440f24faab8d953c86cc6007c4f4d81072b21ab008b4693b3601a919efbcc"
+    },
+    "interlude.js": {
+      "bytes": 51183,
+      "sha256": "2ed93a72e3abac1275cc03dd3d12b681ccddadb95df4feef6651f4a8620f8743"
+    },
+    "interlude-engine.js": {
+      "bytes": 27861,
+      "sha256": "0952d2093588dda0281b9713b137da81a88975d04fdcd5d8de8f3bda0b9fc213"
+    },
+    "tests/test_v103_depot_aspect_correction.js": {
+      "bytes": 2827,
+      "sha256": "161f8d80ee2423c061fa910eb2f13bf4d109403f696d497667431eae66d7de8f"
+    },
+    "QA_V109_DEPOT_ASPECT/RELATORIO_V109.md": {
+      "bytes": 3433,
+      "sha256": "07e137bee9978b3769c49dfd4f8fbf9680e3b10a9b9576e5cdbe100ce33ab4ee"
+    },
+    "QA_V109_DEPOT_ASPECT/RESULTADO_NODE_QA.txt": {
+      "bytes": 3327,
+      "sha256": "ac895ed49e4e606d059e431f958474869018d0e233c21cca10fe09867d59f20c"
+    },
+    "QA_V109_DEPOT_ASPECT/depot-renderer-desktop.png": {
+      "bytes": 1006580,
+      "sha256": "45033d436a3af68c43d58644b8bc25b08153008a4c71cf055c06a691ace03c72"
+    },
+    "QA_V109_DEPOT_ASPECT/depot-renderer-mobile.png": {
+      "bytes": 407153,
+      "sha256": "d77c3fb6527de2c862687bc7831c98c06a21b60075b430009c5a38c633de3196"
+    },
+    "QA_V109_DEPOT_ASPECT/depot-four-clues-montage.jpg": {
+      "bytes": 518742,
+      "sha256": "c5023fc42ba10b25ba6a52c6f5521aacfc9b95b595917ba5184de99d0ddf1f52"
+    }
+  }
+}

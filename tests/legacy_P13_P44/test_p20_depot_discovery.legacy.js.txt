@@ -1,0 +1,14 @@
+const assert=require('node:assert/strict'),fs=require('fs'),vm=require('vm'),path=require('path');
+const base=path.resolve(__dirname,'..');const c={console};c.window=c;c.globalThis=c;vm.createContext(c);
+for(const f of ['runtime.js','interlude-story.js','interlude-engine.js'])vm.runInContext(fs.readFileSync(path.join(base,f),'utf8'),c,{filename:f});
+const s=c.Interlude.create();c.Interlude.change(s,'depotApproach',1500);s.mode='interludeCinematic';
+for(let i=0;i<710;i++)c.Interlude.step(s,{},.03);
+assert.equal(s.stage,'depot');assert.equal(s.mode,'playing');assert.equal(s.flags.depotFinal,undefined);
+const items=[['depotBoard',780],['depotArchive',1230],['depotTape',1430],['depotTerminal',1650]];
+for(const [id,x] of items){s.x=x;s.useWas=false;c.Interlude.step(s,{use:true},.03);assert.equal(s.flags[id],true);assert.equal(s.stage,'depot');}
+assert.equal(s.flags.depotFinal,undefined);
+s.x=1650;s.useWas=false;c.Interlude.step(s,{use:true},.03);
+assert.equal(s.stage,'end');assert.equal(s.flags.depotFinal,true);
+for(let i=0;i<50;i++)c.Interlude.step(s,{},.03);
+assert.equal(s.mode,'won');
+console.log('PASS: entry, manual discovery of 4 objects, no auto-finish, deliberate final interaction, end');

@@ -1,0 +1,47 @@
+/* P60 · Visual final: player visibility and restrained neon HUD. */
+#game .hud, #game .hint, #game .radio {box-sizing:border-box}
+#game .club-choices button,#game .wave-actions button{border-radius:8px;box-shadow:inset 0 1px 0 #9addf322}
+#game .club-choices button:focus-visible{outline:2px solid #98edf3;outline-offset:2px}
+@media(max-width:700px){
+  #game #clubDialogue:not(.hidden),
+  #game #ghostDialogue:not(.hidden),
+  #game #intervalDialogue:not(.hidden){
+    left:8px!important;right:8px!important;max-width:calc(100% - 16px)!important;
+    width:calc(100% - 16px)!important;box-sizing:border-box!important;
+    padding:12px 12px max(12px,env(safe-area-inset-bottom))!important;
+    overflow-x:hidden!important;overflow-y:auto!important;
+    max-height:min(56dvh,490px)!important;
+    scrollbar-width:thin;
+  }
+  #game :is(#clubDialogue,#ghostDialogue,#intervalDialogue):not(.hidden) .club-choices{
+    display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+    max-height:32dvh!important;overflow-y:auto!important;gap:7px!important;
+  }
+  #game :is(#clubDialogue,#ghostDialogue,#intervalDialogue) .club-choices button{
+    min-width:0!important;width:100%!important;min-height:44px!important;
+    text-align:left!important;line-height:1.35!important;white-space:normal!important;
+  }
+  #game:has(#clubDialogue:not(.hidden)) :is(.hint,#clubJournal),
+  #game:has(#ghostDialogue:not(.hidden)) :is(.hint,#ghostJournal),
+  #game:has(#intervalDialogue:not(.hidden)) :is(.hint,#intervalJournal){display:none!important}
+  #game .hud{max-width:100%!important;overflow:visible}
+  #game .hud .menu button{min-width:0}
+}
+@media(max-width:390px){
+ #game :is(#clubDialogue,#ghostDialogue,#intervalDialogue):not(.hidden){max-height:54dvh!important}
+}
+
+/* Keep registers within the top control group, not a floating scene prop. */
+@media(max-width:700px){
+ #game.ghost-mode>.hud .menu #ghostJournal,
+ #game.interval-mode>.hud .menu #intervalJournal{
+  position:relative!important;top:auto!important;right:auto!important;
+  padding:6px 3px!important;min-height:38px!important;max-width:32px!important;
+  min-width:30px!important;font-size:0!important;border-color:#7e6699aa!important;
+ }
+ #game.ghost-mode>.hud .menu #ghostJournal:not(.hidden)::after,
+ #game.interval-mode>.hud .menu #intervalJournal:not(.hidden)::after{
+  content:'J';font:700 12px monospace;color:#f3c8ed;
+ }
+ #game>.hud .menu{max-width:70vw!important;gap:3px!important}
+}

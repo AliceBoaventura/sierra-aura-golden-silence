@@ -1,0 +1,16 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const root=path.resolve(__dirname,'..');
+const src=fs.readFileSync(path.join(root,'game.js'),'utf8');
+const blur=src.match(/qaListen\(window,'blur',\(\)=>\{[^}]+\}\)/);
+const visibility=src.match(/qaListen\(document,'visibilitychange',\(\)=>\{if\(document.hidden\)\{[^}]+\}\}\)/);
+assert(blur&&visibility,'window blur and background listeners must exist');
+const events={};const calls=[];const context={window:{},document:{hidden:false},qaListen:(owner,name,fn)=>events[name]=fn,resetInput:(preserve)=>calls.push(['reset',preserve]),suspendGame:()=>calls.push(['pause'])};
+vm.createContext(context);vm.runInContext(blur[0]+';'+visibility[0]+';',context);
+events.blur();assert.deepEqual(calls,[['reset',true],['pause']],'tab blur must preserve scene progress');
+calls.length=0;events.visibilitychange();assert.deepEqual(calls,[],'visible document must not pause');
+context.document.hidden=true;events.visibilitychange();assert.deepEqual(calls,[['reset',true],['pause']],'backgrounding on a phone must preserve puzzle and story state');
+const lifecycle=fs.readFileSync(path.join(root,'lifecycle.js'),'utf8');
+assert(lifecycle.includes('function resetInput(preserveGameplay=false)'));
+assert(lifecycle.includes('if(preserveGameplay){'),'safe pause reset branch must exist');
+console.log('PASS P43Q: tab switch and mobile background preserve scene/puzzle progress before pausing');

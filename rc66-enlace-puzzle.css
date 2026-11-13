@@ -1,0 +1,31 @@
+#overlay.hacking .neural-relay{width:min(920px,95vw);max-height:92dvh;overflow:auto;background:linear-gradient(145deg,#071521,#141126);border:1px solid #975c98;box-shadow:0 0 32px #c85a9c33}.neural-relay h2{color:#f0a8d5;font-size:clamp(21px,3vw,29px)}.neural-relay .neural-readout{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:#081d2a;border:1px solid #3c6272;padding:10px;margin:10px 0;color:#bee9f1;font:12px/1.5 monospace}.neural-relay .neural-formula{background:#29152d;border-left:3px solid #e372b9;color:#efd0e4;padding:10px;font:12px/1.65 monospace}.neural-relay .optical-route{display:flex;justify-content:center;gap:clamp(8px,2vw,28px);flex-wrap:wrap}.neural-relay .circuit-tile{min-width:90px;min-height:88px;background:#081a28;border:1px solid #509eaa}.neural-relay .circuit-tile.selected{outline:2px solid #df68bb}.neural-relay .puzzle-actions{display:flex;flex-wrap:wrap;gap:8px}.neural-relay .puzzle-actions button{min-height:44px}@media(max-width:560px){#overlay.hacking .neural-relay{padding:13px;max-height:93dvh}.neural-relay p{font-size:11px;line-height:1.45}.neural-relay .circuit-tile{min-width:75px;min-height:74px}}
+#overlay.neural-reciprocity-open{background:linear-gradient(180deg,#030711f7,#140c1ff5);align-items:center;justify-content:center;overflow-y:auto}
+#overlay .neural-reciprocity{box-sizing:border-box;width:min(920px,96vw);max-height:96dvh;overflow-y:auto;padding:clamp(14px,3vw,26px);background:linear-gradient(160deg,#080e1af6,#140d22f5);border:1px solid #67516d;box-shadow:0 0 42px #d54ca32a;color:#e9d9ed}
+.neural-reciprocity-head>span{font:11px/1.2 monospace;letter-spacing:2px;color:#74c9df}
+.neural-reciprocity-head h2{font:700 clamp(18px,2.8vw,28px)/1.25 monospace;letter-spacing:1px;color:#f6a4d3;margin:10px 0}
+.neural-reciprocity-head p,.neural-consent-note{font:12px/1.55 monospace;color:#bac5d5;margin:8px 0}
+.neural-portrait-stage{display:grid;grid-template-columns:minmax(0,1fr) 76px minmax(0,1fr);gap:8px;height:clamp(140px,23vh,220px);margin:14px 0;align-items:stretch}
+.neural-portrait-stage figure{position:relative;margin:0;overflow:hidden;background:#050c17;border:1px solid #304357}
+.neural-portrait-stage figure:first-child{border-color:#408b9b}
+.neural-portrait-stage figure:last-child{border-color:#a95697}
+.neural-portrait-stage img{height:100%;width:100%;object-fit:cover;object-position:center 24%;filter:contrast(1.12) saturate(.75) brightness(.76)}
+.neural-portrait-stage figure:last-child img{object-position:center 20%}
+.neural-portrait-stage figcaption{position:absolute;left:0;right:0;bottom:0;padding:8px 9px;background:#05101bcb;font:700 12px monospace;color:#caf4f1}
+.neural-portrait-stage figcaption span{font:9px monospace;color:#ac99b7;float:right}
+.neural-bond{display:flex;position:relative;align-items:center;justify-content:center;gap:3px;overflow:hidden}
+.neural-bond span{width:2px;height:44%;background:#5a99b4;box-shadow:0 0 12px #73bace;transform:skewY(-25deg)}
+.neural-bond span:nth-child(2){height:76%;background:#e16ca6;box-shadow:0 0 12px #e16ca6}
+.neural-bond i{position:absolute;border:1px solid #b56ca6;width:23px;height:23px;transform:rotate(45deg);background:#26142e;box-shadow:0 0 16px #cb5fa778}
+.neural-memory{background:#0b1929;border-left:3px solid #b766a5;padding:10px 13px;font:12px/1.45 monospace;min-height:48px}
+.neural-memory strong{font:700 11px/1.5 monospace;letter-spacing:1px;color:#bde4e8}
+.neural-memory p{margin:5px 0;line-height:1.45}
+.neural-choices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.neural-choices .neural-choice{cursor:pointer;border:1px solid #457585;background:#0b2737;min-height:65px;text-align:left;padding:12px 14px;color:#eef9fa;transition:border-color .18s,background .18s}
+.neural-choice strong{display:block;color:#f4badb;font:700 12px/1.5 monospace}
+.neural-choice span{display:block;font:10px/1.4 monospace;color:#92ccd8;margin-top:4px}
+.neural-choice:hover,.neural-choice:focus-visible{border-color:#e675b6;background:#24152e;outline:2px solid #d568a67a;outline-offset:2px}
+.neural-choices .neural-next{grid-column:1/-1;text-align:center;min-height:45px}
+.neural-consent-note{border-top:1px solid #394553;padding-top:10px;margin-top:12px}
+@media(max-width:560px){#overlay .neural-reciprocity{padding:12px;width:95vw;max-height:95dvh}.neural-portrait-stage{grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr);height:clamp(120px,19vh,160px);gap:5px;margin:9px 0}.neural-portrait-stage figcaption{font-size:10px;padding:5px}.neural-portrait-stage figcaption span{font-size:7px;float:none;display:block}.neural-choices{grid-template-columns:1fr;gap:7px}.neural-choices .neural-choice{min-height:51px;padding:8px 10px}.neural-reciprocity-head p{font-size:11px}.neural-memory{font-size:11px;padding:8px}}
+/* Closer portrait crop: Sierra and Aura face each other rather than posing full-body. */
+.neural-portrait-stage figure img{transform:scale(1.25);transform-origin:center 20%}

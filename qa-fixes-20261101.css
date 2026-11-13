@@ -1,0 +1,11 @@
+/* Correções visuais isoladas: preservar clube e final. */
+#overlay.title-screen:has(#cadillacWeather):not(.hidden){background-size:100% 100%,100% 100%,cover!important;background-position:center!important}
+#overlay.title-screen:has(#cadillacWeather):not(.hidden)::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#10081c66,transparent 20%,transparent 80%,#10081c66);z-index:0}
+#rc37Dossier{display:flex;flex-direction:column;max-height:min(90dvh,760px);overflow:hidden}
+#rc37Dossier:not([open]){display:none}
+#rc37Dossier .rc37-dossier-head{flex:0 0 auto}
+#rc37Dossier .rc37-dossier-content{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;padding-bottom:20px}
+#rc37Dossier .rc37-dossier-footer{position:relative;flex:0 0 auto;bottom:auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;background:#110c21;padding:12px 18px;border-top:1px solid #70417b}
+#rc37Dossier .rc37-dossier-footer>div{display:flex;flex-wrap:wrap;gap:8px}
+#rc37Dossier .rc37-dossier-entry p{white-space:pre-line;overflow-wrap:anywhere}
+@media(max-width:600px){#rc37Dossier{max-height:94dvh}#rc37Dossier .rc37-dossier-footer{padding:9px}#rc37Dossier .rc37-dossier-footer button{font-size:10px}}

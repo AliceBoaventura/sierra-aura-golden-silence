@@ -1,0 +1,40 @@
+{
+  "run": "headed Chromium headless, actual game scripts, staged chapter-3 relay state",
+  "errors": [],
+  "missing": [],
+  "steps": [
+    {
+      "start": {
+        "chapter": 3,
+        "stage": "relay",
+        "flags": {
+          "talked": true,
+          "memory": true,
+          "upgraded": true,
+          "linkCompleted": true
+        },
+        "mode": "playing"
+      }
+    },
+    {
+      "relay": 1,
+      "found": true
+    },
+    {
+      "relay": 2,
+      "found": true
+    },
+    {
+      "relay": 3,
+      "found": true
+    },
+    {
+      "transition_03_04": {
+        "chapter": 4,
+        "stage": "question",
+        "dialogue": "01 / Uma casa acima do ruídoSierra exigiu uma rota de saída antes de qualquer novo enlace. Aura concordou em m"
+      }
+    }
+  ],
+  "pass": true
+}

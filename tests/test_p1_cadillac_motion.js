@@ -1,0 +1,16 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const src=fs.readFileSync(path.join(__dirname,'..','club.js'),'utf8');
+const start=src.indexOf('function paintCadillac('),end=src.indexOf('function drawEscapeBulkhead(',start);
+assert(start>=0&&end>start);
+let transforms=[],draws=0,clips=0;
+const ctx={save(){},restore(){},beginPath(){},ellipse(){},fill(){},drawImage(){draws++},translate(x,y){transforms.push([x,y])},arc(){},clip(){clips++},rotate(a){transforms.push(['rotate',a])}};
+const context={ctx,Math};vm.createContext(context);vm.runInContext(src.slice(start,end),context);
+const p={im:{},x:0,y:0,w:1774,h:887};
+context.paintCadillac(p,400,500,760,0);assert.equal(draws,1);assert.equal(clips,0);
+transforms=[];draws=0;clips=0;context.paintCadillac(p,400,500,760,185);
+assert.equal(draws,3);assert.equal(clips,2);
+const hubs=transforms.filter(a=>a[0]!=='rotate');assert.equal(hubs.length,2);assert(hubs[0][0]<hubs[1][0]);
+const angles=transforms.filter(a=>a[0]==='rotate');assert.equal(angles.length,2);assert(angles[0][1]>0);assert.equal(angles[0][1],angles[1][1]);
+transforms=[];context.paintCadillac(p,400,500,760,370);assert(transforms.find(a=>a[0]==='rotate')[1]>angles[0][1]);
+console.log('PASS Cadillac: body unchanged, two clipped wheel hubs rotate continuously as distance increases (Node mocked canvas)');

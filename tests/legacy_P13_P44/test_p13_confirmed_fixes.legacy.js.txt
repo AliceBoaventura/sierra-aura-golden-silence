@@ -1,0 +1,24 @@
+'use strict';
+// Regressão das correções editoriais e de identificação confirmadas na P13.
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const root = path.resolve(__dirname, '..');
+const storyText = fs.readFileSync(path.join(root, 'ghost-story.js'), 'utf8');
+const match = storyText.match(/const GhostStory=(\{.*?\});\s*function ghostChoose/s);
+assert(match, 'GhostStory não encontrado');
+const story = JSON.parse(match[1]);
+const intimacy = story.intimacy[1];
+assert.equal(intimacy.choices.length, 3);
+for (const [i, phrase] of [
+  [0, 'Guardei. A voz está no fim da fita'],
+  [1, 'Agora quero ouvir as duas gravações'],
+  [2, 'achei que fosse defeito do transmissor']
+]) assert(intimacy.choices[i][1].includes(phrase), `Resposta de Alexandra ${i} incorreta`);
+assert(story.callJinx[0].line.includes('Cadillac'), 'Jinx deve mencionar o Cadillac');
+assert(!story.callJinx[0].line.includes('moto'), 'Referência antiga à moto');
+const qa = fs.readFileSync(path.join(root, 'qa.js'), 'utf8');
+const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+assert(qa.includes("build:'P13-revisao-qualidade-20261023'"));
+assert(html.includes('P13 · Revisão de qualidade'));
+console.log('PASS P13: respostas de Alexandra, Cadillac, identificação HTML e QA');

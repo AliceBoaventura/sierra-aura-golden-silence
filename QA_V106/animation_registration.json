@@ -1,0 +1,82 @@
+[
+  {
+    "frame": 0,
+    "source": "assets/animation-v102/sierra-0.png",
+    "visibleHeight": 659,
+    "footY": 690,
+    "torsoX": 330,
+    "sourceWidth": 389,
+    "x": 177,
+    "checksum": "6919cf775485aba1ca0a6323ac7d97af17ef8be75267871fa8a0c53e4b4c7b22"
+  },
+  {
+    "frame": 1,
+    "source": "assets/animation-v10/sierra-3.png",
+    "visibleHeight": 659,
+    "footY": 690,
+    "torsoX": 330,
+    "sourceWidth": 383,
+    "x": 148,
+    "checksum": "351709f029500fdd0b8a3d869e7cfa7b4d94beed0208cf35ba257b2409a6c1aa"
+  },
+  {
+    "frame": 2,
+    "source": "assets/animation-v102/sierra-1.png",
+    "visibleHeight": 659,
+    "footY": 690,
+    "torsoX": 330,
+    "sourceWidth": 384,
+    "x": 128,
+    "checksum": "39fce7aab218853e48a0771cbfded99a2a01d929c213025a8980717fb1d71eba"
+  },
+  {
+    "frame": 3,
+    "source": "assets/animation-v10/sierra-0.png",
+    "visibleHeight": 659,
+    "footY": 690,
+    "torsoX": 330,
+    "sourceWidth": 288,
+    "x": 197,
+    "checksum": "515e865fa5206c213498c776a51bf0986894c13f399b304aaa68142f10ea694f"
+  },
+  {
+    "frame": 4,
+    "source": "assets/animation-v102/sierra-2.png",
+    "visibleHeight": 659,
+    "footY": 690,
+    "torsoX": 330,
+    "sourceWidth": 237,
+    "x": 198,
+    "checksum": "a7a69e3755f713fa397771239fe6c0f7042c967ac44b38cc04954bdbcadb38b6"
+  },
+  {
+    "frame": 5,
+    "source": "assets/animation-v10/sierra-2.png",
+    "visibleHeight": 659,
+    "footY": 690,
+    "torsoX": 330,
+    "sourceWidth": 365,
+    "x": 156,
+    "checksum": "1e393099a3092351ca3daf6407dacd1846b07f5cebf33fa455637d3ef2a710d8"
+  },
+  {
+    "frame": 6,
+    "source": "assets/animation-v102/sierra-3.png",
+    "visibleHeight": 659,
+    "footY": 690,
+    "torsoX": 330,
+    "sourceWidth": 441,
+    "x": 130,
+    "checksum": "c94a1d0226ddf7e14b1217cf8165a600153140bffa5e7838a160d7b5ad15d0a3"
+  },
+  {
+    "frame": 7,
+    "source": "assets/animation-v10/sierra-0.png",
+    "visibleHeight": 659,
+    "footY": 690,
+    "torsoX": 330,
+    "sourceWidth": 288,
+    "x": 197,
+    "checksum": "515e865fa5206c213498c776a51bf0986894c13f399b304aaa68142f10ea694f"
+  }
+]

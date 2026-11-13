@@ -1,0 +1,42 @@
+/* RC73 V4: targeted literary editing and portrait stage direction. No quest logic, saves, or chapter transitions. */
+(()=>{'use strict';
+const E={"ClubStory":[["brief",0,"line",null,"Alex achou uma gravação com a minha voz, datada de antes de nos conhecermos. Ela exige que você ouça o original no Píer Azul. Não envie uma cópia pela rede."],["brief",1,"line",null,"A frente está vigiada. A porta de carga foi soldada. Encontra a emenda com a lente; eu seguro a passagem."],["bar",0,"line",null,"Guarda a lente. Aqui dentro ninguém vira arquivo sem saber."],["poster",0,"line",null,"A Alex deixou o cartaz por cima da marca na parede. Nunca perguntei por quê."],["meet",0,"line",null,"Desliga a lente. Minha equipe não autorizou uma varredura. Depois falamos da fita."],["meet",1,"line",null,"A voz é da Aura. A segunda camada não pertence a mim, nem a você. Ela precisa decidir."],["meet",2,"line",null,"Você sempre olha para mim antes de responder quando alguém diz o nome dela. O que espera que eu diga?"],["meet",3,"line",null,"Dentro da cabine, nada de enlace aberto. Não quero minha equipe gravada sem consentimento."],["six",0,"line",null,"A faixa salta de 23:14 para 23:21. Seis minutos desapareceram. O aparelho jura que não houve corte."],["record",0,"line",null,"A assinatura é dela, mas o silêncio se repete igual nos dois canais. Foi isso que me fez guardar a fita."],["parents",0,"line",null,"Eu sei o que esse uniforme representa. Mesmo assim, são meus pais nesta fotografia."],["result",0,"line",null,"É a minha voz. Eu disse isso depois de conhecer a Aura. Mas a fita é mais antiga."],["result",1,"line",null,"A patrulha já está no corredor. A amostra fica lacrada ou Aura autoriza a leitura. Decide agora."],["personal",0,"line",null,"Se eu fechar esta porta agora, minha equipe fica lá dentro. Vai sem mim."],["personal",2,"line",null,"Segura esse cabo. Se soltar, a gravação se perde. E, por favor, não olha para mim desse jeito."],["return",0,"line",null,"Tirei a equipe pelos fundos. Não usem a avenida leste; a guarda está conferindo os carros."],["guest8",0,"line",null,"Ela prometeu chegar antes da última música. No aplicativo, nem consta que saiu de casa."]],"GhostStory":[["invite",0,"line",null,"Achei outro canal na faixa da Aura. Há coordenadas escondidas no ruído. Venha ouvir aqui; a cópia não sai do meu estúdio."],["jinx",0,"line",null,"Me manda o endereço, Si. Não quero a conversa, só saber onde te procurar se o sinal cair."],["welcome",0,"line",null,"Entra. Tira as botas molhadas. Os discos são mais velhos que esse piso."],["jacket",0,"line",null,"Ela esqueceu a jaqueta aqui. Eu disse que devolveria. Ainda não consegui."],["records",0,"line",null,"Foi o primeiro disco que comprei com dinheiro meu. Jinx ainda diz que é barulho."],["drink",0,"line",null,"Vou parar a fita um minuto. Tem água na geladeira. E uma pergunta que não quero fazer pelo rádio."],["intimacy",0,"line",null,"A Aura ainda tenta resolver tudo sozinha, antes de contar a alguém?"],["intimacy",3,"line",null,"Não guardei a gravação para provar que a conheci primeiro. Guardei porque prometi não entregar a voz dela à rede."],["late",0,"line",null,"Vou trocar de faixa. Há uma voz no final. Hoje não estou certa de que quero escutar."],["terminated",0,"line",null,"O rastro acaba diante da parede. Porta fechada. Janela travada. Não existe saída visível."],["arrival",0,"line",null,"A chave do comunicador mudou com o aparelho desligado. Alguém entrou antes de nós."],["replay",0,"line",null,"Aura, reconhece este intervalo? Preciso da sua leitura, não de um palpite."],["last",1,"line",null,"O rastro da Alexandra termina aqui. Guardamos o original. Não vamos invadir outra mente para completar o que falta."]],"IntervalStory":[["wrist",0,"line",null,"EMISSOR INDISPONÍVEL. RELÓGIO SEM REFERÊNCIA. DIAGNÓSTICO LOCAL OPERANTE."],["names",0,"line",null,"L. MORAES / 731. E. VAZ / 204. Há tinta nova sobre marcas antigas."],["pulse",0,"line",null,"Se alguém encontrar o barramento, vai saber que esse pulso é meu."],["files",0,"line",null,"Os nomes são os mesmos. O registro de retorno está vazio no papel e na cópia."],["keane",0,"line",null,"É a letra do meu pai. A barra torta no sete. Ele nunca conseguiu corrigir isso."],["heard",0,"line",null,"Aura? Se conseguir me ouvir, não responde pela rede aberta."],["sacrificeEnd",0,"line",null,"A porta abriu. Jinx, tira as duas daqui. Eu seguro a ponte."]],"Terrace":[[0,"line",null,"É aqui que você vem quando não quer que ninguém te encontre?"],[1,"line",null,"A luz de uma estrela pode chegar depois que ela apagar. Você acha bonito ou cruel?"],[2,"line",null,"Quero suspender meu corpo e conectar a mente à rede. Não um programa com a minha voz. Quero descobrir se eu consigo atravessar."],[3,"line",null,"A rede reconstruiu os relés em horas. De fora, continuaremos correndo. Por dentro, talvez eu chegue à origem."],[4,"line",null,"Você não precisa concordar com o plano. Mas preciso que saiba por que estou pensando nele."],[5,"line",null,"A cidade apagou por um segundo. Até o letreiro da esquina. Você também viu?"],[8,"line",null,"Eu vi meu rosto onde ele não devia estar. Como sei que foi um aviso, e não um convite para uma armadilha?"],[9,"line",null,"Acordei aqui. Mas passei a noite inteira tentando sair daquele quarto."],[2,"choice",0,"Você está me dizendo que talvez não volte."],[2,"reply",0,"Aura olha para o parapeito. — Não tinha chamado isso de despedida. Talvez devesse."],[3,"choice",1,"E se para vencer você tiver de controlar os outros?"],[3,"reply",1,"— Então eu não terei vencido nada. Nem a cidade nem você."],[4,"choice",2,"Quero poder discordar sem que isso se torne uma prova de amor."],[4,"reply",2,"— Pode discordar. O que você sente não é uma autorização para eu fazer o que quiser."]]};
+let applied=0;const misses=[];
+function apply(scope){let source;
+ if(scope==='Terrace')source=globalThis.Terrace?.beats;
+ else try{source=eval(scope)}catch{source=undefined}
+ for(const edit of E[scope]||[]){
+   let key,index,field,sub,value;
+   if(scope==='Terrace'){[key,field,sub,value]=edit;index=key;}
+   else [key,index,field,sub,value]=edit;
+   let beat=(scope==='Terrace'?source?.[key]:source?.[key]?.[index]);
+   if(!beat){misses.push([scope,key,index,field]);continue;}
+   if(field==='line'){const prop=scope==='IntervalStory'?'text':'line';if(typeof beat[prop]!=='string'){misses.push([scope,key,'not-line']);continue;}beat[prop]=value;applied++;}
+   else if(field==='choice'){if(!Array.isArray(beat.choices?.[sub])){misses.push([scope,key,'choice',sub]);continue;}beat.choices[sub][0]=value;applied++;}
+   else if(field==='reply'){if(!Array.isArray(beat.choices?.[sub])){misses.push([scope,key,'reply',sub]);continue;}beat.choices[sub][1]=value;applied++;}
+ }
+}
+for(const s of Object.keys(E))apply(s);
+const allScopes=[];
+try{allScopes.push(ClubStory,GhostStory)}catch{}
+const redundant=/^(?:ALEXANDRA|ALEX|JINX|SIERRA|AURA|BARMAN)\s*:\s*/;
+let stripped=0;
+for(const obj of allScopes)for(const beats of Object.values(obj))if(Array.isArray(beats))for(const b of beats){
+ for(const c of b.choices||[]){if(typeof c[1]==='string'&&redundant.test(c[1])){
+  // Only strip automatic speaker duplication when the speaking character is already identified in the beat.
+  const token=c[1].match(redundant)[0].split(':')[0].trim();const owner=(b.who||'').split('/')[0].trim().toUpperCase();
+  if((token==='ALEX'&&owner==='ALEXANDRA')||(token==='ALEXANDRA'&&owner==='ALEXANDRA')||token===owner){c[1]=c[1].replace(redundant,'');stripped++;}
+ }
+ }
+}
+const portraitTarget=['clubDialogue','ghostDialogue','intervalDialogue','interludeDialogue','terraceDialogue'];
+const identify=t=>/ALEXANDRA|^ALEX\b/i.test(t)?'alex':/AURA/i.test(t)?'aura':/JINX/i.test(t)?'jinx':/SIERRA/i.test(t)?'sierra':null;
+for(const id of portraitTarget){const el=document.getElementById(id);if(!el)continue;
+ const update=()=>{const h=el.querySelector('.club-dialogue-top span,.terrace-speaker,.club-dialogue-top,.interlude-speaker');
+ const cast=identify((h?.textContent||el.textContent||'').slice(0,90));if(cast)el.dataset.v4Cast=cast;};
+ new MutationObserver(update).observe(el,{subtree:true,childList:true,characterData:true});update();
+}
+const report={version:'V4-NARRATIVA-VISUAL',applied,expected:Object.values(E).reduce((n,a)=>n+a.length,0),stripped,misses};
+globalThis.RC73V4Audit=Object.freeze(report);
+if(misses.length)console.warn('[RC73 V4] editorial patch misses',misses);
+})();

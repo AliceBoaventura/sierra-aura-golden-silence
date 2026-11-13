@@ -1,0 +1,388 @@
+{
+  "tests": [
+    {
+      "test": "test_alpha_integration_interactions.js",
+      "exit": 0,
+      "output": "PASS 21/21 integration state/interaction checks (Node VM, not browser)\n"
+    },
+    {
+      "test": "test_alpha_pause_preservation.js",
+      "exit": 0,
+      "output": "PASS 13/13 pause-preservation and chapter-reset assertions (Node VM)\n"
+    },
+    {
+      "test": "test_build_unica_persistencia.js",
+      "exit": 0,
+      "output": "PASS 10/10: Terraço válido, decisões/etapa/beat preservados, retomada visual, memória, pausa inicial protegida (Node VM/DOM simulado).\n"
+    },
+    {
+      "test": "test_ch2_bench_lockup.js",
+      "exit": 0,
+      "output": "PASS pre-repair workbench is usable as intended\nPASS finished workbench is removed from available interactions\nPASS following the terminal instruction allows Aura farewell\nPASS valid apartment story still presents its radio line\nPASS unexpected story event is reported, not reexecuted forever\nPASS repaired workbench cannot corrupt progress on repeated touch\nPASS chapter title does not display continue while loading assets\nCH2 LOCKUP RESULT 7/7\n"
+    },
+    {
+      "test": "test_ch3_puzzle_focused_space.js",
+      "exit": 0,
+      "output": "PASS Chapter 3 focused Space vs puzzle shortcuts (Node VM/DOM simulado)\n"
+    },
+    {
+      "test": "test_ch7_puzzle_focused_buttons.js",
+      "exit": 0,
+      "output": "PASS Node VM: Cap7 focused puzzle controls, shortcuts and patch/hack progression\n"
+    },
+    {
+      "test": "test_ch7_speaker_causality.js",
+      "exit": 0,
+      "output": "PASS Chapter 7: ponte física, sacrifício, atribuição de fala a Alexandra\n"
+    },
+    {
+      "test": "test_editorial_47_minutos.js",
+      "exit": 0,
+      "output": "PASS 5/5: evidência ambígua, instância sem origem, retorno local, morte definitiva, transição ao luto\n"
+    },
+    {
+      "test": "test_editorial_aura_bench.js",
+      "exit": 0,
+      "output": "PASS first encounter cannot trigger before power and recognition\nPASS mirror, scan, shelf and terminal gate the route\nPASS meeting opens dialogue only by interacting with Aura\nPASS bench cannot be used before first encounter\nPASS bench requires a separate interaction after meeting\nPASS first meeting uses introductions before name and limits premature revelations\nPASS all three first contact choices persist to narrative memory\nPASS bench mistake records consequence but only success unlocks progress\nPASS parting preserves three nonromantic choices and next chapter\nPASS Work continuity keeps decisions across save and reload\nPASS prior promises are recalled at relevant beat, not stacked in opening\nPASS all first-contact paths get a grounded consequence\nPASS club boundaries never invent a promise about a protected copy\nPASS all three club routes preserve distinct accurate recollections\nPASS consequence does not fabricate asking for a password or welfare inquiry\nAURA BENCH RESULT 15 / 15\n"
+    },
+    {
+      "test": "test_editorial_chapter1.js",
+      "exit": 0,
+      "output": "PASS The opening screen does not reveal chapter 3 time stamp\nPASS First talk with Neri offers three different choices\nPASS Neri rescue needs prior acceptance and scanner confirmation\nPASS Jinx contacts the daughter without claiming treatment\nPASS Leaving with active Neri case records unresolved consequence\nPASS Walking past Neri without interaction is not silently counted as a rescue\nPASS Explicit refusal is not overwritten by departure\nPASS Lia reacts to the actual clinic outcome, not an invented one\nPASS Chapter-1 consequence survives continuity snapshot and restoration\nEDITORIAL C1 RESULT 9/9\n"
+    },
+    {
+      "test": "test_editorial_chapter1_walkthrough.js",
+      "exit": 0,
+      "output": "PASS home bench scan + exit into district\nPASS Mara repair physical scanner interaction\nPASS Neri prior consent + clinic scan + admission\nPASS district exit to trace and Neri consequence recorded\nEDITORIAL WALKTHROUGH 4/4; no flags or x teleport; engine-only\n"
+    },
+    {
+      "test": "test_editorial_club_parents_causality.js",
+      "exit": 0,
+      "output": "PASS chapter 7 parents recall, option 0\nPASS chapter 7 parents recall, option 1\nPASS chapter 7 parents recall, option 2\nPASS new run does not invent club parents history\n"
+    },
+    {
+      "test": "test_editorial_enlace_club_causality.js",
+      "exit": 0,
+      "output": "PASS research correct and persists\nPASS personal correct and persists\nPASS boundary correct and persists\nPASS fresh-run isolation\n"
+    },
+    {
+      "test": "test_editorial_enlace_terrace_causality.js",
+      "exit": 0,
+      "output": "PASS Enlace -> Terraço continuity: research Ao fim do enlace, Sierra disse que voltaria para entender o código com Aura. A cópia ainda precisa ser examinada; hoje as duas começam pela conversa.\nPASS Enlace -> Terraço continuity: personal No fim do enlace, Sierra pediu um encontro sem conectar nada. Aura mencionou um café, sem marcar hora. Hoje a rede está desligada.\nPASS Enlace -> Terraço continuity: boundary Sierra exigiu uma rota de saída antes de qualquer novo enlace. Aura concordou em mostrar o caminho antes de conectar outra vez. Hoje não há conexão ativa.\nPASS fresh run isolation and saved memory restoration\n"
+    },
+    {
+      "test": "test_editorial_interlude.js",
+      "exit": 0,
+      "output": "PASS 26 verificações do Interlúdio: recusa, toque breve encerrado, voz, intimidade opcional e persistência de flags (Node VM).\n"
+    },
+    {
+      "test": "test_editorial_terrace.js",
+      "exit": 0,
+      "output": "5/5 cenários: beijo independente, sexo opcional, sono sem sexo, despedida, sonho condicionado e promessa Enlace\n"
+    },
+    {
+      "test": "test_editorial_trace_approach.js",
+      "exit": 0,
+      "output": "PASS Passageiro tem um único roteiro canônico e não identifica quem viu\nPASS Música exige a decisão de investigar, e o retorno verifica só o que passageiro ouviu\nPASS Corredor cria pista física sem nome automático antes de tocar interfone\nPASS Camera rende reação cautelosa de Jinx só após Sierra recuperar o registro\nPASS Saída do rastro não ignora evidências obrigatórias\nPASS Porta conclui fase apenas após proximidade e interação, com interfone opcional\nEDITORIAL TRACE/APPROACH 6/6\n"
+    },
+    {
+      "test": "test_interlude_sprite_scale.js",
+      "exit": 0,
+      "output": "PASS 7/7 Interludio sprite: standing heights, seated heights, grounding and proportion (Node mocked canvas)\n"
+    },
+    {
+      "test": "test_p1_cadillac_motion.js",
+      "exit": 0,
+      "output": "PASS Cadillac: body unchanged, two clipped wheel hubs rotate continuously as distance increases (Node mocked canvas)\n"
+    },
+    {
+      "test": "test_p1_environment_consequences.js",
+      "exit": 0,
+      "output": "PASS P1: 3 environmental interactions, journal persistence, no duplication, narrative phase guards, cafe render scale\n"
+    },
+    {
+      "test": "test_p1_numpad_choices.js",
+      "exit": 0,
+      "output": "PASS 5 chapters: keyboard and numpad choices 1/2/3 mappings\n"
+    },
+    {
+      "test": "test_p1_room_scale_consistency.js",
+      "exit": 0,
+      "output": "PASS home Sierra relative scale normalized between chapter 1 and chapter 6 (source assertion)\n"
+    },
+    {
+      "test": "test_p2_interlude_choice_echoes.js",
+      "exit": 0,
+      "output": "PASS P2: 6 choice-dependent callbacks and 2 no-choice fallbacks\n"
+    },
+    {
+      "test": "test_p2_render_collision_alignment.js",
+      "exit": 0,
+      "output": "PASS 5 / 5: feet baselines, locked room, visual affordance, unlock transition, no sprite replacement\n"
+    },
+    {
+      "test": "test_p3_integrated_refinements.js",
+      "exit": 0,
+      "output": "PASS P3: 64 mixer combinations, invalid inputs, solve guards, crouch aspect/anchor/fallback, HUD disclosure and damage visibility (VM mocks).\n"
+    },
+    {
+      "test": "test_public_end_menu.js",
+      "exit": 0,
+      "output": "PASS public ending menus return to title; ?qa selector unchanged (Node VM / DOM-independent)\n"
+    },
+    {
+      "test": "test_visible_controls_space_keyboard.js",
+      "exit": 0,
+      "output": "PASS 13/13: visible controls keep native Space, hidden controls do not intercept gameplay, movement/use/pause preserved (Node VM only)\n"
+    },
+    {
+      "test": "test_work_multitouch.js",
+      "exit": 0,
+      "output": "10/10 multitouch/lifecycle checks (Node VM; no physical Android)\n"
+    },
+    {
+      "test": "test_work_story_isolation.js",
+      "exit": 0,
+      "output": "14/14 Work regressions: branch-local consequences, canonical source unchanged, and new-run isolation\n"
+    },
+    {
+      "test": "test_work_terrace_state.js",
+      "exit": 0,
+      "output": "7/7 Terraço state, save-visible sky CSS and public/QA chapter selector checks (controlled JS harness)\n"
+    }
+  ],
+  "syntax": [
+    {
+      "file": "TESTES_MOTOR_RC44.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "apartment-engine.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "apartment.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "cadillac-intro.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "chapter-select.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "character-arcs.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "club-crowd.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "club-engine.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "club-story.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "club.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "coffee-sprites.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "dialogue-cohesion.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "engine.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "game.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "ghost-engine.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "ghost-story.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "ghost.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "interlude-engine.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "interlude-story.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "interlude.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "interval-engine.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "interval-story.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "interval.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "lifecycle.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "narrative-consequences.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "neo-art-actors.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "neo-hud.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "neo-signal-effects.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "npc-quests.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "prelude-engine.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "prelude.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "production-art.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "prologue.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "qa.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "rc29-polish.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "rc32-atmosphere.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "rc37-campaign.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "rc37-gemini-bridge.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "runtime.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "scenery-finish.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "story-continuity.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "terrace-story.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "terrace.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "uprising-engine.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "uprising.js",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "file": "world-life.js",
+      "exit": 0,
+      "output": ""
+    }
+  ],
+  "html_references": 47,
+  "choices_unchanged": true
+}

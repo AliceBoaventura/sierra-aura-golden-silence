@@ -1,0 +1,22 @@
+'use strict';
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const c={console};c.window=c;c.globalThis=c;vm.createContext(c);
+for(const fn of ['runtime.js','interlude-story.js','interlude-engine.js'])vm.runInContext(fs.readFileSync(fn,'utf8'),c,{filename:fn});
+const I=c.Interlude,s=I.create();I.change(s,'depot',640);s.mode='playing';s.flags.depotUnlocked=true;
+const tick=(n=1,input={})=>{for(let i=0;i<n;i++)I.step(s,input,.03)};
+const next=(choice=0)=>{let k=0;while(['interludeDialogue','interludeSilence'].includes(s.mode)&&k++<400){if(s.mode==='interludeSilence'){tick(10);continue;}const line=s.dialogueLines[s.lineIndex];assert.ok(line);I.advance(s,line.choices?choice:undefined);}assert.ok(k<400,'dialogue does not terminate')};
+const use=id=>{const o=I.objects.depot.find(x=>x.id===id);assert.ok(o);s.x=o.x;tick(22);s.useWas=false;tick(1,{scan:true,use:true});};
+for(const id of ['depotBoard','depotArchive','depotTape','depotTerminal']){use(id);assert.equal(s.mode,'interludeDialogue');next();assert.equal(s.flags[id],true);assert.equal(s.flags.depotFinal,undefined);}
+use('depotTerminal');assert.equal(s.dialogue,'depotCompare');assert.equal(s.dialogueLines.length,1,'correct deduction must not inject exposition');
+I.advance(s,1);
+assert.equal(s.flags.choice_depotDeduction,1);
+assert.equal(s.flags.depotFinal,true);
+assert.equal(s.mode,'interludeCinematic');
+assert.equal(s.dialogue,null,'no post-evidence dialogue');
+assert.ok(s.flags.depotResolveAt>=0);
+assert.equal(s.events.some(e=>e.type==='dialogue' && e.detail?.id==='depotFinal'),false,'no Jinx speech should open');
+for(let i=0;i<800;i++)tick();
+assert.equal(s.stage,'end');assert.equal(s.mode,'won');
+const js=fs.readFileSync('interlude.js','utf8');
+for(const line of ['Ela descobriu demais.','E pagou o preço por isso.','Eles acham que acabou.','Então vamos mostrar como começa.'])assert.ok(js.includes(line));
+console.log('RC56 PASS: four clues, correct deduction -> immediate 4-line cinematic -> FIM DA DEMO');

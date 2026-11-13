@@ -1,0 +1,15 @@
+/* P60 integrated: Chapter 7 HUD no longer overlaps the mobile action area. */
+@media(max-width:600px){
+ #game.interval-mode>.hud{padding:5px 8px!important;align-items:start!important;}
+ #game.interval-mode>.hud .mission{max-width:42vw!important;}
+ #game.interval-mode>.hud .menu{max-width:58vw!important;}
+ #game.interval-mode>.hud .mission-tools{position:static!important;}
+ #game.interval-mode>.hud #intervalJournal{font-size:10px!important;min-height:30px!important;}
+ #game.interval-mode>.hint{max-width:45vw!important;line-height:1.3!important;}
+ #game.interval-mode>.radio{max-height:18dvh!important;overflow:auto!important;}
+ #game.interval-aftermath>#intervalDialogue:not(.hidden){bottom:1.5%!important;max-height:33dvh!important;}
+}
+
+/* The observation feed owns this cinematic. REGISTROS stays available in
+   playable scenes but never floats across Alexandra's death monitor. */
+#game.interval-mode[data-interval-ending="true"] #intervalJournal{display:none!important;}

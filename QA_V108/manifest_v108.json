@@ -1,0 +1,51 @@
+{
+  "baseline": "SIERRA_AURA_RC73_V107_DEMO_PUBLICA_DIRECAO_NARRATIVA_20261107.zip",
+  "baselineEntries": 638,
+  "baselinePreservedHashIdentical": 632,
+  "baselineModified": [
+    "apartment-engine.js",
+    "apartment.js",
+    "game.js",
+    "ghost-engine.js",
+    "index.html",
+    "runtime.js"
+  ],
+  "newPaths": [
+    "QA_V108/apartment_hotspots_debug_chromium.png",
+    "QA_V108/apartment_vinyl_real_chromium.png",
+    "QA_V108/browser_pilot.json",
+    "QA_V108/ghost_sofa_debug_chromium.png",
+    "hotspot-registry-v108.js",
+    "tests/test_v108_hotspot_standard.js"
+  ],
+  "qaNode": "94/94 PASS",
+  "browser": {
+    "load": {
+      "ready": true,
+      "assets": 8,
+      "gh": 5
+    },
+    "missingFiles": [],
+    "pageErrors": [],
+    "screenshots": [
+      "apartment_vinyl_real_chromium.png",
+      "apartment_hotspots_debug_chromium.png",
+      "ghost_sofa_debug_chromium.png"
+    ]
+  },
+  "piloted": {
+    "scenes": 3,
+    "hotspots": 26
+  },
+  "acceptedExternalInventory": {
+    "scenes": 22,
+    "hotspots": 110
+  },
+  "notHomologated": [
+    "remaining scenes / hotspots",
+    "character animation matrix per state",
+    "full uninterrupted campaign",
+    "hosted save recovery",
+    "physical Android"
+  ]
+}

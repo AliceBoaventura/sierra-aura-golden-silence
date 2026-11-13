@@ -1,0 +1,72 @@
+{
+  "alex-casual": {
+    "source": "assets/rebuild/actors/alexandra-casual-walk-rc73.png",
+    "canvas": [
+      336,
+      540
+    ],
+    "reference_visible_height": 527,
+    "feet": 540,
+    "source_boxes": [
+      [
+        191,
+        7,
+        382,
+        534
+      ],
+      [
+        129,
+        7,
+        445,
+        533
+      ],
+      [
+        191,
+        7,
+        382,
+        534
+      ],
+      [
+        129,
+        7,
+        445,
+        533
+      ]
+    ]
+  },
+  "alex-ghost": {
+    "source": "assets/rebuild/actors/alexandra-walk-ghost.png",
+    "canvas": [
+      360,
+      640
+    ],
+    "reference_visible_height": 627,
+    "feet": 640,
+    "source_boxes": [
+      [
+        80,
+        45,
+        335,
+        672
+      ],
+      [
+        40,
+        54,
+        374,
+        672
+      ],
+      [
+        80,
+        45,
+        335,
+        672
+      ],
+      [
+        55,
+        57,
+        385,
+        672
+      ]
+    ]
+  }
+}

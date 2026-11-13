@@ -1,0 +1,5 @@
+/* V5: restore actual chapter geometry; V4 position:relative clipped text on desktop. */
+#game.rooftop-mode #terraceDialogue{position:absolute;right:3%;left:auto;top:140px;bottom:26px;width:39%;box-sizing:border-box;transform:none;overflow-y:auto;}
+@media(max-aspect-ratio:11/10){#game.rooftop-mode #terraceDialogue{position:absolute;top:46%;bottom:0;left:0;right:0;width:100%;box-sizing:border-box;}}
+@media(min-aspect-ratio:11/10) and (max-height:560px){#game.rooftop-mode #terraceDialogue{top:90px;bottom:12px;right:2%;width:44%;}}
+#clubDialogue[data-v4-cast="jinx"]::after,#ghostDialogue[data-v4-cast="jinx"]::after,#intervalDialogue[data-v4-cast="jinx"]::after,#interludeDialogue[data-v4-cast="jinx"]::after{background-image:url("assets/visual-v5/portrait-jinx-v5.png");}

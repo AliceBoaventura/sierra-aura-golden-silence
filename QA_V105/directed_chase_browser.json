@@ -1,0 +1,117 @@
+{
+  "errors": [],
+  "missing": [],
+  "steps": [
+    [
+      "booth_to_raid",
+      {
+        "chapter": 5,
+        "stage": "raid",
+        "mode": "playing",
+        "x": 2450,
+        "jinxX": 2575,
+        "hp": 3,
+        "latchRead": false,
+        "latch": false,
+        "guards": 2,
+        "dialogue": "closeness"
+      }
+    ],
+    [
+      "raid_run",
+      {
+        "chapter": 5,
+        "stage": "raid",
+        "mode": "playing",
+        "x": 3161,
+        "jinxX": 3148,
+        "hp": 3,
+        "latchRead": false,
+        "latch": false,
+        "guards": 2,
+        "dialogue": "closeness"
+      }
+    ],
+    [
+      "raid_exit",
+      {
+        "chapter": 5,
+        "stage": "escape",
+        "mode": "playing",
+        "x": 150,
+        "jinxX": 65,
+        "hp": 3,
+        "latchRead": false,
+        "latch": false,
+        "guards": 1,
+        "dialogue": "closeness"
+      }
+    ],
+    [
+      "reader_scanner",
+      {
+        "chapter": 5,
+        "stage": "escape",
+        "mode": "playing",
+        "x": 1370,
+        "jinxX": 1279,
+        "hp": 3,
+        "latchRead": true,
+        "latch": false,
+        "guards": 1,
+        "dialogue": "closeness"
+      }
+    ],
+    [
+      "reader_opened",
+      {
+        "chapter": 5,
+        "stage": "escape",
+        "mode": "playing",
+        "x": 1370,
+        "jinxX": 1274,
+        "hp": 3,
+        "latchRead": true,
+        "latch": true,
+        "guards": 1,
+        "dialogue": "closeness"
+      }
+    ],
+    [
+      "boarding_dialogue",
+      {
+        "chapter": 5,
+        "stage": "escape",
+        "mode": "clubDialogue",
+        "x": 2610,
+        "jinxX": 2520,
+        "hp": 3,
+        "latchRead": true,
+        "latch": true,
+        "guards": 0,
+        "dialogue": "boarding"
+      }
+    ],
+    [
+      "cadillac",
+      {
+        "chapter": 5,
+        "stage": "drive",
+        "mode": "playing",
+        "x": 150,
+        "jinxX": 75,
+        "hp": 3,
+        "latchRead": true,
+        "latch": true,
+        "guards": 0,
+        "dialogue": "boarding"
+      }
+    ]
+  ],
+  "mobile": {
+    "viewport": 390,
+    "scrollWidth": 390,
+    "stage": "raid"
+  },
+  "pass": true
+}

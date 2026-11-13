@@ -1,0 +1,11 @@
+'use strict';
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const c={console,NeoRuntime:{reset(){},delta:d=>d,motion(){},follow(){},scan(){},closest(){return {id:'contact',x:2150};}}};c.globalThis=c;vm.createContext(c);
+for(const f of ['interval-story.js','interval-engine.js'])vm.runInContext(fs.readFileSync(__dirname+'/../'+f,'utf8'),c,{filename:f});
+const s=c.Interval.create();s.stage='sacrifice';s.avatar='alex';s.x=2150;s.flags.override=true;s.sacrificeProgress=3.95;
+c.Interval.step(s,{use:true},.1);
+assert.strictEqual(s.flags.sacrificed,true,'A ponte deveria ser mantida por Alexandra');
+assert.strictEqual(s.dialogue,'sacrificeEnd');
+assert.strictEqual(c.IntervalStory.sacrificeEnd[0].who,'ALEXANDRA / CIRCUITO LOCAL','A fala de quem segura a ponte precisa ser atribuída a Alexandra');
+assert(c.IntervalStory.sacrificeEnd[0].text.includes('Eu seguro a ponte'));
+console.log('PASS Chapter 7: ponte física, sacrifício, atribuição de fala a Alexandra');

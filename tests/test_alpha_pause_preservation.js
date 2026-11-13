@@ -1,0 +1,18 @@
+'use strict';
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const text=fs.readFileSync(__dirname+'/../lifecycle.js','utf8');
+const a=text.indexOf('function resetInput('), b=text.indexOf('function exitChapter(',a);
+assert(a>=0&&b>a,'Reset input function was not found');
+const state={mode:'playing',traceProgress:.85,fragment:.37,progress:1.1,focusId:'drawer',puzzle:{index:2},seen:{mirror:true},flags:{trace:true},vx:180,scan:true,useWas:false,grounded:true};
+const keys=new Set(['KeyD']),touchKeys=new Set(['right']),tapQueue=new Set(['use']),pointers=new Map();
+let resets=0;const controls={classList:{remove(){}}};
+const sandbox={state,keys,touchKeys,tapQueue,pointers,scanToggle:true,input:{left:false,right:true,use:true,scan:true},document:{querySelectorAll(){return [];}},$:()=>controls,NeoRuntime:{reset(s){resets++;s.traceProgress=0;s.fragment=0;s.focusId=null;s.puzzle=null;s.progress=0;}},releasePointer(){}};
+vm.createContext(sandbox);vm.runInContext(text.slice(a,b),sandbox);
+vm.runInContext('resetInput(true)',sandbox);
+assert.strictEqual(resets,0,'Pausing should not reset gameplay state');
+assert.strictEqual(state.traceProgress,.85);assert.strictEqual(state.fragment,.37);assert.strictEqual(state.progress,1.1);assert.strictEqual(state.focusId,'drawer');assert.strictEqual(state.puzzle.index,2);assert.strictEqual(state.flags.trace,true);
+assert.strictEqual(state.vx,0);assert.strictEqual(state.useWas,true);assert.strictEqual(state.scan,false);
+assert.strictEqual(keys.size,0);assert.strictEqual(touchKeys.size,0);assert.strictEqual(tapQueue.size,0);
+vm.runInContext('resetInput(false)',sandbox);
+assert.strictEqual(resets,1,'Leaving chapter should reset transient state');
+console.log('PASS 13/13 pause-preservation and chapter-reset assertions (Node VM)');

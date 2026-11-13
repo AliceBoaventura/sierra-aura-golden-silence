@@ -1,0 +1,31 @@
+{
+  "carCrop": [
+    14,
+    211,
+    1761,
+    679
+  ],
+  "sprites": {
+    "jinx": [
+      78,
+      24,
+      483,
+      634
+    ],
+    "sierra": [
+      141,
+      24,
+      530,
+      683
+    ]
+  },
+  "widthBefore": 425,
+  "widthAfter": 760,
+  "visibleActorHeight": {
+    "jinx": 278,
+    "sierra": 218
+  },
+  "carHeightBefore": 113.85,
+  "carHeightAfter": 203.59,
+  "chromiumComposite": true
+}

@@ -1,0 +1,15 @@
+/* FINAL DA DEMO: composição minimalista, preservando a ordem e as falas originais. */
+/* ENCERRAMENTO CANÔNICO — composição única, sem cabeçalhos, sem arte ampliada. */
+#game .depot-final-p38{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;background:#05050b;isolation:isolate}
+#game .depot-final-p38-backdrop,#game .depot-final-p38::before,#game .depot-final-p38::after,#game .depot-final-p38-kicker,#game .depot-final-p38-evidence{display:none!important;content:none!important}
+#game .depot-final-p38-face{position:relative;z-index:2;display:block;flex:none;align-self:center;justify-self:center;width:clamp(80px,12vw,130px);height:clamp(110px,25vh,170px);max-width:130px;max-height:170px;object-fit:contain;object-position:center bottom;image-rendering:pixelated;filter:none!important;animation:none!important;transform:none!important}
+#game .depot-final-p38-caption{position:relative;z-index:3;display:block;align-self:center;justify-self:center;min-height:0;width:min(90%,520px);max-width:520px;margin:0;padding:0;border:0!important;background:none!important;box-shadow:none!important;text-align:center;animation:none!important}
+#game .depot-final-p38-name{font:700 12px/1.5 ui-monospace,monospace;letter-spacing:.09em;color:#ff92d1;margin:0 0 5px}
+#game .depot-final-p38-line{font:500 clamp(17px,2vw,23px)/1.4 system-ui,sans-serif;color:#fff4fb;letter-spacing:0;text-align:center;text-wrap:balance;margin:0}
+#game .depot-final-p38.p46-shot-enter .depot-final-p38-face,#game .depot-final-p38.p46-shot-enter .depot-final-p38-caption{animation:none!important}
+@media(prefers-reduced-motion:reduce){#game .depot-final-p38 *{animation:none!important;transition:none!important}}
+@media(max-width:760px),(max-aspect-ratio:10/11){#game .depot-final-p38{gap:10px;padding:16px}#game .depot-final-p38-face{width:min(29vw,110px);height:min(22dvh,145px)}#game .depot-final-p38-caption{width:94%}#game .depot-final-p38-line{font-size:clamp(17px,4.3vw,21px)}}
+
+/* Retratos originais do Depósito 47: enquadramento de meio rosto, sem ampliação cinematográfica. */
+#game .depot-final-p38-face{width:min(52vw,240px)!important;height:auto!important;max-width:240px!important;max-height:94px!important;aspect-ratio:360 / 141;object-fit:contain!important;object-position:center!important;image-rendering:pixelated!important;}
+@media(max-width:760px){#game .depot-final-p38-face{width:min(54vw,210px)!important;max-width:210px!important;max-height:83px!important;}}

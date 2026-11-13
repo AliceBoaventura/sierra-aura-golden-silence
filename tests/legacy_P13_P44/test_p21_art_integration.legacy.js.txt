@@ -1,0 +1,24 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const base=path.resolve(__dirname,'..'),js=fs.readFileSync(path.join(base,'interlude.js'),'utf8');
+for(const name of ['mural','ficharios','fita','terminal','aura-idle']){
+ const file=path.join(base,`depot-p21-${name}.png`);
+ assert(fs.existsSync(file),file);
+ assert(fs.statSync(file).size>15000,file);
+ assert(js.includes("'depot-p21-'+name+'.png'") || js.includes(`depot-p21-${name}.png`),name);
+}
+assert(js.includes('const baseY=535'));
+assert(js.includes('drawDepotEvidence(s)'));
+assert(js.includes('ctx.drawImage(depotP21Aura,frame*192'));
+assert(!js.includes("label(o.name,o.x,ay-25,'#f0d29e',12);}\n ctx.restore();"));
+const c={console};c.window=c;c.globalThis=c;vm.createContext(c);
+for(const f of ['runtime.js','interlude-story.js','interlude-engine.js'])vm.runInContext(fs.readFileSync(path.join(base,f),'utf8'),c,{filename:f});
+const s=c.Interlude.create();c.Interlude.change(s,'depotApproach',1500);s.mode='interludeCinematic';
+for(let i=0;i<710;i++)c.Interlude.step(s,{},.03);
+assert.equal(s.stage,'depot');assert.equal(s.mode,'playing');
+for(const [id,x] of [['depotBoard',780],['depotArchive',1230],['depotTape',1430],['depotTerminal',1650]]){
+ s.x=x;s.useWas=false;c.Interlude.step(s,{use:true},.03);assert.equal(s.flags[id],true);assert.equal(s.depotInspectArt,id);
+}
+s.x=1650;s.useWas=false;c.Interlude.step(s,{use:true},.03);assert.equal(s.stage,'end');
+for(let i=0;i<50;i++)c.Interlude.step(s,{},.03);assert.equal(s.mode,'won');
+console.log('PASS P21: 5 sprites referenced, animations, four clues, interaction and deliberate ending');

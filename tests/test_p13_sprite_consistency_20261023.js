@@ -1,0 +1,20 @@
+'use strict';
+const fs=require('fs'),assert=require('assert'),vm=require('vm'),path=require('path');
+const root=path.join(__dirname,'..');
+const interlude=fs.readFileSync(path.join(root,'interlude.js'),'utf8');
+const coffee=fs.readFileSync(path.join(root,'coffee-sprites.js'),'utf8');
+assert(interlude.includes('218*(Interlude.widths.home/Prelude.widths.home)'), 'Room sprites scale with architectural width');
+assert(interlude.includes("['home','homeEnd','morning'].includes(s.stage)?homeSpriteHeight:null"), 'Both visits to Sierra room use corrected height');
+assert(interlude.includes('homeCatScale=Interlude.widths.home/Prelude.widths.home')&&interlude.includes('drawCat(250,790,homeCatScale)'), 'Cat proportions stay consistent in idle and petting states');
+assert(interlude.includes('183*(Interlude.widths.home/Prelude.widths.home)'), 'Interaction pose uses same scale');
+assert(!interlude.includes('ctx.drawImage(interludeCafe,475,501,284,39,475,501,284,39)'), 'Wrong cafe occlusion strip removed');
+assert(coffee.includes('heightOverride=null'), 'World height can be overridden only where needed');
+const calls=[];
+class MockImage{constructor(){this.complete=true;this.naturalWidth=1536;this.naturalHeight=1024;}set src(v){this._src=v;if(this.onload)this.onload();}}
+const ctx={save(){},restore(){},translate(){},scale(){},beginPath(){},ellipse(){},fill(){},drawImage(){}};
+const env={Image:MockImage,ctx,state:{chapter:8,stage:'home'},actorsLoaded:true,jinxMotionReady:false,window:{},console,Math,$:()=>({}),interludeReady(){},drawActorFrame(i,h){calls.push(h);},drawJinxFrame(i,w,h){calls.push(h);}};
+vm.createContext(env);vm.runInContext(coffee,env);
+vm.runInContext("coffeeActor(200,800,1,0,false,'sierra',false,286);coffeeActor(200,800,1,0,false,'sierra');",env);
+assert.strictEqual(calls[0],286,'Room character is scaled to room');
+assert.strictEqual(calls[1],208,'Cafe/exterior character retains original scale');
+console.log('PASS P13 sprite regression: room ratios, seated pose, cafe mask, baseline');

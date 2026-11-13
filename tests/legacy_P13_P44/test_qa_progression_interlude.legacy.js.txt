@@ -1,0 +1,21 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');const root=path.resolve(__dirname,'..');const c={console};c.window=c;c.globalThis=c;vm.createContext(c);
+for(const f of ['runtime.js','interlude-story.js','interlude-engine.js'])vm.runInContext(fs.readFileSync(path.join(root,f),'utf8'),c,{filename:f});
+const I=c.Interlude,s=I.create(),log=[];
+function tick(i={},n=1){for(let k=0;k<n;k++)I.step(s,i,.03);}
+function complete(max=1200){let n=0;while(['interludeDialogue','interludeSilence'].includes(s.mode)&&n++<max){if(s.mode==='interludeSilence')tick();else {const line=s.dialogueLines[s.lineIndex];assert(line,'dialogue line missing');I.advance(s,line.choices?0:undefined);}}assert(n<max,`dialogue loop stuck at ${s.dialogue} ${s.stage}`);}
+function walk(x){let n=0;while(Math.abs(s.x-x)>5&&n++<1100){tick({[s.x<x?'right':'left']:true});if(s.mode==='interludeDialogue'||s.mode==='interludeSilence')complete();}assert(n<1100,`walk stuck ${s.stage} ${s.x} ${x}`);}
+function use(x){walk(x);tick();tick({use:true});complete();tick();}
+tick({},315);assert.equal(s.stage,'home');tick({},130);use(690);assert(s.flags.honk);use(1540);assert.equal(s.stage,'walk');log.push('Interlúdio casa e convite de Jinx');
+walk(2230);assert(s.seen.walk2);use(2230);assert.equal(s.stage,'cafe');use(1570);assert(s.flags.ordered);use(805);assert(s.flags.cafe3);assert(s.flags.resting);tick();tick({use:true});assert(!s.flags.resting);use(1960);assert.equal(s.stage,'returnWalk');log.push('Interlúdio caminhada, café e escolhas');
+walk(260);use(260);assert.equal(s.stage,'doorstep');while(!s.flags.finalSaid){tick({right:true});complete();}assert.equal(s.departurePhase,'embrace');tick({},620);assert.equal(s.stage,'homeEnd');assert(s.minute>=55);log.push('Despedida de Jinx, Cadillac e chuva');
+while(!s.flags.cloudStarted){tick({left:true});complete();}assert(s.flags.cloudStarted);assert(s.flags.sleeping);tick({},380);assert.equal(s.stage,'depotTitle');assert.equal(s.mode,'interludeCinematic');
+let arrival=0;const stages=new Set();while(s.stage!=='depot'&&arrival++<1400){stages.add(s.stage);tick();}assert(arrival<1400,'arrival stalled');
+for(const stage of ['depotTitle','depotDrive','depotApproach'])assert(stages.has(stage),stage);
+assert.equal(s.mode,'playing');for(const id of ['depotBoard','depotArchive','depotTape','depotTerminal']){use(I.objects.depot.find(o=>o.id===id).x);assert(s.flags[id]);}
+tick({},35);tick({use:true});assert.equal(s.dialogue,'depotCompare');I.advance(s,1);complete();
+let steps=0;while(s.stage!=='end'&&steps++<4000)tick();assert(steps<4000,'cutscene não terminou');
+assert.equal(s.flags.depotUnlocked,true);assert.equal(s.flags.depotFinal,true);tick({},45);assert.equal(s.mode,'won');
+log.push('3 DIAS DEPOIS, porta 47, trajeto, chegada, investigação interativa, dedução e FIM DA DEMO');
+const final=c.InterludeStory.final.map(x=>x.text||'').join(' ');assert(final.includes('Si, irmã... Nunca vi você assim. É como se você e Aura fossem uma só agora.'));assert(final.includes('Só não some. nunca.'));
+console.log(JSON.stringify({status:'PASS',steps:log,notes:'Motor Node com caminhada, ações e escolhas; não valida câmera, sprites ou FPS real.'},null,2));

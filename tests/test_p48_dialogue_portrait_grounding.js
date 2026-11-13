@@ -1,0 +1,16 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const root=path.join(__dirname,'..');
+const css=fs.readFileSync(path.join(root,'style.css'),'utf8');
+const patch=css.slice(css.lastIndexOf('/* P48 · portrait anchoring'));
+assert(patch.includes('.dialogue-coherent:not(.hidden):has(> .dialogue-avatar)'), 'reserve space only with a visible avatar');
+assert(patch.includes('position:absolute!important;')&&patch.includes('float:none!important;'),'avatar is no longer an unanchored float');
+assert(patch.includes('margin:0!important;'),'old negative margins are overridden');
+assert(patch.includes('overflow-x:hidden!important;'),'portrait cannot bleed outside the dialogue');
+assert(patch.includes('@media(max-width:600px)'), 'mobile needs explicit dimensions');
+const js=fs.readFileSync(path.join(root,'club.js'),'utf8');
+assert(js.includes('drawClubPursuit(s)'),'armed guards must be in the actual renderer');
+assert(js.includes('ctx.translate(Math.round(guard.x),800)'), 'guard feet share grounded world coordinates');
+assert(/drawCadillac\(\d+,800,\d+\)/.test(js), 'car must share the actors ground at y=800');
+assert(js.includes('actor(s.jinxX,800'),'Jinx must be a real world actor during the escape');
+console.log('PASS P48 visible portrait anchoring + in-world guard and Jinx sprite placement');

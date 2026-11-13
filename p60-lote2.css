@@ -1,0 +1,18 @@
+/* P60 / LOT 2. Smartphone readability while preserving all choices. */
+@media(max-width:700px){
+ #game.club-mode:has(>#clubDialogue:not(.hidden)) #clubJournal,
+ #game.club-mode:has(>#clubDialogue:not(.hidden)) .hint,
+ #game.club-mode:has(>#clubDialogue:not(.hidden)) .radio{display:none!important}
+ /* Remove portrait gutter only on narrow displays: it compresses choice text. */
+ #game.club-mode #clubDialogue.dialogue-coherent:not(.hidden):has(>.dialogue-avatar){
+   padding:10px 12px!important;width:calc(100% - 18px)!important;max-height:min(57dvh,515px)!important;
+ }
+ #game.club-mode #clubDialogue.dialogue-coherent>.dialogue-avatar{display:none!important}
+ #game.club-mode #clubDialogue .club-choices{max-height:33dvh!important}
+ #game.club-mode #clubDialogue .club-choices button{min-height:42px!important;padding:9px 10px!important}
+ #game.club-mode #clubDialogue .club-aside{font-size:11px!important;line-height:1.30!important;margin:2px 0 7px!important}
+ #game.club-mode #clubDialogue .club-line{font-size:14px!important;line-height:1.40!important;margin:4px 0 8px!important}
+ #game.club-mode #clubDialogue .club-help{font-size:10px!important;opacity:.70}
+ /* Do not render independent HUDs above Alex's observation feed. */
+ #game[data-interval-ending="true"] #intervalJournal{display:none!important}
+}

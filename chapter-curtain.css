@@ -1,0 +1,18 @@
+/* P13 · chapter-to-chapter cinematic intertitle. No background artwork. */
+#chapterCurtain{position:fixed;inset:0;z-index:2147483000;background:#020308;color:#f5f3f7;display:grid;place-items:center;overflow:hidden;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .56s cubic-bezier(.2,.7,.2,1),visibility 0s linear .56s;font-family:Arial,Helvetica,sans-serif}
+#chapterCurtain.cc-active{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .56s cubic-bezier(.2,.7,.2,1)}
+#chapterCurtain .cc-content{text-align:center;width:min(94vw,1120px);opacity:0;transform:translateY(20px) scale(.975);transition:opacity .42s ease,transform .58s cubic-bezier(.18,.8,.2,1)}
+#chapterCurtain.cc-title .cc-content{opacity:1;transform:translateY(0) scale(1)}
+#chapterCurtain .cc-overline{font-size:clamp(10px,1.15vw,14px);font-weight:700;letter-spacing:.52em;color:#ac9fb7;margin:0 0 1.1rem;text-indent:.52em}
+#chapterCurtain .cc-heading{font-family:Impact,'Arial Black',Arial,sans-serif;font-size:clamp(68px,15vw,205px);font-weight:900;line-height:.88;letter-spacing:-.065em;white-space:nowrap;margin:0;text-transform:uppercase;text-shadow:0 2px 35px #ffffff10}
+#chapterCurtain .cc-heading.cc-interlude{font-size:clamp(60px,12vw,165px)}
+#chapterCurtain .cc-rule{height:2px;width:min(300px,38vw);margin:clamp(19px,4vh,32px) auto 18px;background:linear-gradient(90deg,transparent,#ea58ad 25%,#e8e3e8 75%,transparent);transform:scaleX(.3);transition:transform .65s ease .1s}
+#chapterCurtain.cc-title .cc-rule{transform:scaleX(1)}
+#chapterCurtain .cc-subtitle{font-size:clamp(13px,2.1vw,24px);font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#e6dce8;margin:0;padding:0 12px;line-height:1.5}
+#chapterCurtain .cc-footer{position:absolute;bottom:max(5vh,20px);left:0;right:0;text-align:center;font-size:10px;letter-spacing:.36em;color:#7d7386}
+@media(max-width:600px){#chapterCurtain .cc-heading{font-size:clamp(54px,14.4vw,100px)}#chapterCurtain .cc-heading.cc-interlude{font-size:clamp(47px,11vw,80px)}#chapterCurtain .cc-overline{letter-spacing:.32em}#chapterCurtain .cc-subtitle{letter-spacing:.13em}#chapterCurtain .cc-footer{font-size:8px}}
+@media(prefers-reduced-motion:reduce){#chapterCurtain,#chapterCurtain .cc-content,#chapterCurtain .cc-rule{transition-duration:.01ms!important}}
+
+/* V10.7: quiet thesis line, not another modal or tutorial. */
+#chapterCurtain .cc-thesis{margin:clamp(9px,2vh,18px) auto 0;max-width:38rem;padding:0 1rem;color:#c4b2c7;font:500 clamp(12px,1.35vw,17px)/1.45 Georgia,serif;letter-spacing:.015em;text-wrap:balance}
+@media(max-width:600px){#chapterCurtain .cc-thesis{font-size:12px;max-width:92vw;margin-top:10px}}

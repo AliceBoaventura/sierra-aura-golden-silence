@@ -1,0 +1,126 @@
+/* RC70 / P1: deterministic layout rules AFTER RC69; no new scene assets. */
+#game{min-height:0!important;}
+/* The title actions are born in one static DOM container, not relocated by observers. */
+#game #overlay.title-screen:has(#cadillacWeather) .panel>.title-actions{
+ position:absolute!important;inset:auto auto max(22px,env(safe-area-inset-bottom,0px)) 50%!important;
+ transform:translateX(-50%)!important;display:none!important;
+ flex-direction:column!important;align-items:stretch!important;gap:8px!important;
+ width:min(340px,calc(100% - 32px))!important;min-width:0!important;
+ max-height:min(48dvh,245px)!important;overflow-y:auto!important;overflow-x:hidden!important;
+ padding:2px!important;margin:0!important;z-index:8!important;
+ pointer-events:auto!important;overscroll-behavior:contain!important;
+}
+#game #overlay.title-screen[data-boot-state="ready"]:has(#cadillacWeather) .panel>.title-actions{
+ display:flex!important;
+}
+#game #overlay.title-screen:not([data-boot-state="ready"]):has(#cadillacWeather) .panel>.title-actions{display:none!important;}
+#game #overlay.title-screen:has(#cadillacWeather) .panel>.title-actions>button:not(.hidden){
+ box-sizing:border-box!important;display:block!important;position:relative!important;
+ inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+ transform:none!important;width:100%!important;max-width:100%!important;
+ min-height:44px!important;height:auto!important;margin:0!important;padding:9px 12px!important;
+ text-align:center!important;white-space:normal!important;overflow-wrap:anywhere!important;
+ border:1px solid #a957c6b9!important;border-radius:4px!important;
+ color:#f3e7ff!important;background:linear-gradient(115deg,#150d28f5,#291339f3)!important;
+ box-shadow:0 6px 18px #0009!important;
+ font:600 12px/1.36 ui-monospace,Consolas,monospace!important;
+ letter-spacing:.045em!important;animation:none!important;
+}
+#game #overlay.title-screen:has(#cadillacWeather) .panel>.title-actions>#chooseFromTitle:not(.hidden){
+ min-height:38px!important;background:#0a0b1bdd!important;color:#dfc8e7!important;
+ border-color:#9e699fa6!important;font-size:11px!important;
+}
+#game #overlay.title-screen:has(#cadillacWeather) .panel>.title-actions>button.hidden{display:none!important;}
+#game #overlay.title-screen[data-boot-state="ready"]:has(#cadillacWeather) .panel>#bootStatus{
+ display:none!important;visibility:hidden!important;pointer-events:none!important;
+}
+#game #overlay.title-screen[data-boot-state="loading"]:has(#cadillacWeather) .panel>#bootStatus{
+ display:grid!important;visibility:visible!important;pointer-events:none!important;
+ max-height:min(52dvh,240px)!important;overflow-y:auto!important;
+}
+#game #overlay.title-screen[data-boot-state="loading"]:has(#cadillacWeather) .panel>#bootStatus:has(#bootRetry:not([hidden])){
+ pointer-events:auto!important;
+}
+#game #overlay.title-screen:has(#cadillacWeather) .panel>.title-logo,
+#game #overlay.title-screen:has(#cadillacWeather) .panel>.title-subtitle{pointer-events:none!important;}
+/* Suppress HUD and touch behind full-screen overlays without altering scene state. */
+#game:has(>#overlay:not(.hidden))>.hud,
+#game:has(>#chapterPicker:not(.hidden))>.hud,
+#game:has(>#pauseLayer:not(.hidden))>.hud,
+#game:has(>#overlay:not(.hidden))>.touch,
+#game:has(>#chapterPicker:not(.hidden))>.touch,
+#game:has(>#pauseLayer:not(.hidden))>.touch{
+ visibility:hidden!important;pointer-events:none!important;
+}
+/* Landscape: HUD has two measured rows, not independent absolute rectangles. */
+@media(max-height:540px) and (min-aspect-ratio:1.35){
+ #game:not(.rooftop-mode):not(.interlude-mode)>.hud{
+  display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:start!important;justify-content:stretch!important;
+  column-gap:7px!important;row-gap:4px!important;
+  padding:6px 9px!important;
+ }
+ #game:not(.rooftop-mode):not(.interlude-mode)>.hud .identity{
+  grid-column:1!important;grid-row:1!important;width:min(220px,100%)!important;
+  min-width:0!important;margin:0!important;padding:5px 8px!important;
+ }
+ #game:not(.rooftop-mode):not(.interlude-mode)>.hud .menu{
+  position:static!important;inset:auto!important;transform:none!important;
+  grid-column:2!important;grid-row:1!important;align-self:start!important;
+  min-width:0!important;max-width:min(72vw,390px)!important;
+  display:flex!important;flex-wrap:nowrap!important;gap:3px!important;
+  margin:0!important;overflow-x:auto!important;overscroll-behavior-x:contain!important;
+  scrollbar-width:none!important;
+ }
+ #game:not(.rooftop-mode):not(.interlude-mode)>.hud .menu button{
+  flex:0 0 auto!important;min-width:37px!important;min-height:38px!important;
+  padding:6px!important;font-size:10px!important;
+ }
+ #game:not(.rooftop-mode):not(.interlude-mode)>.hud .mission{
+  position:static!important;inset:auto!important;transform:none!important;
+  grid-column:1/-1!important;grid-row:2!important;
+  justify-self:start!important;min-width:0!important;width:min(600px,100%)!important;
+  max-width:min(600px,100%)!important;max-height:70px!important;overflow-y:auto!important;
+  margin:0!important;padding:5px 8px!important;text-align:left!important;
+ }
+ #game:not(.rooftop-mode):not(.interlude-mode)>.hud .mission strong{
+  font-size:11px!important;line-height:1.25!important;margin:2px 0!important;
+ }
+ #game:not(.rooftop-mode):not(.interlude-mode)>.radio{
+  top:calc(var(--rc70-hud-bottom,98px) + 7px)!important;bottom:auto!important;
+  left:10px!important;right:auto!important;width:min(510px,calc(100% - 20px))!important;
+  max-height:max(45px,calc(100dvh - var(--rc70-hud-bottom,98px) - 70px))!important;
+  overflow-y:auto!important;
+ }
+ #game #overlay.title-screen:has(#cadillacWeather) .panel>.title-actions{
+  bottom:max(9px,env(safe-area-inset-bottom,0px))!important;
+  gap:5px!important;max-height:min(52dvh,198px)!important;
+ }
+ #game #overlay.title-screen:has(#cadillacWeather) .panel>.title-actions>button:not(.hidden){
+  min-height:40px!important;padding:7px 10px!important;font-size:11px!important;
+ }
+ #game #overlay.title-screen:has(#cadillacWeather) .panel>.title-logo{
+  top:clamp(13px,5vh,26px)!important;font-size:clamp(26px,6vh,42px)!important;
+ }
+ #game #overlay.title-screen:has(#cadillacWeather) .panel>.title-subtitle{
+  top:clamp(58px,18vh,80px)!important;font-size:9px!important;
+ }
+}
+@media(max-width:420px) and (orientation:portrait){
+ #game #overlay.title-screen:has(#cadillacWeather) .panel>.title-actions{
+  width:calc(100% - 24px)!important;bottom:max(14px,env(safe-area-inset-bottom,0px))!important;
+  gap:7px!important;
+ }
+ #game #overlay.title-screen:has(#cadillacWeather) .panel>.title-logo{
+  font-size:clamp(26px,8vw,38px)!important;white-space:normal!important;
+ }
+ #game #overlay.title-screen:has(#cadillacWeather) .panel>.title-subtitle{
+  letter-spacing:.12em!important;font-size:9px!important;
+ }
+}
+@media(max-height:360px){
+ #game #overlay.title-screen:has(#cadillacWeather) .panel>.title-actions{max-height:52dvh!important;}
+ #game #overlay.title-screen:has(#cadillacWeather) .panel>#bootStatus{
+  max-height:56dvh!important;bottom:8px!important;overflow:auto!important;
+ }
+}

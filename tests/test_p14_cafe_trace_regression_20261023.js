@@ -1,0 +1,16 @@
+const assert=require('assert'),fs=require('fs'),path=require('path');
+const root=path.resolve(__dirname,'..');const read=n=>fs.readFileSync(path.join(root,n),'utf8');
+const coffee=read('coffee-sprites.js'),interlude=read('interlude.js'),prelude=read('prelude-engine.js'),quests=read('npc-quests.js'),html=read('index.html');
+assert(fs.existsSync(path.join(root,'cafe-seated-composite.png')),'cafe composition asset missing');
+assert(coffee.includes("coffeeSeatedImage.src='cafe-seated-composite.png'"),'cafe composition must load');
+assert(interlude.includes('if(seatedFrame&&!coffeeSceneV105Ready()&&coffeeSeatedReady)'),'composite must be used ONLY if enhanced seats fail');
+assert(/coffeeTableActor\('jinx',s\.gestureActor==='jinx'&&activeSeatGesture\?s\.gesture:''\);coffeeTableActor\('sierra',s\.gestureActor==='sierra'&&activeSeatGesture\?s\.gesture:''\)/.test(interlude),'draw two independent seated character sprites with speaker-specific posture cues');
+assert(interlude.includes('coffeeDrawTableOcclusionV105(wide)'),'physical table occludes hands without duplicate people');
+assert(interlude.includes('W<480?H/1200:1.0'),'phone cafe camera should fill height');
+assert(interlude.includes('if(seatedFrame&&W<480){camX=target;camY=0;}'),'phone cafe vertical camera should not create bottom black area');
+assert(!prelude.includes("id:'commuter'"),'commuter NPC must not be present');
+assert(!quests.includes('commuter:'),'commuter quest must not linger');
+assert(prelude.includes('B-3 / ELEVADOR DE SERVIÇO'),'environmental clue must lead to apartment');
+assert(prelude.includes("s,'auraInvitation'"),'Aura invitation should be heard during playable approach');
+assert(html.includes('chapter-curtain.js'),'cinematic chapter transition must remain');
+console.log('PASS P14/V105: physically separate seated sprites, fallback, mobile camera, no commuter, environmental clue, Aura, chapter cards');

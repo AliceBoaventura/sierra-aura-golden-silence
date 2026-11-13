@@ -1,0 +1,373 @@
+{
+  "schema": 1,
+  "actors": {
+    "sierra": {
+      "canvas_w": 404,
+      "canvas_h": 672,
+      "visible_source_height": 659,
+      "walking_sequence": [
+        0,
+        2,
+        0,
+        3
+      ],
+      "footline": 672,
+      "authoring": "source silhouettes cropped and re-registered without invented limb anatomy"
+    },
+    "aura": {
+      "canvas_w": 372,
+      "canvas_h": 640,
+      "visible_source_height": 628,
+      "walking_sequence": [
+        0,
+        2,
+        0,
+        3
+      ],
+      "footline": 640,
+      "authoring": "source silhouettes cropped and re-registered without invented limb anatomy"
+    },
+    "jinx": {
+      "canvas_w": 376,
+      "canvas_h": 624,
+      "visible_source_height": 610,
+      "walking_sequence": [
+        0,
+        2,
+        0,
+        3
+      ],
+      "footline": 624,
+      "authoring": "source silhouettes cropped and re-registered without invented limb anatomy"
+    },
+    "alexandra": {
+      "canvas_w": 360,
+      "canvas_h": 640,
+      "visible_source_height": 627,
+      "walking_sequence": [
+        0,
+        2,
+        0,
+        3
+      ],
+      "footline": 640,
+      "authoring": "source silhouettes cropped and re-registered without invented limb anatomy"
+    }
+  },
+  "frames": {
+    "sierra-0": {
+      "visible_bbox": [
+        58,
+        13,
+        346,
+        672
+      ],
+      "visible_height": 659,
+      "feet": 672,
+      "source": "assets/rebuild/actors/sierra-0.png"
+    },
+    "sierra-1": {
+      "visible_bbox": [
+        27,
+        29,
+        377,
+        672
+      ],
+      "visible_height": 643,
+      "feet": 672,
+      "source": "assets/rebuild/actors/sierra-1.png"
+    },
+    "sierra-2": {
+      "visible_bbox": [
+        22,
+        23,
+        381,
+        672
+      ],
+      "visible_height": 649,
+      "feet": 672,
+      "source": "assets/rebuild/actors/sierra-2.png"
+    },
+    "sierra-3": {
+      "visible_bbox": [
+        14,
+        23,
+        391,
+        672
+      ],
+      "visible_height": 649,
+      "feet": 672,
+      "source": "assets/rebuild/actors/sierra-3.png"
+    },
+    "aura-0": {
+      "visible_bbox": [
+        30,
+        12,
+        342,
+        640
+      ],
+      "visible_height": 628,
+      "feet": 640,
+      "source": "assets/rebuild/actors/aura-0.png"
+    },
+    "aura-1": {
+      "visible_bbox": [
+        14,
+        28,
+        358,
+        640
+      ],
+      "visible_height": 612,
+      "feet": 640,
+      "source": "assets/rebuild/actors/aura-1.png"
+    },
+    "aura-2": {
+      "visible_bbox": [
+        12,
+        21,
+        359,
+        640
+      ],
+      "visible_height": 619,
+      "feet": 640,
+      "source": "assets/rebuild/actors/aura-2.png"
+    },
+    "aura-3": {
+      "visible_bbox": [
+        17,
+        21,
+        355,
+        640
+      ],
+      "visible_height": 619,
+      "feet": 640,
+      "source": "assets/rebuild/actors/aura-3.png"
+    },
+    "jinx-0": {
+      "visible_bbox": [
+        46,
+        14,
+        330,
+        624
+      ],
+      "visible_height": 610,
+      "feet": 624,
+      "source": "assets/visual-v5/jinx/jinx-0.png"
+    },
+    "jinx-1": {
+      "visible_bbox": [
+        24,
+        29,
+        353,
+        624
+      ],
+      "visible_height": 595,
+      "feet": 624,
+      "source": "assets/visual-v5/jinx/jinx-1.png"
+    },
+    "jinx-2": {
+      "visible_bbox": [
+        38,
+        23,
+        338,
+        624
+      ],
+      "visible_height": 601,
+      "feet": 624,
+      "source": "assets/visual-v5/jinx/jinx-2.png"
+    },
+    "jinx-3": {
+      "visible_bbox": [
+        14,
+        23,
+        363,
+        624
+      ],
+      "visible_height": 601,
+      "feet": 624,
+      "source": "assets/visual-v5/jinx/jinx-3.png"
+    },
+    "alexandra-0": {
+      "visible_bbox": [
+        52,
+        13,
+        307,
+        640
+      ],
+      "visible_height": 627,
+      "feet": 640,
+      "source": "assets/rebuild/actors/alexandra-0.png"
+    },
+    "alexandra-1": {
+      "visible_bbox": [
+        26,
+        29,
+        334,
+        640
+      ],
+      "visible_height": 611,
+      "feet": 640,
+      "source": "assets/rebuild/actors/alexandra-1.png"
+    },
+    "alexandra-2": {
+      "visible_bbox": [
+        13,
+        22,
+        347,
+        640
+      ],
+      "visible_height": 618,
+      "feet": 640,
+      "source": "assets/rebuild/actors/alexandra-2.png"
+    },
+    "alexandra-3": {
+      "visible_bbox": [
+        14,
+        22,
+        346,
+        640
+      ],
+      "visible_height": 618,
+      "feet": 640,
+      "source": "assets/rebuild/actors/alexandra-3.png"
+    }
+  },
+  "calibration": {
+    "sierra": {
+      "source_bboxes": [
+        [
+          1,
+          1,
+          289,
+          660
+        ],
+        [
+          1,
+          1,
+          335,
+          615
+        ],
+        [
+          0,
+          0,
+          344,
+          622
+        ],
+        [
+          0,
+          2,
+          354,
+          612
+        ]
+      ],
+      "calibrated_heights": [
+        659,
+        643,
+        649,
+        649
+      ]
+    },
+    "aura": {
+      "source_bboxes": [
+        [
+          1,
+          1,
+          313,
+          629
+        ],
+        [
+          2,
+          0,
+          335,
+          593
+        ],
+        [
+          2,
+          1,
+          339,
+          603
+        ],
+        [
+          1,
+          2,
+          327,
+          599
+        ]
+      ],
+      "calibrated_heights": [
+        628,
+        612,
+        619,
+        619
+      ]
+    },
+    "jinx": {
+      "source_bboxes": [
+        [
+          66,
+          49,
+          350,
+          659
+        ],
+        [
+          39,
+          49,
+          376,
+          659
+        ],
+        [
+          55,
+          49,
+          360,
+          659
+        ],
+        [
+          31,
+          49,
+          385,
+          659
+        ]
+      ],
+      "calibrated_heights": [
+        610,
+        595,
+        601,
+        601
+      ]
+    },
+    "alexandra": {
+      "source_bboxes": [
+        [
+          1,
+          1,
+          256,
+          628
+        ],
+        [
+          1,
+          1,
+          312,
+          618
+        ],
+        [
+          1,
+          1,
+          335,
+          619
+        ],
+        [
+          1,
+          1,
+          331,
+          616
+        ]
+      ],
+      "calibrated_heights": [
+        627,
+        611,
+        618,
+        618
+      ]
+    }
+  }
+}

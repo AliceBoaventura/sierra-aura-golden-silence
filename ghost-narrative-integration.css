@@ -1,0 +1,8 @@
+/* RC43: readable hypotheses and lived-memory beats; scene-scoped only. */
+#ghostPuzzle .ghost-inference-label{margin:18px 0 10px;color:#e3c8a7;font-size:.92rem;letter-spacing:.035em}
+#ghostPuzzle .ghost-inference-options{display:grid;gap:8px;margin-bottom:16px}
+#ghostPuzzle .ghost-inference-options button{display:block;text-align:left;min-height:46px;padding:10px 14px;border:1px solid #48616c;background:rgba(11,27,38,.85);color:#ecede7;cursor:pointer;border-radius:6px;line-height:1.45}
+#ghostPuzzle .ghost-echo-bin.ghost-selected,#ghostPuzzle .ghost-inference-options button.ghost-selected{border:2px solid #b7e5d7;box-shadow:inset 0 0 0 1px #224b52,0 0 12px #5bc9c229;background:#213b48;color:#fff}
+#ghostDialogue .ghost-lived-memory{font-style:italic;font-size:.89rem;color:#d9cbb7;line-height:1.6;margin:10px 0 16px;padding-left:12px;border-left:2px solid #718f9c}
+#ghostPuzzle #echoDeductionStatus{line-height:1.6;color:#cce6dd;min-height:42px}
+@media(max-width:540px){#ghostPuzzle .ghost-inference-options button{min-height:55px;font-size:.88rem}#ghostPuzzle .ghost-echo-bins{grid-template-columns:repeat(3,minmax(0,1fr))}#ghostDialogue .ghost-lived-memory{font-size:.85rem}}

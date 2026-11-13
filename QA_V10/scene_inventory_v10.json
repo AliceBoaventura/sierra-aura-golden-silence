@@ -1,0 +1,142 @@
+[
+  {
+    "stage": "01 / home",
+    "path": "assets/visual-v5/sierra-home-v5.png",
+    "world_width": 1200,
+    "width": 1672,
+    "height": 941,
+    "aspect_ratio": 1.777,
+    "ground_y": 800,
+    "review_method": "source art and renderer source; not a playthrough screenshot"
+  },
+  {
+    "stage": "01 / district",
+    "path": "assets/visual-v5/district-routine-v5.png",
+    "world_width": 4200,
+    "width": 2172,
+    "height": 724,
+    "aspect_ratio": 3.0,
+    "ground_y": 800,
+    "review_method": "source art and renderer source; not a playthrough screenshot"
+  },
+  {
+    "stage": "01 / gallery",
+    "path": "assets/locations/aura-hideout-approach.jpg",
+    "world_width": 4200,
+    "width": 4200,
+    "height": 900,
+    "aspect_ratio": 4.667,
+    "ground_y": 800,
+    "review_method": "source art and renderer source; not a playthrough screenshot"
+  },
+  {
+    "stage": "01 / approach",
+    "path": "assets/production/corredor-47.png",
+    "world_width": 2300,
+    "width": 1536,
+    "height": 512,
+    "aspect_ratio": 3.0,
+    "ground_y": 800,
+    "review_method": "source art and renderer source; not a playthrough screenshot"
+  },
+  {
+    "stage": "02 / apartment",
+    "path": "assets/visual-v5/apartment-v5.png",
+    "world_width": 2600,
+    "width": 2172,
+    "height": 724,
+    "aspect_ratio": 3.0,
+    "ground_y": 800,
+    "review_method": "source art and renderer source; not a playthrough screenshot"
+  },
+  {
+    "stage": "03 / relay",
+    "path": "relay-corridor.png",
+    "world_width": 3200,
+    "width": 2172,
+    "height": 724,
+    "aspect_ratio": 3.0,
+    "ground_y": 800,
+    "review_method": "source art and renderer source; not a playthrough screenshot"
+  },
+  {
+    "stage": "04 / terrace",
+    "path": "assets/visual-v5/terrace-v5.png",
+    "world_width": 1100,
+    "width": 1672,
+    "height": 941,
+    "aspect_ratio": 1.777,
+    "ground_y": 800,
+    "review_method": "source art and renderer source; not a playthrough screenshot"
+  },
+  {
+    "stage": "05 / club",
+    "path": "assets/visual-v5/club-v5.png",
+    "world_width": 3400,
+    "width": 2170,
+    "height": 725,
+    "aspect_ratio": 2.993,
+    "ground_y": 800,
+    "review_method": "source art and renderer source; not a playthrough screenshot"
+  },
+  {
+    "stage": "05 / backstage",
+    "path": "assets/visual-v5/backstage-v5.png",
+    "world_width": 2200,
+    "width": 2171,
+    "height": 724,
+    "aspect_ratio": 2.999,
+    "ground_y": 800,
+    "review_method": "source art and renderer source; not a playthrough screenshot"
+  },
+  {
+    "stage": "06 / Alexandra studio",
+    "path": "assets/visual-v5/alex-home-v5.png",
+    "world_width": 2600,
+    "width": 2172,
+    "height": 724,
+    "aspect_ratio": 3.0,
+    "ground_y": 800,
+    "review_method": "source art and renderer source; not a playthrough screenshot"
+  },
+  {
+    "stage": "07 / holding",
+    "path": "assets/visual-v5/interval-holding-v5.png",
+    "world_width": 2800,
+    "width": 2172,
+    "height": 724,
+    "aspect_ratio": 3.0,
+    "ground_y": 800,
+    "review_method": "source art and renderer source; not a playthrough screenshot"
+  },
+  {
+    "stage": "07 / facility",
+    "path": "interval-facility.png",
+    "world_width": 3400,
+    "width": 2172,
+    "height": 724,
+    "aspect_ratio": 3.0,
+    "ground_y": 800,
+    "review_method": "source art and renderer source; not a playthrough screenshot"
+  },
+  {
+    "stage": "08 / cafe",
+    "path": "cafe-0217.png",
+    "world_width": 2100,
+    "width": 2100,
+    "height": 1200,
+    "aspect_ratio": 1.75,
+    "ground_y": 800,
+    "review_method": "source art and renderer source; not a playthrough screenshot"
+  },
+  {
+    "stage": "08 / depot",
+    "path": "depot-p26-architecture.png",
+    "world_width": 2200,
+    "width": 2171,
+    "height": 724,
+    "aspect_ratio": 2.999,
+    "ground_y": 800,
+    "review_method": "source art and renderer source; not a playthrough screenshot"
+  }
+]

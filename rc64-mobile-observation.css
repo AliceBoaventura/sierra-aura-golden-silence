@@ -1,0 +1,30 @@
+/* RC64 — dialogue stays beneath the actors in 47 MINUTOS, including narrow phones. */
+@media(max-width:700px){
+ #game.interval-aftermath > #intervalDialogue:not(.hidden),
+ #game.interval-aftermath > #intervalDialogue.dialogue-coherent:not(.hidden){
+  left:3%!important;right:3%!important;bottom:0!important;top:auto!important;
+  width:94%!important;max-width:none!important;box-sizing:border-box!important;
+  display:flex!important;flex-direction:column!important;
+  height:25dvh!important;max-height:25dvh!important;min-height:0!important;
+  overflow:hidden!important;padding:6px 10px!important;
+ }
+ #game.interval-aftermath > #intervalDialogue .club-dialogue-top{flex:0 0 auto!important;line-height:1.2!important;margin:0!important;}
+ #game.interval-aftermath > #intervalDialogue .club-aside{
+  flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important;
+  overscroll-behavior:contain!important;margin:3px 0!important;
+  font-size:11px!important;line-height:1.25!important;
+ }
+ #game.interval-aftermath > #intervalDialogue .club-line{
+  flex:0 0 auto!important;margin:3px 0!important;font:11px/1.25 monospace!important;
+  letter-spacing:0!important;white-space:normal!important;
+ }
+ #game.interval-aftermath > #intervalDialogue #intervalNext{
+  flex:0 0 auto!important;min-height:34px!important;padding:5px 12px!important;
+  margin:3px 0 0!important;align-self:flex-start!important;
+ }
+ #game.interval-aftermath > #intervalDialogue .club-help{display:none!important;}
+}
+@media(max-width:700px){
+ #game#game.interval-aftermath > #intervalDialogue#intervalDialogue.club-dialogue .club-line{font-size:11px!important;line-height:1.24!important;font-family:monospace!important;letter-spacing:0!important;margin:2px 0!important;}
+ #game#game.interval-aftermath > #intervalDialogue#intervalDialogue.club-dialogue .club-aside{font-size:11px!important;line-height:1.22!important;margin:2px 0!important;}
+}
