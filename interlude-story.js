@@ -144,7 +144,11 @@ InterludeStory.cafe1=[
    {who:'SIERRA',text:'Não quero que a última lembrança dela seja aquela porta.'},
    {who:'JINX',text:'Nem eu. Lembro dela roubando meus fones e chamando de empréstimo.',emotion:'soft'},
    {who:'SIERRA',text:'Ela também reclamava do volume quando nem estava na sala.',emotion:'soft'},
-   {who:'JINX',text:'Opinião em alcance de rede. Qual lembrança você quer guardar?',gesture:'lean',emotion:'wry',choiceKey:'alex',choices:[
+   {who:'JINX',text:'Opinião em alcance de rede.',gesture:'lean',emotion:'wry'},
+   {who:'JINX',text:'A última ligação dela... Eu estava zangado, vi o nome dela e deixei tocar.'},
+   {who:'SIERRA',text:'Você não podia saber que aquela seria a última.'},
+   {who:'JINX',text:'Eu sei. E ainda assim dói lembrar que eu virei o aparelho em vez de atender.'},
+   {who:'JINX',text:'Qual lembrança você quer guardar?',gesture:'lean',emotion:'wry',choiceKey:'alex',choices:[
     {label:'A última vez que ela salvou a gente.',reply:[
      {who:'SIERRA',text:'Ela segurou a saída. Quero lembrar que foi uma escolha dela, não o destino que deram a ela.'},
      {who:'JINX',text:'Então lembra também de tudo que ela fazia antes daquela noite.'}
