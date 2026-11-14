@@ -82,20 +82,6 @@ InterludeStory.depotFinal=[
 globalThis.InterludeStory=InterludeStory;
 
 // P47 · Grief without making Alexandra's death a convenient lesson.
-InterludeStory.walk1[0].text='A Alex me ligou antes da instalação. O celular ficou vibrando ao lado do amplificador. Eu vi o nome dela e virei a tela.';
-InterludeStory.walk1[2].text='Eu estava bravo. Queria que ela sentisse minha falta por cinco minutos. Agora não consigo lembrar de outra coisa.';
-InterludeStory.walk1[4].text='Eu sei. Não atendi porque quis machucar um pouquinho. Não porque sabia que ela ia morrer. As duas coisas também não são iguais.';
-InterludeStory.cafe1[3].text='Você sente falta de quem ela era ou de ter alguém para culpar por não ter atendido?';
-InterludeStory.cafe1[4].text='Das duas coisas. Mas ontem achei a senha do som anotada num guardanapo. Ela sempre escrevia números de cabeça para baixo. Senti falta disso antes de sentir culpa.';
-InterludeStory.cafe1[5].text='Se a gente lembrar só da porta que ela segurou, o que acontece com todo o resto dela?';
-InterludeStory.cafe1[5].choices[0].reply=[{who:'SIERRA',text:'Eu quero contar que ela segurou a porta. Mas não quero que pareça que nasceu para morrer por nós.'},{who:'JINX',text:'Então conta também que ela roubava meus fones e nunca devolvia.'}];
-InterludeStory.cafe1[5].choices[1].reply=[{who:'JINX',text:'Ela dizia que minha banda era ruim. Achei todas as nossas gravações no quarto dela, organizadas por ano.'},{who:'SIERRA',text:'Ela guardava coisa demais para alguém que fingia não ligar.'}];
-InterludeStory.cafe1[5].choices[2].reply=[{who:'JINX',text:'A gente não precisa fazer dela uma história hoje. Pode só deixar a xícara esfriar.'},{who:'SIERRA',text:'Fica sentado comigo até isso acontecer.'}];
-InterludeStory.cafe2[2].text='Estou com raiva da Aura. Não porque deixou de me amar. Porque eu fiquei esperando uma resposta que só ela podia dar. E agora tenho medo de ouvir.';
-InterludeStory.cafe2[4].text='Se ela ligar, como faço para dizer que senti falta sem fingir que tudo que ela fez foi certo?';
-InterludeStory.cafe2[5].text='Você não precisa transformar perdão em uma senha de acesso. Pode perguntar. Pode não conseguir perdoar hoje.';
-InterludeStory.returnLate[0].text='Você acha que conseguiríamos ter salvado a Alex se tivéssemos chegado cinco minutos antes?';
-InterludeStory.returnLate[1].text='A única coisa que sei é que ela queria sair viva. Não vou chamar o que aconteceu de plano perfeito só para doer menos.';
 InterludeStory.auraCloud[5].text='Ela morreu, Aura. E eu tive medo de perder você também. Queria te procurar. Fiquei sem saber onde uma busca terminava e a outra começava.';
 InterludeStory.auraCloud[6].text='Meu corpo está numa cápsula. Estou ligada à rede. Fiz isso sem contar a você. Não foi por falta de amor. Mas o amor também não me deu o direito de esconder o risco.';
 InterludeStory.depotFinal[2].text='A fita veio depois. Ela saiu e voltou para guardar o original. A gente pode admirar o que ela fez sem fingir que sabia como terminaria.';
@@ -113,8 +99,6 @@ trimText('auraPing',1,'O canal da Aura. Caiu.');
 trimText('auraPing',2,'Não sabemos se foi ela.');
 trimText('cafe3',0,'Estamos fechando. Mais um minuto.');
 trimText('cafe3',2,'Vamos? Não precisa falar.');
-trimText('returnLate',0,'Você acha que dava para salvar a Alex?');
-trimText('returnLate',1,'Ela queria sair viva. Não vou fingir que sabemos o resto.');
 trimText('depotFinal',0,'Ela voltou aqui.');
 trimText('depotFinal',2,'A fita é posterior. Ela voltou para guardar o original.');
 trimText('depotFinal',3,'Este carimbo registra uma autorização, não a hora da morte.');
@@ -126,14 +110,22 @@ trimText('depotFinal',11,'Quero os nomes de quem recebeu as ordens.');
 
 // RC73 Café 02:17 — editorial polish.
 // Walking banter is concise and ambient; the player never has to stop to hear it.
+
+
+/* RC73 R3: canonical dialogue structures; the old numeric patches no longer own these scenes. */
 InterludeStory.walk1=[
- {who:'JINX',text:'Você anda como se a cidade estivesse te devendo dinheiro.',duration:1.55},
- {who:'SIERRA',text:'E você fala como se cobrasse juros.',duration:1.55}
+ {who:'JINX',text:'A Alex me ligou antes da instalação. Eu vi o nome dela e virei o celular para baixo.'},
+ {who:'SIERRA',text:'Você estava bravo com ela?'},
+ {who:'JINX',text:'Por uma coisa pequena. Agora nem lembro direito qual era.'},
+ {who:'SIERRA',text:'Você não tinha como saber o que ia acontecer.'},
+ {who:'JINX',text:'Eu sei. Mas saber disso não apaga o gesto. Eu queria que ela esperasse por mim. Só isso.'}
 ];
 InterludeStory.walk2=[
- {who:'JINX',text:'O café é ruim. Pelo menos é consistente.',duration:1.45},
- {who:'SIERRA',text:'Você volta toda semana.',duration:1.45},
- {who:'JINX',text:'Eu respeito a dedicação de um desastre.',duration:1.45}
+ {who:'JINX',text:'Você está olhando para o comunicador desde que saiu de casa.'},
+ {who:'SIERRA',text:'A Aura não responde. Estou com raiva. E preocupada.'},
+ {who:'JINX',text:'Você pode sentir as duas coisas. Não precisa decidir agora.'},
+ {who:'SIERRA',text:'Não consigo desligar a cabeça.'},
+ {who:'JINX',text:'Então eu fico aqui. A gente anda um pouco.'}
 ];
 InterludeStory.cafe1=[
  {who:'JINX',text:'Vai falar ou vai continuar encarando a xícara?',emotion:'wry'},
@@ -145,9 +137,6 @@ InterludeStory.cafe1=[
    {who:'JINX',text:'Nem eu. Lembro dela roubando meus fones e chamando de empréstimo.',emotion:'soft'},
    {who:'SIERRA',text:'Ela também reclamava do volume quando nem estava na sala.',emotion:'soft'},
    {who:'JINX',text:'Opinião em alcance de rede.',gesture:'lean',emotion:'wry'},
-   {who:'JINX',text:'A última ligação dela... Eu estava zangado, vi o nome dela e deixei tocar.'},
-   {who:'SIERRA',text:'Você não podia saber que aquela seria a última.'},
-   {who:'JINX',text:'Eu sei. E ainda assim dói lembrar que eu virei o aparelho em vez de atender.'},
    {who:'JINX',text:'Qual lembrança você quer guardar?',gesture:'lean',emotion:'wry',choiceKey:'alex',choices:[
     {label:'A última vez que ela salvou a gente.',reply:[
      {who:'SIERRA',text:'Ela segurou a saída. Quero lembrar que foi uma escolha dela, não o destino que deram a ela.'},
@@ -200,13 +189,17 @@ InterludeStory.cafe1=[
   ]}
  ]}
 ];
-InterludeStory.cafe2=[
- {who:'SIERRA',text:'A máquina de café está fazendo mais barulho que a rua.'}
-];
+InterludeStory.cafe2=[{who:'SIERRA',text:'A máquina de café está fazendo mais barulho que a rua.'}];
 InterludeStory.returnBeat=[
- {who:'JINX',text:'A chave da Alex ainda está comigo. O número 47 não me diz nada.',duration:1.55},
- {who:'SIERRA',text:'Amanhã a gente olha. Hoje eu só quero chegar em casa.',duration:1.55}
+ {who:'JINX',text:'A Alex deixou uma chave comigo. Não faço ideia do que abre.'},
+ {who:'SIERRA',text:'Por que você não contou antes?'},
+ {who:'JINX',text:'Porque toda vez que tento falar dela parece que ela morreu de novo.'},
+ {who:'SIERRA',text:'Amanhã a gente olha. Hoje não.'}
 ];
 InterludeStory.returnLate=[
- {who:'SIERRA',text:'Você acha que a gente podia ter salvado a Alex?',duration:1.55}
+ {who:'SIERRA',text:'Você acha que a gente poderia ter salvado a Alex?'},
+ {who:'JINX',text:'Eu me faço essa pergunta desde aquela porta. Ainda não encontrei uma resposta.'},
+ {who:'SIERRA',text:'Então não inventa uma só para eu dormir.'},
+ {who:'JINX',text:'Não vou. Ela queria sair viva. O que aconteceu não transforma a escolha dela numa coisa que a gente pudesse prever.'}
 ];
+
